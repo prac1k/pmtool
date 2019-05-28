@@ -11,12 +11,13 @@ exports.create = (req, res) => {
 
     // Create a User
     const user = new User({
-        name: req.body.name || "Untitled user",
-        phone: req.body.phone,
+        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
+        //address_street: req.body.address_street,
+        phone: req.body.phone,
         website: req.body.website,
         companyname: req.body.companyname
-
 
     });
 
@@ -67,7 +68,7 @@ exports.findOne = (req, res) => {
 // Update a user identified by the userID in the request
 exports.update = (req, res) => {
     // Validate Request
-    if(!req.body.content) {
+    if(!req.body.username) {
         return res.status(400).send({
             message: "user content can not be empty"
         });
@@ -75,8 +76,8 @@ exports.update = (req, res) => {
 
     // Find user and update it with the request body
     User.findByIdAndUpdate(req.params.userId, {
-        title: req.body.title || "Untitled user",
-        content: req.body.content
+        name: req.body.name || "Untitled user",
+        username: req.body.username
     }, {new: true})
         .then(user => {
             if(!user) {
@@ -114,7 +115,7 @@ exports.delete = (req, res) => {
             });
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.userId
+            message: "Could not delete user with id " + req.params.userId
         });
     });
 };

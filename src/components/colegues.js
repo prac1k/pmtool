@@ -16,9 +16,6 @@ const UserFilter = (props) => (
         <ReferenceInput label="Site" source="website" reference="users" allowEmpty>
             <SelectInput optionText="website" />
         </ReferenceInput>
-        <ReferenceInput label="Company Name" source="companyname" reference="users" allowEmpty>
-            <SelectInput optionText="companyname" />
-        </ReferenceInput>
     </Filter>
 );
 
@@ -55,7 +52,7 @@ export const UserEdit = props => (
             <TextInput source="name" />
             <TextInput source="username" />
             <TextInput source="email" />
-            <TextInput source="address.street" />
+            <TextInput source="address_street" />
             <TextInput source="phone" />
             <TextInput source="website" />
             <TextInput source="companyname" />
@@ -69,7 +66,7 @@ export const UserCreate = props => (
             <TextInput source="name" />
             <TextInput source="username" />
             <TextInput source="email" />
-            <TextInput source="address.street" />
+            <TextInput source="address_street" />
             <TextInput source="phone" />
             <TextInput source="website" />
             <TextInput source="companyname" />
