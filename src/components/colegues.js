@@ -1,8 +1,8 @@
 import React from 'react';
 import CompanySiteField from './CompanySiteField';
-import { List, Datagrid, TextField, EmailField, EditButton} from 'react-admin';
+import { List, Datagrid, TextField, EmailField, EditButton, Edit, SimpleForm, TextInput, Create, DisabledInput} from 'react-admin';
 
-    export const UsersList = props => (
+export const UsersList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
@@ -14,4 +14,33 @@ import { List, Datagrid, TextField, EmailField, EditButton} from 'react-admin';
             <EditButton />
         </Datagrid>
     </List>
+);
+
+export const UserEdit = props => (
+    <Edit {...props}>
+        <SimpleForm>
+            <DisabledInput source="id" />
+            <TextInput source="name" />
+            <TextInput source="username" />
+            <TextInput source="email" />
+            <TextInput source="address.street" />
+            <TextInput source="phone" />
+            <TextInput source="website" />
+            <TextInput source="company.name" />
+        </SimpleForm>
+    </Edit>
+);
+
+export const UserCreate = props => (
+    <Create {...props}>
+        <SimpleForm>
+            <TextInput source="name" />
+            <TextInput source="username" />
+            <TextInput source="email" />
+            <TextInput source="address.street" />
+            <TextInput source="phone" />
+            <TextInput source="website" />
+            <TextInput source="company.name" />
+        </SimpleForm>
+    </Create>
 );
