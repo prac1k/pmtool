@@ -1,11 +1,31 @@
 import React from 'react';
 import CompanySiteField from './CompanySiteField';
-import { List, Datagrid, TextField, EmailField, EditButton, Edit, SimpleForm, TextInput, Create, DisabledInput} from 'react-admin';
+import { List, Datagrid, TextField, EmailField, EditButton, Edit, SimpleForm, TextInput, Create, DisabledInput, Filter, ReferenceInput, SelectInput} from 'react-admin';
+
+const UserFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+        <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
+            <SelectInput optionText="name" />
+        </ReferenceInput>
+        <ReferenceInput label="Phone" source="phone" reference="users" allowEmpty>
+            <SelectInput optionText="phone" />
+        </ReferenceInput>
+        <ReferenceInput label="Email" source="email" reference="users" allowEmpty>
+            <SelectInput optionText="email" />
+        </ReferenceInput>
+        <ReferenceInput label="Site" source="website" reference="users" allowEmpty>
+            <SelectInput optionText="website" />
+        </ReferenceInput>
+        <ReferenceInput label="Company Name" source="company.name" reference="users" allowEmpty>
+            <SelectInput optionText="company.name" />
+        </ReferenceInput>
+    </Filter>
+);
 
 export const UsersList = props => (
-    <List {...props}>
+    <List filters={<UserFilter />} {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
             <TextField source="name"/>
             <EmailField source="email" />
             <TextField source="phone" />
@@ -15,9 +35,11 @@ export const UsersList = props => (
         </Datagrid>
     </List>
 );
-
+const UserTitle = ({ record }) => {
+    return <span>User {record ? `"${record.name}"` : ''}</span>;
+};
 export const UserEdit = props => (
-    <Edit {...props}>
+    <Edit title={<UserTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <TextInput source="name" />
