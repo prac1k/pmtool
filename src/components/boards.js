@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Datagrid, TextField, ReferenceField, EditButton, Edit, ReferenceInput, SelectInput, TextInput, SimpleForm, Create, DisabledInput, LongTextInput, Filter, Responsive, SimpleList} from 'react-admin';
 
-const PostFilter = (props) => (
+const TaskFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search" source="q" alwaysOn />
         <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
@@ -9,13 +9,13 @@ const PostFilter = (props) => (
         </ReferenceInput>
     </Filter>
 );
-const PostTitle = ({ record }) => {
-    return <span> Post {record ? `"${record.title}"` : ''}</span>;
+const TaskTitle = ({ record }) => {
+    return <span> Task {record ? `"${record.title}"` : ''}</span>;
 };
 
-export const PostList = props => (
+export const TaskList = props => (
 
-    <List filters={<PostFilter />} {...props}>
+    <List filters={<TaskFilter />} {...props}>
         <Responsive
             small={
                 <SimpleList
@@ -40,8 +40,8 @@ export const PostList = props => (
 
 
 
-export const PostEdit = props => (
-    <Edit title={<PostTitle />} {...props}>
+export const TaskEdit = props => (
+    <Edit title={<TaskTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <ReferenceInput source="userId" reference="users"><SelectInput optionText="id" />
@@ -54,7 +54,7 @@ export const PostEdit = props => (
     </Edit>
 );
 
-export const PostCreate = props => (
+export const TaskCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput source="userId" reference="users">
