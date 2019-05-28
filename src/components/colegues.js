@@ -1,6 +1,6 @@
 import React from 'react';
 import CompanySiteField from './CompanySiteField';
-import { List, Datagrid, TextField, EmailField, EditButton, Edit, SimpleForm, TextInput, Create, DisabledInput, Filter, ReferenceInput, SelectInput} from 'react-admin';
+import { List, Datagrid, TextField, EmailField, EditButton, Edit, SimpleForm, TextInput, Create, DisabledInput, Filter, ReferenceInput, SelectInput, Responsive, SimpleList} from 'react-admin';
 
 const UserFilter = (props) => (
     <Filter {...props}>
@@ -25,14 +25,25 @@ const UserFilter = (props) => (
 
 export const UsersList = props => (
     <List filters={<UserFilter />} {...props}>
-        <Datagrid rowClick="edit">
-            <TextField source="name"/>
-            <EmailField source="email" />
-            <TextField source="phone" />
-            <CompanySiteField source="website" />
-            <TextField source="company.name" />
-            <EditButton />
-        </Datagrid>
+        <Responsive
+            small={
+                <SimpleList
+                    primaryText={record => record.name}
+                    secondaryText={record => `${record.email} email`}
+                    tertiaryText={record => `${record.company.name} company.name`}
+                />
+            }
+            medium={
+                <Datagrid rowClick="edit">
+                    <TextField source="name"/>
+                    <EmailField source="email"/>
+                    <TextField source="phone"/>
+                    <CompanySiteField source="website"/>
+                    <TextField source="company.name"/>
+                    <EditButton/>
+                </Datagrid>
+            }
+            />
     </List>
 );
 const UserTitle = ({ record }) => {
