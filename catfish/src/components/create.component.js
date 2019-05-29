@@ -38,7 +38,7 @@ export default class Create extends Component {
             business_name: this.state.business_name,
             business_gst_number: this.state.business_gst_number
         };
-        axios.post('http://localhost:4000/business/add', obj)
+        axios.post('http://localhost:4000/users/add', obj)
             .then(res => console.log(res.data));
 
         this.setState({
@@ -51,7 +51,7 @@ export default class Create extends Component {
     render() {
         return (
             <div style={{ marginTop: 10 }}>
-                <h3>Add New Business</h3>
+                <h3>Add New User</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Person Name:  </label>
@@ -79,7 +79,7 @@ export default class Create extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Register Business" className="btn btn-primary"/>
+                        <input type="submit" value="Register User" className="btn btn-primary"/>
                     </div>
                 </form>
             </div>

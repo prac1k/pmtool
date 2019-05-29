@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
+import { Link } from "react-router-dom";
 
 export default class Index extends Component {
 
@@ -9,7 +10,7 @@ export default class Index extends Component {
         this.state = {business: []};
     }
     componentDidMount(){
-        axios.get('http://localhost:4000/business')
+        axios.get('http://localhost:4000/users')
             .then(response => {
                 this.setState({ business: response.data });
             })
@@ -26,7 +27,7 @@ export default class Index extends Component {
     render() {
         return (
             <div>
-                <h3 align="center">Business List</h3>
+                <h3 align="center">Users List</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                     <tr>
@@ -39,6 +40,9 @@ export default class Index extends Component {
                     <tbody>
                     { this.tabRow() }
                     </tbody>
+                    <tr>
+                        <Link to={"/create/"} className="btn btn-warning">Add user</Link>
+                        </tr>
                 </table>
             </div>
         );

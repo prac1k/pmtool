@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Create from './components/create.component';
 import Edit from './components/edit.component';
-import Index from './components/index.component';
+import Users from './components/users.component';
 
 class App extends Component {
     render() {
@@ -12,26 +12,23 @@ class App extends Component {
             <Router>
                 <div className="container">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link to={'/'} className="navbar-brand">React CRUD Example</Link>
+                        <Link to={'/'} className="navbar-brand">Catfish Project</Link>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
                                     <Link to={'/'} className="nav-link">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={'/create'} className="nav-link">Create</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to={'/index'} className="nav-link">Index</Link>
+                                    <Link to={'/users'} className="nav-link">Users</Link>
                                 </li>
                             </ul>
                         </div>
                     </nav> <br/>
-                    <h2>Welcome to React CRUD Tutorial</h2> <br/>
+                    <h2>Catfish Project</h2> <br/>
                     <Switch>
                         <Route exact path='/create' component={ Create } />
                         <Route path='/edit/:id' component={ Edit } />
-                        <Route path='/index' component={ Index } />
+                        <Route path='/users' component={ Users } />
                     </Switch>
                 </div>
             </Router>
