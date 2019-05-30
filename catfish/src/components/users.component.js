@@ -42,8 +42,6 @@ export default class Users extends Component {
                     </thead>
                     <tbody>
                     { this.tabRow() }
-
-
                     </tbody>
                 </table>
                     <Link className={"adduserbutton"} to={"/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="user-plus" /></Link>
