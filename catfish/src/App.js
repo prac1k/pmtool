@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Create from './components/create.component';
 import Edit from './components/edit.component';
 import Users from './components/users.component';
 
-library.add(faUserPlus)
+library.add(faUserPlus, faPlus)
 class App extends Component {
     render() {
         return (
@@ -22,6 +22,12 @@ class App extends Component {
                                 </li>
                                 <li className="nav-item">
                                     <Link to={'/users'} className="nav-link">Users</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/boards'} className="nav-link">Boards</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={'/mytasks'} className="nav-link">My Tasks</Link>
                                 </li>
                             </ul>
                         </div>

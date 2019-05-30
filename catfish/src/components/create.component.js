@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Create extends Component {
     constructor(props) {
@@ -79,7 +80,7 @@ export default class Create extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Register User" className="btn btn-primary"/>
+                        <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/></button>
                     </div>
                 </form>
             </div>
