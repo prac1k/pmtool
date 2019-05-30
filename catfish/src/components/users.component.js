@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
 import { Link } from "react-router-dom";
+import '../styles/adduserbutton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class Index extends Component {
+export default class Users extends Component {
 
     constructor(props) {
         super(props);
@@ -39,11 +41,11 @@ export default class Index extends Component {
                     </thead>
                     <tbody>
                     { this.tabRow() }
+
+
                     </tbody>
-                    <tr>
-                        <Link to={"/create/"} className="btn btn-warning">Add user</Link>
-                        </tr>
                 </table>
+                    <Link className={"adduserbutton"} to={"/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="user-plus" /></Link>
             </div>
         );
     }

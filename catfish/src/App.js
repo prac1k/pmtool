@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import Create from './components/create.component';
 import Edit from './components/edit.component';
 import Users from './components/users.component';
 
+library.add(faUserPlus)
 class App extends Component {
     render() {
         return (
