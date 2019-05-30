@@ -42,9 +42,9 @@ usersRoutes.route('/update/:id').post(function (req, res) {
         if (!users)
             res.status(404).send("data is not found");
         else {
-            users.person_name = req.body.person_name;
-            users.business_name = req.body.business_name;
-            users.business_gst_number = req.body.business_gst_number;
+            users.full_name = req.body.full_name;
+            users.role = req.body.role;
+            users.phone_number = req.body.phone_number;
 
             users.save().then(users => {
                 res.json('Update complete');

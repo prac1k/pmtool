@@ -17,13 +17,13 @@ class TableRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.obj.person_name}
+                    {this.props.obj.full_name}
                 </td>
                 <td>
-                    {this.props.obj.business_name}
+                    {this.props.obj.role}
                 </td>
                 <td>
-                    {this.props.obj.business_gst_number}
+                    {this.props.obj.phone_number}
                 </td>
                 <td>
                     <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>

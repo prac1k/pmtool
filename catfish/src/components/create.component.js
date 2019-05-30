@@ -1,52 +1,56 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default class Create extends Component {
     constructor(props) {
         super(props);
-        this.onChangePersonName = this.onChangePersonName.bind(this);
-        this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
-        this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
+        this.onChangeFullName = this.onChangeFullName.bind(this);
+        this.onChangeRole = this.onChangeRole.bind(this);
+        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            person_name: '',
-            business_name: '',
-            business_gst_number:''
+            full_name: '',
+            role: '',
+            phone_number:''
         }
     }
-    onChangePersonName(e) {
+    onChangeFullName(e) {
         this.setState({
-            person_name: e.target.value
+            full_name: e.target.value
         });
     }
-    onChangeBusinessName(e) {
+    onChangeRole(e) {
         this.setState({
-            business_name: e.target.value
+            role: e.target.value
         })
     }
-    onChangeGstNumber(e) {
+    onChangePhoneNumber(e) {
         this.setState({
-            business_gst_number: e.target.value
+            phone_number: e.target.value
         })
     }
 
     onSubmit(e) {
         e.preventDefault();
         const obj = {
-            person_name: this.state.person_name,
-            business_name: this.state.business_name,
-            business_gst_number: this.state.business_gst_number
+            full_name: this.state.full_name,
+            role: this.state.role,
+            phone_number: this.state.phone_number
         };
+
+        // UPDATE HERE TO AVOID PAGE REFRESH
         axios.post('http://localhost:4000/users/add', obj)
-            .then(res => console.log(res.data));
+            .then(res => window.location.href="/users");
 
         this.setState({
-            person_name: '',
-            business_name: '',
-            business_gst_number: ''
+            full_name: '',
+            role: '',
+            phone_number: ''
         })
+
     }
 
     render() {
@@ -55,32 +59,34 @@ export default class Create extends Component {
                 <h3>Add New User</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Person Name:  </label>
+                        <label>Full Name:  </label>
                         <input
                             type="text"
                             className="form-control"
-                            value={this.state.person_name}
-                            onChange={this.onChangePersonName}
+                            value={this.state.full_name}
+                            onChange={this.onChangeFullName}
                         />
                     </div>
                     <div className="form-group">
-                        <label>Business Name: </label>
+                        <label>Role: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.business_name}
-                               onChange={this.onChangeBusinessName}
+                               value={this.state.role}
+                               onChange={this.onChangeRole}
                         />
                     </div>
                     <div className="form-group">
-                        <label>GST Number: </label>
+                        <label>Phone Number: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.business_gst_number}
-                               onChange={this.onChangeGstNumber}
+                               value={this.state.phone_number}
+                               onChange={this.onChangePhoneNumber}
                         />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/></button>
+                        <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/>
+                            <Link to={"/"}></Link>
+                        </button>
                     </div>
                 </form>
             </div>

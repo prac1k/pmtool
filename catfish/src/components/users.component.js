@@ -9,19 +9,19 @@ export default class Users extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {business: []};
+        this.state = {users: []};
     }
     componentDidMount(){
         axios.get('http://localhost:4000/users')
             .then(response => {
-                this.setState({ business: response.data });
+                this.setState({ users: response.data });
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
     tabRow(){
-        return this.state.business.map(function(object, i){
+        return this.state.users.map(function(object, i){
             return <TableRow obj={object} key={i} />;
         });
     }
@@ -33,9 +33,9 @@ export default class Users extends Component {
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                     <tr>
-                        <th>Person</th>
-                        <th>Business</th>
-                        <th>GST Number</th>
+                        <th>Full Name</th>
+                        <th>Role</th>
+                        <th>Phone Number</th>
                         <th colSpan="2">Action</th>
                     </tr>
                     </thead>

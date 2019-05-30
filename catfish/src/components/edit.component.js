@@ -4,15 +4,15 @@ import axios from 'axios';
 export default class Edit extends Component {
     constructor(props) {
         super(props);
-        this.onChangePersonName = this.onChangePersonName.bind(this);
-        this.onChangeBusinessName = this.onChangeBusinessName.bind(this);
-        this.onChangeGstNumber = this.onChangeGstNumber.bind(this);
+        this.onChangeFullName = this.onChangeFullName.bind(this);
+        this.onChangeRole = this.onChangeRole.bind(this);
+        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            person_name: '',
-            business_name: '',
-            business_gst_number:''
+            full_name: '',
+            role: '',
+            phone_number:''
         }
     }
 
@@ -20,40 +20,40 @@ export default class Edit extends Component {
         axios.get('http://localhost:4000/users/edit/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    person_name: response.data.person_name,
-                    business_name: response.data.business_name,
-                    business_gst_number: response.data.business_gst_number });
+                    full_name: response.data.full_name,
+                    role: response.data.role,
+                    phone_number: response.data.phone_number });
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
-    onChangePersonName(e) {
+    onChangeFullName(e) {
         this.setState({
-            person_name: e.target.value
+            full_name: e.target.value
         });
     }
-    onChangeBusinessName(e) {
+    onChangeRole(e) {
         this.setState({
-            business_name: e.target.value
+            role: e.target.value
         })
     }
-    onChangeGstNumber(e) {
+    onChangePhoneNumber(e) {
         this.setState({
-            business_gst_number: e.target.value
+            phone_number: e.target.value
         })
     }
-
+// UPDATE HERE TO AVOID PAGE REFRESH
     onSubmit(e) {
         e.preventDefault();
         const obj = {
-            person_name: this.state.person_name,
-            business_name: this.state.business_name,
-            business_gst_number: this.state.business_gst_number
+            full_name: this.state.full_name,
+            role: this.state.role,
+            phone_number: this.state.phone_number
         };
         axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
+            .then(res => window.location.href="/users");
 
         this.props.history.push('/users');
     }
@@ -61,36 +61,36 @@ export default class Edit extends Component {
     render() {
         return (
             <div style={{ marginTop: 10 }}>
-                <h3 align="center">Update Business</h3>
+                <h3 align="center">Update User</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Person Name:  </label>
+                        <label>Full Name:  </label>
                         <input
                             type="text"
                             className="form-control"
-                            value={this.state.person_name}
-                            onChange={this.onChangePersonName}
+                            value={this.state.full_name}
+                            onChange={this.onChangeFullName}
                         />
                     </div>
                     <div className="form-group">
-                        <label>Business Name: </label>
+                        <label>Role: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.business_name}
-                               onChange={this.onChangeBusinessName}
+                               value={this.state.role}
+                               onChange={this.onChangeRole}
                         />
                     </div>
                     <div className="form-group">
                         <label>GST Number: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.business_gst_number}
-                               onChange={this.onChangeGstNumber}
+                               value={this.state.phone_number}
+                               onChange={this.onChangePhoneNumber}
                         />
                     </div>
                     <div className="form-group">
                         <input type="submit"
-                               value="Update Business"
+                               value="Update user"
                                className="btn btn-primary"/>
                     </div>
                 </form>
