@@ -4,14 +4,20 @@ const Schema = mongoose.Schema;
 // Define collection and schema for Business
 let Users = new Schema({
     full_name: {
-        type: String
+        type: String,
+        required: true
     },
     role: {
-        type: String
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
     },
     phone_number: {
-    type: String,
-    required: true
+        type: String,
+        required: true
     }
 },
     {

@@ -6,12 +6,14 @@ export default class Edit extends Component {
         super(props);
         this.onChangeFullName = this.onChangeFullName.bind(this);
         this.onChangeRole = this.onChangeRole.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             full_name: '',
             role: '',
+            email: '',
             phone_number:''
         }
     }
@@ -22,6 +24,7 @@ export default class Edit extends Component {
                 this.setState({
                     full_name: response.data.full_name,
                     role: response.data.role,
+                    email: response.data.email,
                     phone_number: response.data.phone_number });
             })
             .catch(function (error) {
@@ -39,6 +42,11 @@ export default class Edit extends Component {
             role: e.target.value
         })
     }
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        })
+    }
     onChangePhoneNumber(e) {
         this.setState({
             phone_number: e.target.value
@@ -50,6 +58,7 @@ export default class Edit extends Component {
         const obj = {
             full_name: this.state.full_name,
             role: this.state.role,
+            email: this.state.email,
             phone_number: this.state.phone_number
         };
         axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
@@ -78,6 +87,14 @@ export default class Edit extends Component {
                                className="form-control"
                                value={this.state.role}
                                onChange={this.onChangeRole}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.email}
+                               onChange={this.onChangeEmail}
                         />
                     </div>
                     <div className="form-group">

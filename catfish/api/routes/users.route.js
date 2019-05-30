@@ -44,6 +44,7 @@ usersRoutes.route('/update/:id').post(function (req, res) {
         else {
             users.full_name = req.body.full_name;
             users.role = req.body.role;
+            users.email = req.body.email;
             users.phone_number = req.body.phone_number;
 
             users.save().then(users => {

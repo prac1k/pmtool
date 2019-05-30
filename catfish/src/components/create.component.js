@@ -8,12 +8,14 @@ export default class Create extends Component {
         super(props);
         this.onChangeFullName = this.onChangeFullName.bind(this);
         this.onChangeRole = this.onChangeRole.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             full_name: '',
             role: '',
+            email:'',
             phone_number:''
         }
     }
@@ -27,6 +29,11 @@ export default class Create extends Component {
             role: e.target.value
         })
     }
+    onChangeEmail(e) {
+        this.setState({
+            email: e.target.value
+        })
+    }
     onChangePhoneNumber(e) {
         this.setState({
             phone_number: e.target.value
@@ -38,6 +45,7 @@ export default class Create extends Component {
         const obj = {
             full_name: this.state.full_name,
             role: this.state.role,
+            email: this.state.role,
             phone_number: this.state.phone_number
         };
 
@@ -48,6 +56,7 @@ export default class Create extends Component {
         this.setState({
             full_name: '',
             role: '',
+            email: '',
             phone_number: ''
         })
 
@@ -73,6 +82,14 @@ export default class Create extends Component {
                                className="form-control"
                                value={this.state.role}
                                onChange={this.onChangeRole}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.email}
+                               onChange={this.onChangeEmail}
                         />
                     </div>
                     <div className="form-group">

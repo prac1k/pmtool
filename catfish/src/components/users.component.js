@@ -35,8 +35,9 @@ export default class Users extends Component {
                     <tr>
                         <th>Full Name</th>
                         <th>Role</th>
+                        <th>Email</th>
                         <th>Phone Number</th>
-                        <th colSpan="2">Action</th>
+                        <th colSpan="3">Action</th>
                     </tr>
                     </thead>
                     <tbody>

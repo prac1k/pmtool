@@ -23,6 +23,9 @@ class TableRow extends Component {
                     {this.props.obj.role}
                 </td>
                 <td>
+                    {this.props.obj.email}
+                </td>
+                <td>
                     {this.props.obj.phone_number}
                 </td>
                 <td>
