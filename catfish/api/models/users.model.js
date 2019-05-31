@@ -8,21 +8,24 @@ let Users = new Schema({
         required: true
     },
     role: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
         required: true
     },
     phone_number: {
-        type: String,
-        required: true
+        type: String
     },
     password: {
         type: String,
         required: true
-        }
+        },
+    date: {
+     type: Date,
+     default: Date.now
+    },
+
 },
     {
     collection: 'users'
