@@ -43,3 +43,10 @@
     font-size: 30px;
     opacity: 1;
 }
+
+.removebutton {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-left: 10px;
+}

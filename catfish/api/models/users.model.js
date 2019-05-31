@@ -18,7 +18,11 @@ let Users = new Schema({
     phone_number: {
         type: String,
         required: true
-    }
+    },
+    password: {
+        type: String,
+        required: true
+        }
 },
     {
     collection: 'users'

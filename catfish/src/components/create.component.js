@@ -10,13 +10,15 @@ export default class Create extends Component {
         this.onChangeRole = this.onChangeRole.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             full_name: '',
             role: '',
             email:'',
-            phone_number:''
+            phone_number:'',
+            password:''
         }
     }
     onChangeFullName(e) {
@@ -39,6 +41,11 @@ export default class Create extends Component {
             phone_number: e.target.value
         })
     }
+    onChangePassword(e) {
+        this.setState({
+            password: e.target.value
+        })
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -46,7 +53,8 @@ export default class Create extends Component {
             full_name: this.state.full_name,
             role: this.state.role,
             email: this.state.role,
-            phone_number: this.state.phone_number
+            phone_number: this.state.phone_number,
+            password: this.state.password
         };
 
         // UPDATE HERE TO AVOID PAGE REFRESH
@@ -57,7 +65,8 @@ export default class Create extends Component {
             full_name: '',
             role: '',
             email: '',
-            phone_number: ''
+            phone_number: '',
+            password: ''
         })
 
     }
@@ -98,6 +107,14 @@ export default class Create extends Component {
                                className="form-control"
                                value={this.state.phone_number}
                                onChange={this.onChangePhoneNumber}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.password}
+                               onChange={this.onChangePassword}
                         />
                     </div>
                     <div className="form-group">

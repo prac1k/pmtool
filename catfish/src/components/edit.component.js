@@ -8,13 +8,15 @@ export default class Edit extends Component {
         this.onChangeRole = this.onChangeRole.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             full_name: '',
             role: '',
             email: '',
-            phone_number:''
+            phone_number:'',
+            password:''
         }
     }
 
@@ -25,7 +27,8 @@ export default class Edit extends Component {
                     full_name: response.data.full_name,
                     role: response.data.role,
                     email: response.data.email,
-                    phone_number: response.data.phone_number });
+                    phone_number: response.data.phone_number,
+                    password: response.data.password});
             })
             .catch(function (error) {
                 console.log(error);
@@ -52,6 +55,11 @@ export default class Edit extends Component {
             phone_number: e.target.value
         })
     }
+    onChangePassword(e) {
+        this.setState({
+            password: e.target.value
+        })
+    }
 // UPDATE HERE TO AVOID PAGE REFRESH
     onSubmit(e) {
         e.preventDefault();
@@ -59,7 +67,8 @@ export default class Edit extends Component {
             full_name: this.state.full_name,
             role: this.state.role,
             email: this.state.email,
-            phone_number: this.state.phone_number
+            phone_number: this.state.phone_number,
+            password: this.state.password
         };
         axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
             .then(res => window.location.href="/users");
@@ -98,11 +107,19 @@ export default class Edit extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>GST Number: </label>
+                        <label>Phone Number: </label>
                         <input type="text"
                                className="form-control"
                                value={this.state.phone_number}
                                onChange={this.onChangePhoneNumber}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.password}
+                               onChange={this.onChangePassword}
                         />
                     </div>
                     <div className="form-group">

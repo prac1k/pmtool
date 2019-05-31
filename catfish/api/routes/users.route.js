@@ -46,6 +46,7 @@ usersRoutes.route('/update/:id').post(function (req, res) {
             users.role = req.body.role;
             users.email = req.body.email;
             users.phone_number = req.body.phone_number;
+            users.password = req.body.password;
 
             users.save().then(users => {
                 res.json('Update complete');
