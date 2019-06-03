@@ -17,7 +17,7 @@ export default class Edit extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/users/edit/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/addusers/edit/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     name: response.data.name,
@@ -52,10 +52,10 @@ export default class Edit extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
-            .then(res => window.location.href="/users");
+        axios.post('http://localhost:4000/addusers/update/'+this.props.match.params.id, obj)
+            .then(res => window.location.href="/addusers");
 
-        this.props.history.push('/users');
+        this.props.history.push('/addusers');
     }
 
     render() {

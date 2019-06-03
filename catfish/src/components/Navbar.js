@@ -17,7 +17,7 @@ class Navbar extends Component {
         const authLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <Link to={'/users'} className="nav-link">Users</Link>
+                    <Link to={'/addusers'} className="nav-link">Users</Link>
                 </li>
                 <li className="nav-item">
                     <Link to={'/boards'} className="nav-link">Boards</Link>
@@ -25,13 +25,14 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <Link to={'/mytasks'} className="nav-link">My Tasks</Link>
                 </li>
-                <a href="/home" className="nav-link" onClick={this.onLogout.bind(this)}>
+                <li className="nav-item">
+                <a href="/" className="nav-link" onClick={this.onLogout.bind(this)}>
+                    <span> {user.name} </span>
                     <img src={user.avatar} alt={user.name} title={user.name}
                          className="rounded-circle"
                          style={{ width: '25px', marginRight: '5px'}} />
-                    Logout
-                </a>
-
+                               </a>
+                </li>
             </ul>
         )
         const guestLinks = (
@@ -46,7 +47,7 @@ class Navbar extends Component {
         )
         return(
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link className="navbar-brand" to="/"> The Catfish Project</Link>
+                <Link className="navbar-brand" to="/dashboard"> The Catfish Project</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     {isAuthenticated ? authLinks : guestLinks}
                 </div>

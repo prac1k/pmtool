@@ -9,12 +9,14 @@ export default class Create extends Component {
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangePasswordConfirm = this.onChangePasswordConfirm.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             name: '',
             email:'',
-            password:''
+            password:'',
+            password_confirm:''
         }
     }
     onChangeName(e) {
@@ -25,30 +27,37 @@ export default class Create extends Component {
     onChangeEmail(e) {
         this.setState({
             email: e.target.value
-        })
+        });
     }
     onChangePassword(e) {
         this.setState({
             password: e.target.value
-        })
+        });
+    }
+    onChangePasswordConfirm(e) {
+        this.setState({
+            password_confirm: e.target.value
+        });
     }
 
     onSubmit(e) {
         e.preventDefault();
         const obj = {
             name: this.state.name,
-            email: this.state.role,
-            phone_number: this.state.phone_number,
+            email: this.state.email,
+            password: this.state.password,
+            password_confirm: this.state.password_confirm
         };
 
         // UPDATE HERE TO AVOID PAGE REFRESH
-        axios.post('http://localhost:4000/users/add', obj)
-            .then(res => window.location.href="/users");
+        axios.post('http://localhost:4000/addusers/add', obj)
+            .then(res => window.location.href="/addusers");
 
         this.setState({
             name: '',
             email: '',
-            password: ''
+            password: '',
+            password_confirm: ''
         })
 
     }
@@ -81,6 +90,14 @@ export default class Create extends Component {
                                className="form-control"
                                value={this.state.password}
                                onChange={this.onChangePassword}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Confirm Password: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.password_confirm}
+                               onChange={this.onChangePasswordConfirm}
                         />
                     </div>
                     <div className="form-group">

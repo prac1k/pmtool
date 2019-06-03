@@ -12,7 +12,7 @@ export default class Users extends Component {
         this.state = {users: []};
     }
     componentDidMount(){
-        axios.get('http://localhost:4000/users')
+        axios.get('/addusers')
             .then(response => {
                 this.setState({ users: response.data });
             })
@@ -36,7 +36,6 @@ export default class Users extends Component {
                         <th>Full Name</th>
                         <th>Role</th>
                         <th>Email</th>
-                        <th>Phone Number</th>
                         <th colSpan="3">Action</th>
                     </tr>
                     </thead>
