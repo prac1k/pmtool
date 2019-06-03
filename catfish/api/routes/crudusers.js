@@ -85,19 +85,33 @@ userRoutes.route('/update/:id').post(function (req, res) {
         if (!user)
             res.status(404).send("data is not found");
         else {
-            user.name = req.body.name;
+
+            user.namename = req.body.name;
             user.email = req.body.email;
             user.password = req.body.password;
 
-            user.save().then(user => {
-                res.json('Update complete');
-            })
-                .catch(err => {
-                    res.status(400).send("unable to update the database");
-                });
+            bcrypt.genSalt(10, (err, salt) => {
+                if(err) console.error('There was an error', err);
+                else {
+                    bcrypt.hash(user.password, salt, (err, hash) => {
+                        if(err) console.error('There was an error', err);
+                        else {
+                            user.password = hash;
+                            user
+                                .save()
+                                .then(user => {
+                                    res.json(user)
+                                });
+                        }
+                    });
+                }
+            });
         }
     });
 });
+
+
+
 
 // Defined delete | remove | destroy route
 userRoutes.route('/delete/:id').get(function (req, res) {
