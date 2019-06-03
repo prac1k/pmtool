@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB');
-const usersRoute = require('./routes/users.route');
+const users = require('./routes/users');
 const passport = require("passport");
 
 mongoose.Promise = global.Promise;
@@ -13,16 +13,22 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
     err => { console.log('Can not connect to the database'+ err)}
 );
 
+
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-require("./config/passport")(passport);
-app.use('/users', usersRoute);
+require("./passport")(passport);
+app.use('/users', users);
 
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
+
+//new manul
+app.get('/', function(req, res) {
+    res.send('hello');
+});
 
 const port = process.env.PORT || 4000; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));

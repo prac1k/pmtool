@@ -1,32 +1,68 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/authentication';
+import { withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
+
+    onLogout(e) {
+        e.preventDefault();
+        this.props.logoutUser(this.props.history);
+    }
+
     render() {
-        return (
-            <div className="navbar-fixed">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <Link to={'/'} className="navbar-brand">Catfish Project</Link>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link to={'/'} className="nav-link">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/users'} className="nav-link">Users</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/boards'} className="nav-link">Boards</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/mytasks'} className="nav-link">My Tasks</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </nav> <br/>
-                <h2>Catfish Project</h2> <br/>
-            </div>
-        );
+        const {isAuthenticated, user} = this.props.auth;
+        const authLinks = (
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <Link to={'/users'} className="nav-link">Users</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to={'/boards'} className="nav-link">Boards</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to={'/mytasks'} className="nav-link">My Tasks</Link>
+                </li>
+                <a href="/home" className="nav-link" onClick={this.onLogout.bind(this)}>
+                    <img src={user.avatar} alt={user.name} title={user.name}
+                         className="rounded-circle"
+                         style={{ width: '25px', marginRight: '5px'}} />
+                    Logout
+                </a>
+
+            </ul>
+        )
+        const guestLinks = (
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/register">Sign Up</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/login">Sign In</Link>
+                </li>
+                            </ul>
+        )
+        return(
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <Link className="navbar-brand" to="/"> The Catfish Project</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    {isAuthenticated ? authLinks : guestLinks}
+                </div>
+            </nav>
+        )
     }
 }
-export default Navbar;
+Navbar.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
+
+
