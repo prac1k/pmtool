@@ -46,10 +46,11 @@ class App extends Component {
             <Router>
                 <div className="container">
                     <Navbar/>
+                    <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/login" component={Login} />
-                                        <Switch>
+
                         <Route exact path='/create' component={ Create } />
                         <Route path='/edit/:id' component={ Edit } />
                         <Route path='/users' component={ Users } />
