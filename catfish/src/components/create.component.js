@@ -42,7 +42,7 @@ export default class Create extends Component {
     }
     onChangeRole(optionSelected){
         this.setState({
-            role:optionSelected.value
+            role: optionSelected.value
         });
     }
     onChangePassword(e) {
