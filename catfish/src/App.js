@@ -16,7 +16,12 @@ import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authentication";
-import PrivateRoute from "./components/PrivateRouteAdmin";
+import PrivateRouteAdmin from "./components/privateroutecomponents/PrivateRouteAdmin";
+import PrivateRoutePM from "./components/privateroutecomponents/PrivateRoutePM";
+import PrivateRouteSales from "./components/privateroutecomponents/PrivateRouteSales";
+import PrivateRouteManagers from "./components/privateroutecomponents/PrivateRouteManagers";
+import PrivateRouteDevelopers from "./components/privateroutecomponents/PrivateRouteDevelopers";
+
 
 
 
@@ -49,21 +54,26 @@ class App extends Component {
                     <Navbar/>
                     <Switch>
                     <Route exact path="/" component={Home}/>
-                    <Route
-                        exact path="/register" component={Register}/>
+                    <Route exact path="/register" component={Register}/>
                     <Route exact path="/login" component={Login} />
-                    />
-                        <PrivateRoute
-                            exact path="/dashboard" component={Dashboard} />
-                        <PrivateRoute
-                            path="/addusers" component={Users}
-                        />
-                        <PrivateRoute
-                            path='/create' component={ Create }
-                        />
-                        <PrivateRoute
-                            path='/edit/:id' component={ Edit }
-                        />
+                        <PrivateRouteAdmin exact path="/dashboard" component={Dashboard} />
+                        <PrivateRouteAdmin path="/addusers" component={Users}/>
+                        <PrivateRouteAdmin path='/create' component={ Create }/>
+                        <PrivateRouteAdmin path='/edit/:id' component={ Edit }/>
+                        <PrivateRoutePM exact path="/dashboard" component={Dashboard} />
+                        <PrivateRoutePM path="/addusers" component={Users}/>
+                        <PrivateRoutePM path='/create' component={ Create }/>
+                        <PrivateRoutePM path='/edit/:id' component={ Edit }/>
+                        <PrivateRouteSales exact path="/dashboard" component={Dashboard} />
+                        <PrivateRouteSales path="/addusers" component={Users}/>
+                        <PrivateRouteSales path='/create' component={ Create }/>
+                        <PrivateRouteSales path='/edit/:id' component={ Edit }/>
+                        <PrivateRouteManagers exact path="/dashboard" component={Dashboard} />
+                        <PrivateRouteManagers path="/addusers" component={Users}/>
+                        <PrivateRouteManagers path='/create' component={ Create }/>
+                        <PrivateRouteManagers path='/edit/:id' component={ Edit }/>
+                        <PrivateRouteDevelopers exact path="/dashboard" component={Dashboard} />
+                        <PrivateRouteDevelopers path="/addusers" component={Users}/>
                     </Switch>
                 </div>
             </Router>

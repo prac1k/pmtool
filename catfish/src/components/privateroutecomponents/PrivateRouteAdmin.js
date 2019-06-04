@@ -21,5 +21,3 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 export default connect(mapStateToProps)(PrivateRouteAdmin);
-
-//localStorage.getItem('Developers') === true ? &&
