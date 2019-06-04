@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Edit extends Component {
     constructor(props) {
         super(props);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeRole = this.onChangeRole.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangePasswordConfirm = this.onChangePasswordConfirm.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -13,6 +15,7 @@ export default class Edit extends Component {
         this.state = {
             name: '',
             email: '',
+            role: '',
             password:'',
             password_confirm:''
         }
@@ -24,6 +27,7 @@ export default class Edit extends Component {
                 this.setState({
                     name: response.data.name,
                     email: response.data.email,
+                    role: response.data.role
                     });
             })
             .catch(function (error) {
@@ -39,6 +43,11 @@ export default class Edit extends Component {
     onChangeEmail(e) {
         this.setState({
             email: e.target.value
+        });
+    }
+    onChangeRole(e){
+        this.setState({
+            role:e.target.value
         });
     }
     onChangePassword(e) {
@@ -57,6 +66,7 @@ export default class Edit extends Component {
         const obj = {
             name: this.state.name,
             email: this.state.email,
+            role: this.state.role,
             password: this.state.password,
             password_confirm: this.state.password_confirm
         };
@@ -86,6 +96,14 @@ export default class Edit extends Component {
                                className="form-control"
                                value={this.state.email}
                                onChange={this.onChangeEmail}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Role: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.role}
+                               onChange={this.onChangeRole}
                         />
                     </div>
                     <div className="form-group">

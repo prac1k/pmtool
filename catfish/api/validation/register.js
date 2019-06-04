@@ -5,6 +5,7 @@ module.exports = function validateRegisterInput(data) {
     let errors = {};
     data.name = !isEmpty(data.name) ? data.name : '';
     data.email = !isEmpty(data.email) ? data.email : '';
+    data.role =!IsEmpty(data.role) ? data.role : '';
     data.password = !isEmpty(data.password) ? data.password : '';
     data.password_confirm = !isEmpty(data.password_confirm) ? data.password_confirm : '';
 
@@ -22,6 +23,9 @@ module.exports = function validateRegisterInput(data) {
 
     if(Validator.isEmpty(data.email)) {
         errors.email = 'Email is required';
+    }
+    if(Validator.isEmpty(data.role)) {
+        errors.role = 'Role is required';
     }
 
     if(!Validator.isLength(data.password, {min: 6, max: 30})) {

@@ -17,7 +17,7 @@ class TableRow extends Component {
         return (
             <tr>
                 <td>
-                    {this.props.obj.full_name}
+                    {this.props.obj.name}
                 </td>
                 <td>
                     {this.props.obj.role}

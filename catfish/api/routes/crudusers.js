@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
 
+
 const express = require('express');
 const userRoutes = express.Router();
 
@@ -35,6 +36,7 @@ userRoutes.route('/add').post(function (req, res) {
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
+                role: req.body.role,
                 password: req.body.password,
                 avatar
             });
@@ -86,9 +88,11 @@ userRoutes.route('/update/:id').post(function (req, res) {
             res.status(404).send("data is not found");
         else {
 
-            user.namename = req.body.name;
-            user.email = req.body.email;
-            user.password = req.body.password;
+            user.namename = req.body.name,
+            user.email = req.body.email,
+            user.role = req.body.role,
+            user.password = req.body.password
+
 
             bcrypt.genSalt(10, (err, salt) => {
                 if(err) console.error('There was an error', err);
