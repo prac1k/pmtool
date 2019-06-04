@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Select from "react-select";
+
+const userRolesUpdate = [
+    { label: "PM", value: 'PM' },
+    { label: "Sales", value: 'Sales' },
+    { label: "Developers", value: 'Developers' },
+    { label: "Managers", value: 'Managers' },
+    { label: "Admin", value: 'Admin' },
+];
 
 export default class Create extends Component {
     constructor(props) {
@@ -31,9 +40,9 @@ export default class Create extends Component {
             email: e.target.value
         });
     }
-    onChangeRole(e) {
+    onChangeRole(optionSelected){
         this.setState({
-            role: e.target.value
+            role:optionSelected.value
         });
     }
     onChangePassword(e) {
@@ -95,10 +104,10 @@ export default class Create extends Component {
                 </div>
                     <div className="form-group">
                         <label>Role: </label>
-                        <input type="text"
-                               className="form-control"
-                               value={this.state.role}
-                               onChange={this.onChangeRole}
+                        <Select value={this.state.value}
+                                options={ userRolesUpdate }
+                                onMenuClose={this.state.role}
+                                onChange={this.onChangeRole}
                         />
                     </div>
                     <div className="form-group">

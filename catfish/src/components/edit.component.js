@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Select from 'react-select';
+
+const userRolesUpdate = [
+    { label: "PM", value: 'PM' },
+    { label: "Sales", value: 'Sales' },
+    { label: "Developers", value: 'Developers' },
+    { label: "Managers", value: 'Managers' },
+    { label: "Admin", value: 'Admin' },
+];
 
 export default class Edit extends Component {
     constructor(props) {
@@ -20,6 +29,8 @@ export default class Edit extends Component {
             password_confirm:''
         }
     }
+
+
 
     componentDidMount() {
         axios.get('http://localhost:4000/addusers/edit/'+this.props.match.params.id)
@@ -45,9 +56,9 @@ export default class Edit extends Component {
             email: e.target.value
         });
     }
-    onChangeRole(e){
+    onChangeRole(optionSelected){
         this.setState({
-            role:e.target.value
+            role:optionSelected.value
         });
     }
     onChangePassword(e) {
@@ -100,9 +111,9 @@ export default class Edit extends Component {
                     </div>
                     <div className="form-group">
                         <label>Role: </label>
-                        <input type="text"
-                               className="form-control"
-                               value={this.state.role}
+                        <Select value={this.state.value}
+                                options={ userRolesUpdate }
+                               onMenuClose={this.state.role}
                                onChange={this.onChangeRole}
                         />
                     </div>
