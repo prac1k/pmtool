@@ -11,6 +11,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            role: '',
             errors: {}
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,20 +29,23 @@ class Login extends Component {
         const user = {
             email: this.state.email,
             password: this.state.password,
+            role: this.state.role
         }
-        this.props.loginUser(user);
+        console.log(this.state.role);
+               this.props.loginUser(user);
+
     }
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/dashboard');
-        }
+                        this.props.history.push('/');
+                    }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/dashboard')
-        }
+                       this.props.history.push('/')
+                    }
         if(nextProps.errors) {
             this.setState({
                 errors: nextProps.errors

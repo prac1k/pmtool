@@ -67,8 +67,10 @@ router.post('/login', (req, res) => {
 
     const email = req.body.email;
     const password = req.body.password;
+    const role = req.body.role;
 
     User.findOne({email})
+
         .then(user => {
             if(!user) {
                 errors.email = 'User not found'
@@ -80,17 +82,21 @@ router.post('/login', (req, res) => {
                         const payload = {
                             id: user.id,
                             name: user.name,
-                            avatar: user.avatar
+                            avatar: user.avatar,
+                            role: user.role
                         }
                         jwt.sign(payload, 'secret', {
                             expiresIn: 3600
-                        }, (err, token) => {
+                        },
+
+                            (err, token) => {
                             if(err) console.error('There is some error in token', err);
                             else {
                                 res.json({
                                     success: true,
-                                    token: `Bearer ${token}`
-                                });
+                                    token: `Bearer ${token}`,
+                                    role: user.role
+                                    });
                             }
                         });
                     }
@@ -102,11 +108,12 @@ router.post('/login', (req, res) => {
         });
 });
 
-router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/me', passport.authenticate('jwt', { session: true }), (req, res) => {
     return res.json({
         id: req.user.id,
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        role: req.user.role
     });
 });
 

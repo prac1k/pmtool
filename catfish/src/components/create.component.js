@@ -116,14 +116,6 @@ export default class Create extends Component {
                 console.log(this.state);
             });
 
-        // this.setState({
-        //     name: {value: '', isValid: 'false', errorText: ''},
-        //     email: '',
-        //     role: '',
-        //     password: '',
-        //     password_confirm: ''
-        // })
-
     }
 
     render() {
