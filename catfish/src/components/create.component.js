@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 
+
 const userRolesUpdate = [
     { label: "PM", value: 'PM' },
     { label: "Sales", value: 'Sales' },
@@ -23,22 +24,29 @@ export default class Create extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            name: '',
-            email:'',
-            role: ',',
-            password:'',
-            password_confirm:''
+            name: {value: '', isValid: true, errorText: ''},
+            email: {value: '', isValid: true, errorText: ''},
+            role: '',
+            password:{value: '', isValid: true, errorText: ''},
+            password_confirm: {value: '', isValid: true, errorText: ''},
+            errors: {}
         }
     }
     onChangeName(e) {
         this.setState({
-            name: e.target.value
+            name: {
+                ...this.state.name,
+                value: e.target.value
+            }
         });
     }
     onChangeEmail(e) {
         this.setState({
-            email: e.target.value
-        });
+            email: {
+                ...this.state.email,
+                value: e.target.value
+            }
+            });
     }
     onChangeRole(optionSelected){
         this.setState({
@@ -47,36 +55,74 @@ export default class Create extends Component {
     }
     onChangePassword(e) {
         this.setState({
-            password: e.target.value
+            password: {
+                ...this.state.password,
+                value: e.target.value
+            }
         });
     }
     onChangePasswordConfirm(e) {
         this.setState({
-            password_confirm: e.target.value
+            password_confirm: {
+                ...this.state.password_confirm,
+                value: e.target.value
+            }
         });
     }
 
     onSubmit(e) {
         e.preventDefault();
+        const {errors, role, ...fields} = this.state;
+
+        const fieldsKeys = Object.keys(fields);
+        fieldsKeys.forEach(field => {
+            console.log(field);
+            this.setState({
+                [field]: {
+                    ...this.state[field],
+                    isValid: true
+                }
+            })
+        })
+
+
         const obj = {
-            name: this.state.name,
-            email: this.state.email,
+            name: this.state.name.value,
+            email: this.state.email.value,
             role: this.state.role,
-            password: this.state.password,
-            password_confirm: this.state.password_confirm
+            password: this.state.password.value,
+            password_confirm: this.state.password_confirm.value
         };
+
+        console.log(obj);
 
         // UPDATE HERE TO AVOID PAGE REFRESH
         axios.post('http://localhost:4000/addusers/add', obj)
-            .then(res => window.location.href="/addusers");
+            .then(res => window.location.href="/addusers")
+            .catch((error) => {
+                Object.keys(error.response.data).forEach(field => {
+                    console.log(field);
+                    this.setState({
+                        [field]: {
+                            ...this.state[field],
+                            errorText: error[field],
+                            isValid: false
+                        }
+                    })
+                })
 
-        this.setState({
-            name: '',
-            email: '',
-            role: '',
-            password: '',
-            password_confirm: ''
-        })
+
+
+                console.log(this.state);
+            });
+
+        // this.setState({
+        //     name: {value: '', isValid: 'false', errorText: ''},
+        //     email: '',
+        //     role: '',
+        //     password: '',
+        //     password_confirm: ''
+        // })
 
     }
 
@@ -90,23 +136,24 @@ export default class Create extends Component {
                         <input
                             type="text"
                             className="form-control"
-                            value={this.state.name}
+                            value={this.state.name.value}
                             onChange={this.onChangeName}
                         />
+                        {this.state.name.isValid?null:<p>Please input your full name</p>}
                     </div>
                     <div className="form-group">
                     <label>Email: </label>
                     <input type="text"
                            className="form-control"
-                           value={this.state.email}
+                           value={this.state.email.value}
                            onChange={this.onChangeEmail}
                     />
+                        {this.state.email.isValid?null:<p>Please input your email</p>}
                 </div>
                     <div className="form-group">
                         <label>Role: </label>
-                        <Select value={this.state.value}
+                        <Select value={this.state.role.value}
                                 options={ userRolesUpdate }
-                                onMenuClose={this.state.role}
                                 onChange={this.onChangeRole}
                         />
                     </div>
@@ -114,17 +161,19 @@ export default class Create extends Component {
                         <label>Password: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.password}
+                               value={this.state.password.value}
                                onChange={this.onChangePassword}
-                        />
+                                                       />
+                        {this.state.password.isValid?null:<p>Please input your password</p>}
                     </div>
                     <div className="form-group">
                         <label>Confirm Password: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.password_confirm}
+                               value={this.state.password_confirm.value}
                                onChange={this.onChangePasswordConfirm}
-                        />
+                                                     />
+                        {this.state.password_confirm.isValid?null:<p>Please confirm your password</p>}
                     </div>
                     <div className="form-group">
                         <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/>

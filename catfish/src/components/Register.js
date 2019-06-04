@@ -37,22 +37,6 @@ class Register extends Component {
         this.props.registerUser(user, this.props.history);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/')
-        }
-        if(nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
-
-    componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
-            this.props.history.push('/');
-        }
-    }
 
     render() {
         const { errors } = this.state;
