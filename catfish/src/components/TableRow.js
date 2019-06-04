@@ -10,6 +10,7 @@ class TableRow extends Component {
     }
     delete() {
         axios.get('http://localhost:4000/addusers/delete/'+this.props.obj._id)
+            //.then(this.props.history="/addusers")
             .then(window.location.href="/addusers")
             .catch(err => console.log(err))
     }

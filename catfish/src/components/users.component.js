@@ -20,14 +20,15 @@ export default class Users extends Component {
                 console.log(error);
             })
     }
-    tabRow(){
+    tabRow(history){
         return this.state.users.map(function(object, i){
-            return <TableRow obj={object} key={i} />;
+            return <TableRow history={history} obj={object} key={i} />;
         });
     }
 
     render() {
-        return (
+        console.log(this.props);
+                return (
             <div>
                 <h3 align="center">Users List</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
@@ -40,7 +41,7 @@ export default class Users extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    { this.tabRow() }
+                    { this.tabRow(this.props.history) }
                     </tbody>
                 </table>
                     <Link className={"adduserbutton"} to={"/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="user-plus" /></Link>
