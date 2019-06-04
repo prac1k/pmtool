@@ -4,6 +4,7 @@ Added:
 - models
 - auth login/register
 - conncted material
+- added roles and routes for them
 
 
 Extra:
