@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import  Card from 'react-bootstrap/Card';
 
-export default class EditBoard extends Component {
+
+
+class SingleBord extends Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +24,7 @@ export default class EditBoard extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/boards/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/boards/board/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     board_title: response.data.board_title,
@@ -77,9 +80,11 @@ export default class EditBoard extends Component {
     render() {
         return (
             <div>
-                <h3 align="center">Update Board</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+
+                <Card onSubmit={this.onSubmit}>
+                    <h3 align="center">{this.state.board_title}</h3>
+                    <cardBody>
+                        <div className="form-group">
                         <label>Project Name: </label>
                         <input  type="text"
                                 className="form-control"
@@ -104,27 +109,11 @@ export default class EditBoard extends Component {
                             onChange={this.onChangeBoardResponsible}
                         />
                     </div>
-                    <div className="form-check">
-                        <input  className="form-check-input"
-                                id="completedCheckbox"
-                                type="checkbox"
-                                name="completedCheckbox"
-                                onChange={this.onChangeBoardCompleted}
-                                checked={this.state.board_completed}
-                                value={this.state.board_completed}
-                        />
-                        <label className="form-check-label" htmlFor="completedCheckbox">
-                            Completed
-                        </label>
-                    </div>
 
-                    <br />
-
-                    <div className="form-group">
-                        <input type="submit" value="Update Todo" className="btn btn-primary" />
-                    </div>
-                </form>
+                    </cardBody>
+                </Card>
             </div>
         )
     }
 }
+export default SingleBord;

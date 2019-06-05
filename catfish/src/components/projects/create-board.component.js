@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default class CreateTodo extends Component {
     constructor (props) {
@@ -37,13 +38,23 @@ export default class CreateTodo extends Component {
         });
     }
 
-    onSubmit (e) {
+    onSubmit(e) {
         e.preventDefault();
 
         console.log(`Form submitted:`);
-        console.log(`Board Title: ${ this.state.board_title }`);
-        console.log(`Board Description: ${ this.state.board_description }`);
-        console.log(`Board Responsible: ${ this.state.board_responsible }`);
+        console.log(`board_title: ${this.state.board_title}`);
+        console.log(`Tboard_description: ${this.state.board_description}`);
+        console.log(`board_responsible: ${this.board_responsible}`);
+
+        const newBoard = {
+            board_title: this.state.board_title,
+            board_description: this.state.board_description,
+            board_responsible: this.state.board_responsible,
+            board_completed: this.state.board_completed
+        };
+
+        axios.post('http://localhost:4000/boards/add', newBoard)
+            .then(res => window.location.href="/boards")
 
         this.setState({
             board_title: '',
@@ -52,6 +63,7 @@ export default class CreateTodo extends Component {
             board_completed: false
         })
     }
+
 
     render () {
         return (
@@ -85,9 +97,8 @@ export default class CreateTodo extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className={ "adduserbuttonform" }><FontAwesomeIcon
-                            className={ "adduserbuttonformicon" } icon="plus"/>
-                            <Link to={ "/boards/" }></Link>
+                        <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/>
+                            <Link to={"/boards"}></Link>
                         </button>
                     </div>
                 </form>

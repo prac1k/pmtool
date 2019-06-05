@@ -7,7 +7,6 @@ const Board = require('../models/project.model');
 // Defined store route
 boardRoutes.route('/add').post(function (req, res) {
     let board = new Board(req.body);
-    console.log(req.body);
     board.save()
         .then(board => {
             res.status(200).json({'board': 'business in added successfully'});
@@ -36,6 +35,14 @@ boardRoutes.route('/edit/:id').get(function (req, res) {
         res.json(board);
     });
 });
+
+boardRoutes.route('/board/:id').get(function (req, res) {
+    let id = req.params.id;
+    Board.findById(id, function (err, board){
+        res.json(board);
+    });
+});
+
 
 //  Defined update route
 boardRoutes.route('/update/:id').post(function (req, res) {

@@ -24,6 +24,7 @@ import PrivateRouteDevelopers from "./components/privateroutecomponents/PrivateR
 import Createboard from "./components/projects/create-board.component";
 import EditBoard from "./components/projects/edit-board.component";
 import BoardsList from "./components/projects/boards-list.component";
+import SingleBoard from "./components/projects/singleboard";
 
 
 
@@ -59,6 +60,7 @@ class App extends Component {
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/login" component={Login} />
                     <Route path="/boards/" exact component={BoardsList} />
+                    <Route path="/boards/board/:id" component={SingleBoard} />
                     <Route path="/boards/edit/:id" component={EditBoard} />
                     <Route path="/boards/create" component={Createboard} />
                         <PrivateRouteAdmin exact path="/dashboard" component={Dashboard} />
