@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import Create from './components/create.component';
-import Edit from './components/edit.component';
-import Users from './components/users.component';
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Create from './components/usermanagement/create.component';
+import Edit from './components/usermanagement/edit.component';
+import Users from './components/usermanagement/users.component';
+import Register from "./components/loginregister/Register";
+import Login from "./components/loginregister/Login";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
@@ -21,7 +21,9 @@ import PrivateRoutePM from "./components/privateroutecomponents/PrivateRoutePM";
 import PrivateRouteSales from "./components/privateroutecomponents/PrivateRouteSales";
 import PrivateRouteManagers from "./components/privateroutecomponents/PrivateRouteManagers";
 import PrivateRouteDevelopers from "./components/privateroutecomponents/PrivateRouteDevelopers";
-
+import Createboard from "./components/projects/create-board.component";
+import EditBoard from "./components/projects/edit-board.component";
+import BoardsList from "./components/projects/boards-list.component";
 
 
 
@@ -56,6 +58,9 @@ class App extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/login" component={Login} />
+                    <Route path="/boards/" exact component={BoardsList} />
+                    <Route path="/boards/edit/:id" component={EditBoard} />
+                    <Route path="/boards/create" component={Createboard} />
                         <PrivateRouteAdmin exact path="/dashboard" component={Dashboard} />
                         <PrivateRouteAdmin path="/addusers" component={Users}/>
                         <PrivateRouteAdmin path='/create' component={ Create }/>

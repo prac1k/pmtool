@@ -20,7 +20,7 @@ class Navbar extends Component {
                     <Link to={'/addusers'} className="nav-link">Users</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={'/boards'} className="nav-link">Boards</Link>
+                    <Link to={'/boards'} className="nav-link">Projects</Link>
                 </li>
                 <li className="nav-item">
                     <Link to={'/mytasks'} className="nav-link">My Tasks</Link>

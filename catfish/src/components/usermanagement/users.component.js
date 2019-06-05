@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './TableRow';
 import { Link } from "react-router-dom";
-import '../styles/userbuttons.css';
+import '../../styles/userbuttons.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Users extends Component {
