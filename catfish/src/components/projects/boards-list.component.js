@@ -6,9 +6,11 @@ import CardBody from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck';
 import CardColumns from 'react-bootstrap/CardColumns';
 import '../../styles/listboards.css';
-import Dropdown from'react-bootstrap/Dropdown';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DeleteBoardComponent from './delete-board.component';
 
 // construct view board
+
 const Board = props => (
 
                    <CardBody className="cardbody">
@@ -17,7 +19,7 @@ const Board = props => (
                            <Dropdown.Toggle icon="plus"/>
                            <Dropdown.Menu>
                                <Dropdown.Item href={"boards/edit/"+props.board._id}>Edit</Dropdown.Item>
-                               <Dropdown.Item href={"http://localhost:4000/boards/"+props.board._id} method="post">Delete</Dropdown.Item>
+                               <DeleteBoardComponent {...props}/>
                            </Dropdown.Menu>
                        </Dropdown>
             <div  className="flip-card">

@@ -92,3 +92,10 @@
     opacity: 0;
 }
 
+.btn-removeboard{
+    background: transparent;
+    color: #ec786f;
+    border: 0;
+    text-transform: uppercase;
+    padding-left: 15%;
+}
