@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faPlus, faCog } from '@fortawesome/free-solid-svg-icons';
 import Create from './components/usermanagement/create.component';
 import Edit from './components/usermanagement/edit.component';
 import Users from './components/usermanagement/users.component';
@@ -47,7 +47,7 @@ if (localStorage.jwtToken) {
     }
 }
 
-library.add(faUserPlus, faPlus)
+library.add(faUserPlus, faPlus, faCog)
 class App extends Component {
     render() {
         return (

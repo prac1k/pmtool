@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/catfish/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catfish/src/styles/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/styles/userbuttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/styles/userbuttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catfish/src/styles/listboards.css" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/styles/listboards.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,74 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catfish/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="41" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/components/Dashboard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="58" lean-forward="true" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/components/Home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="3" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/components/Footer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/styles/footer.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/components/Navbar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/edit-board.component.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+            <state relative-caret-position="180">
+              <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -102,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="198">
+              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="26" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -111,20 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/catfish/src/styles/listboards.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+            <state relative-caret-position="363">
+              <caret line="91" column="14" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catfish/src/styles/userbuttons.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -152,7 +82,6 @@
       <find>CompanySiteField</find>
       <find>.</find>
       <find>split</find>
-      <find>add</find>
       <find>role</find>
       <find>local</find>
       <find>ad</find>
@@ -167,6 +96,10 @@
       <find>ed</find>
       <find>_</find>
       <find>this.tabRow</find>
+      <find>add</find>
+      <find>form</find>
+      <find>card-subtitle-back</find>
+      <find>drop</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/server</dir>
@@ -224,21 +157,21 @@
         <option value="$PROJECT_DIR$/catfish/src/components/projects/edit-board.component.js" />
         <option value="$PROJECT_DIR$/catfish/src/components/projects/singleboard.js" />
         <option value="$PROJECT_DIR$/catfish/src/styles/test" />
-        <option value="$PROJECT_DIR$/catfish/src/styles/listboards.css" />
-        <option value="$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js" />
         <option value="$PROJECT_DIR$/catfish/src/components/Home.js" />
-        <option value="$PROJECT_DIR$/catfish/src/App.js" />
         <option value="$PROJECT_DIR$/catfish/src/components/Footer.js" />
         <option value="$PROJECT_DIR$/catfish/src/styles/footer.css" />
         <option value="$PROJECT_DIR$/catfish/src/styles/userbuttons.css" />
+        <option value="$PROJECT_DIR$/catfish/src/App.js" />
+        <option value="$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js" />
+        <option value="$PROJECT_DIR$/catfish/src/styles/listboards.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="80" />
+    <option name="x" value="1158" />
     <option name="y" value="30" />
-    <option name="width" value="1051" />
-    <option name="height" value="950" />
+    <option name="width" value="762" />
+    <option name="height" value="1046" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -395,12 +328,12 @@
       <workItem from="1559060822278" duration="3670000" />
       <workItem from="1559282787799" duration="3553000" />
       <workItem from="1559718615250" duration="25998000" />
-      <workItem from="1559800576583" duration="11192000" />
+      <workItem from="1559800576583" duration="21104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144929000" />
+    <option name="totallyTimeSpent" value="154841000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,10 +345,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="80" y="30" width="1051" height="950" extended-state="0" />
+    <frame x="1158" y="30" width="762" height="1046" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4968051" visible="true" weight="0.3725681" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968051" visible="true" weight="0.21244925" />
       <window_info id="Structure" order="1" sideWeight="0.504" side_tool="true" weight="0.44328922" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -430,7 +363,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899022" />
       <window_info anchor="bottom" id="RemoteSynchronizer" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002636" side_tool="true" weight="0.32899022" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49973643" visible="true" weight="0.5261876" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49973643" visible="true" weight="0.4711014" />
       <window_info anchor="bottom" id="TypeScript" order="12" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -441,13 +374,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/catfish/node_modules/@material-ui/core/Fab/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catfish/node_modules/@material-ui/core/Fab/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -731,43 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/edit-board.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/styles/listboards.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="41" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/components/Navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catfish/src/components/Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -778,19 +667,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/components/Home.js">
+    <entry file="file://$PROJECT_DIR$/catfish/src/styles/footer.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="3" selection-end-column="16" />
+        <state relative-caret-position="225">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js">
+    <entry file="file://$PROJECT_DIR$/catfish/src/components/Navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="-390">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="32" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/edit-board.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/node_modules/react-bootstrap/Dropdown.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -805,17 +714,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/src/styles/footer.css">
+    <entry file="file://$PROJECT_DIR$/catfish/src/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/catfish/src/styles/userbuttons.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/src/styles/listboards.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="91" column="14" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
         </state>
       </provider>
     </entry>

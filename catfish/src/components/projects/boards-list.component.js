@@ -4,29 +4,49 @@ import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardBody from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck';
-import CardColumns from 'react-bootstrap/CardColumns'
-import '../../styles/listboards.css'
+import CardColumns from 'react-bootstrap/CardColumns';
+import '../../styles/listboards.css';
+import Dropdown from'react-bootstrap/Dropdown';
 
 // construct view board
 const Board = props => (
-    <CardBody className="cardbody">
-        <ul>
+
+                   <CardBody className="cardbody">
+                       <Dropdown className="dropdown">
+                           < FontAwesomeIcon className={"boardupdediticon"} icon="cog" />
+                           <Dropdown.Toggle icon="plus"/>
+                           <Dropdown.Menu>
+                               <Dropdown.Item href={"boards/edit/"+props.board._id}>Edit</Dropdown.Item>
+                               <Dropdown.Item href={"http://localhost:4000/boards/"+props.board._id} method="post">Delete</Dropdown.Item>
+                           </Dropdown.Menu>
+                       </Dropdown>
+            <div  className="flip-card">
+            <ul>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
         <ul className="card-header" >
         <ul className="card-subtitle">Title:</ul>
             <ul className="card-title">{props.board.board_title}</ul>
         </ul>
+         <ul className="card-subtitle-back">Responsible:</ul>
+          <ul></ul>
+          <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible} </ul>
         <ul></ul>
-        <ul className="card-subtitle" > Description: </ul>
-        <ul className="card-title">{props.board.board_description}</ul>
+            </div>
+                <div className="flip-card-back">
+                    <ul className="card-subtitle-back" > Description: </ul>
+        <ul className="card-title-back">{props.board.board_description}</ul>
         <ul></ul>
-        <ul className="card-subtitle">Responsible:</ul>
+                <ul></ul>
         <ul></ul>
-        <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible} </ul>
-        <ul></ul>
-        <ul></ul>
-    <Link to={"boards/edit/"+props.board._id} style={{padding: '10px'}}>Edit</Link>
-            </ul>
+                    </div>
+                            </div>
+                </ul>
+            </div>
         </CardBody>
+        
+
+
 )
 
 export default class BoardsList extends Component {
@@ -59,7 +79,7 @@ export default class BoardsList extends Component {
                 <h3>Projects List</h3>
                 <CardDeck>
                     <div className="row">
-                        <div className="col-11">
+                        <div className="col-10">
                     <CardColumns>
                     { this.boardList() }
                     </CardColumns>

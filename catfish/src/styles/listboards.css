@@ -3,7 +3,9 @@
     margin: 10px
 }
 .card-header{
-    text-align: center
+    text-align: center;
+    top: 40px;
+
 }
 .card-subtitle{
     margin : 10px
@@ -11,8 +13,82 @@
 .card-title{
     margin : 10px
 }
+.card-subtitle-back{
+    margin-top:; : 10px;
+}
+.card-title-back{
+    margin : 10px
+}
+
+
 .card-subtitle-responsible{
     margin : 10px;
     margin-bottom: 2;
 
 }
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+    background-color: dodgerblue;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.dropdown{
+    position: absolute;
+    top: 5%;
+    left: 85%;
+    z-index: 99;
+    }
+
+.boardupdediticon {
+    color: #282c34;
+    position: absolute;
+    top: 6px;
+    left:4px;
+    font-size: 30px;
+    z-index: 0;
+}
+
+.dropdown-toggle.btn.btn-primary{
+    z-index: 1;
+    opacity: 0;
+}
+
