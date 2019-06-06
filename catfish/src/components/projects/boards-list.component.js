@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import CardBody from 'react-bootstrap/Card'
+import CardDeck from 'react-bootstrap/CardDeck';
+import CardColumns from 'react-bootstrap/CardColumns'
+import '../../styles/listboards.css'
 
 // construct view board
 const Board = props => (
-    <tr>
-        <td>{props.board.board_title}</td>
-        <td>{props.board.board_description}</td>
-        <td>{props.board.board_responsible}</td>
-
-        <td>
-            <Link to={"boards/edit/"+props.board._id}>Edit</Link>
-
-        </td>
-    </tr>
+    <CardBody className="cardbody">
+        <ul>
+        <ul className="card-header" >
+        <ul className={"card-subtitle"}>Title:</ul>
+            <ul className="card-title">{props.board.board_title}</ul>
+        </ul>
+        <ul></ul>
+        <ul className="card-subtitle" > Description: </ul>
+        <ul className="card-title">{props.board.board_description}</ul>
+        <ul></ul>
+        <ul className="card-subtitle">Responsible:</ul>
+        <ul></ul>
+        <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible} </ul>
+        <ul></ul>
+        <ul></ul>
+    <Link to={"boards/edit/"+props.board._id} style={{margin : '10px'}}>Edit</Link>
+            </ul>
+        </CardBody>
 )
 
 export default class BoardsList extends Component {
@@ -44,23 +55,20 @@ export default class BoardsList extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <h3>Projects List</h3>
-                <table className="table table-striped" style={{ marginTop: 20 }} >
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Responsible</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <CardDeck>
+                    <div className="row">
+                        <div className="col-sm-11">
+                    <CardColumns>
                     { this.boardList() }
-                    </tbody>
-                </table>
-                <Link className={"adduserbutton"} to={"/boards/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="plus" /></Link>
+                    </CardColumns>
+                        </div>
+                    </div>
+                </CardDeck>
+                    <Link className={"adduserbutton"} to={"/boards/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="plus" /></Link>
             </div>
+
         )
     }
 }

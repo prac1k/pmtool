@@ -1,0 +1,18 @@
+.card-body{
+    width: 24rem;
+    margin: 10px
+}
+.card-header{
+    text-align: center
+}
+.card-subtitle{
+    margin : 10px
+}
+.card-title{
+    margin : 10px
+}
+.card-subtitle-responsible{
+    margin : 10px;
+    margin-bottom: 2;
+
+}
