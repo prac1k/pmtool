@@ -12,7 +12,7 @@ const Board = props => (
     <CardBody className="cardbody">
         <ul>
         <ul className="card-header" >
-        <ul className={"card-subtitle"}>Title:</ul>
+        <ul className="card-subtitle">Title:</ul>
             <ul className="card-title">{props.board.board_title}</ul>
         </ul>
         <ul></ul>
@@ -24,7 +24,7 @@ const Board = props => (
         <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible} </ul>
         <ul></ul>
         <ul></ul>
-    <Link to={"boards/edit/"+props.board._id} style={{margin : '10px'}}>Edit</Link>
+    <Link to={"boards/edit/"+props.board._id} style={{padding: '10px'}}>Edit</Link>
             </ul>
         </CardBody>
 )
@@ -59,7 +59,7 @@ export default class BoardsList extends Component {
                 <h3>Projects List</h3>
                 <CardDeck>
                     <div className="row">
-                        <div className="col-sm-11">
+                        <div className="col-11">
                     <CardColumns>
                     { this.boardList() }
                     </CardColumns>

@@ -25,7 +25,7 @@ import Createboard from "./components/projects/create-board.component";
 import EditBoard from "./components/projects/edit-board.component";
 import BoardsList from "./components/projects/boards-list.component";
 import SingleBoard from "./components/projects/singleboard";
-
+import Footer from "./components/Footer"
 
 
 // Check for token to keep user logged in
@@ -82,6 +82,7 @@ class App extends Component {
                         <PrivateRouteDevelopers exact path="/dashboard" component={Dashboard} />
                         <PrivateRouteDevelopers path="/addusers" component={Users}/>
                     </Switch>
+                    <Footer></Footer>
                 </div>
             </Router>
             </Provider>

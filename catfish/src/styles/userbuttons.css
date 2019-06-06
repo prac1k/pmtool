@@ -1,5 +1,7 @@
 .adduserbutton{
-    position: relative;
+    position: fixed;
+    bottom: 10%;
+    z-index: 1;
     width: 5em;
     height: 5em;
     border-radius: 50%;
