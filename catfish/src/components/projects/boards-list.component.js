@@ -32,7 +32,7 @@ const Board = props => (
         </ul>
          <ul className="card-subtitle-back">Responsible:</ul>
           <ul></ul>
-          <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible} </ul>
+          <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible.join(" ")}</ul>
         <ul></ul>
             </div>
                 <div className="flip-card-back">

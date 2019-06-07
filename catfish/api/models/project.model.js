@@ -9,7 +9,7 @@ const BoardSchema = new Schema({
         type: String
     },
     board_responsible: {
-        type: String
+        type: Array
     },
     board_completed: {
         type: Boolean

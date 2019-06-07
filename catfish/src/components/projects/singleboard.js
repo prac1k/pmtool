@@ -50,6 +50,7 @@ class SingleBord extends Component {
         });
     }
 
+
     onChangeBoardResponsible(e) {
         this.setState({
             board_responsible: e.target.value

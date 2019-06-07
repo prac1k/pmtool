@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Select from "react-select";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const assignUserBoard = [
+    { label: "PM", value: 'PM' },
+    { label: "Sales", value: 'Sales' },
+    { label: "Developers", value: 'Developers' },
+    { label: "Managers", value: 'Managers' },
+    { label: "Admin", value: 'Admin' },
+];
 
 export default class EditBoard extends Component {
 
@@ -47,11 +57,19 @@ export default class EditBoard extends Component {
         });
     }
 
-    onChangeBoardResponsible(e) {
+    //array of chosen items selector
+
+
+    onChangeBoardResponsible(selectedOptions) {
+        console.dir( selectedOptions);
+        const assignUb = selectedOptions.map(o => o.value)
         this.setState({
-            board_responsible: e.target.value
-        });
+                board_responsible: assignUb
+            }
+        );
+
     }
+
 
     onChangeBoardCompleted(e) {
         this.setState({
@@ -97,12 +115,14 @@ export default class EditBoard extends Component {
                     </div>
                     <div className="form-group">
                         <label>Responsible: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.board_responsible}
-                            onChange={this.onChangeBoardResponsible}
+                        <Select value={this.state.value}
+                                options={ assignUserBoard }
+                                onMenuClose={this.state.board_responsible}
+                                onChange={this.onChangeBoardResponsible}
+                                isMulti
                         />
+
+
                     </div>
                     <div className="form-check">
                         <input  className="form-check-input"
