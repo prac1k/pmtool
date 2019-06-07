@@ -30,9 +30,9 @@ const Board = props => (
         <ul className="card-subtitle">Title:</ul>
             <ul className="card-title">{props.board.board_title}</ul>
         </ul>
-         <ul className="card-subtitle-back">Responsible:</ul>
+         <ul className="card-subtitle-back text-muted">Responsible:</ul>
           <ul></ul>
-          <ul className="card-subtitle-responsible text-muted">{props.board.board_responsible.join(" ")}</ul>
+          <ul className="card-subtitle-responsible">{props.board.board_responsible.join(" ")}</ul>
         <ul></ul>
             </div>
                 <div className="flip-card-back">

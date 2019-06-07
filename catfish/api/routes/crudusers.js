@@ -81,6 +81,23 @@ userRoutes.route('/edit/:id').get(function (req, res) {
     });
 });
 
+//route to get usernames
+userRoutes.route('/names').get(function (req, res) {
+    let names = req.params.name
+    User.find(names)
+        .select("name")
+        .exec()
+        .then(users=>{
+            res.status(200).json({name:users});
+        })
+        .catch(err =>{
+            res.status(500).json(err.message);
+        })
+});
+
+
+
+
 //  Defined update route
 userRoutes.route('/update/:id').post(function (req, res) {
     User.findById(req.params.id, function(err, user) {
@@ -88,7 +105,7 @@ userRoutes.route('/update/:id').post(function (req, res) {
             res.status(404).send("data is not found");
         else {
 
-            user.namename = req.body.name,
+            user.name = req.body.name,
             user.email = req.body.email,
             user.role = req.body.role,
             user.password = req.body.password

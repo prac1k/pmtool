@@ -3,14 +3,6 @@ import axios from 'axios';
 import Select from "react-select";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const assignUserBoard = [
-    { label: "PM", value: 'PM' },
-    { label: "Sales", value: 'Sales' },
-    { label: "Developers", value: 'Developers' },
-    { label: "Managers", value: 'Managers' },
-    { label: "Admin", value: 'Admin' },
-];
-
 export default class EditBoard extends Component {
 
     constructor(props) {
@@ -23,6 +15,7 @@ export default class EditBoard extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            names: [],
             board_title: '',
             board_description: '',
             board_responsible: '',
@@ -30,15 +23,19 @@ export default class EditBoard extends Component {
         }
     }
 
+
     componentDidMount() {
-        axios.get('http://localhost:4000/boards/'+this.props.match.params.id)
+        axios.get('http://localhost:4000/boards/edit/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     board_title: response.data.board_title,
                     board_description: response.data.board_description,
                     board_responsible: response.data.board_responsible,
                     board_completed: response.data.board_completed
-                })
+                });
+                //second request to axios to get names
+                axios.get('http://localhost:4000/addusers/names')
+                    .then(res => this.setState({ names: res.data.name }))
             })
             .catch(function (error) {
                 console.log(error);
@@ -61,7 +58,6 @@ export default class EditBoard extends Component {
 
 
     onChangeBoardResponsible(selectedOptions) {
-        console.dir( selectedOptions);
         const assignUb = selectedOptions.map(o => o.value)
         this.setState({
                 board_responsible: assignUb
@@ -87,12 +83,23 @@ export default class EditBoard extends Component {
         };
         console.log(obj);
         axios.post('http://localhost:4000/boards/update/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
+            .then(res => window.location.href="/boards");
 
         this.props.history.push('/boards');
-    }
+    };
 
-    render() {
+
+
+    render()
+    {
+    //Render of array to Options
+
+        const listAssignedNames = this.state.names.map(name => {
+        return {
+            value: name.name,
+            label: name.name,
+        }
+    });
         return (
             <div>
                 <h3 align="center">Update Board</h3>
@@ -113,10 +120,12 @@ export default class EditBoard extends Component {
                                 onChange={this.onChangeBoardDescription}
                         />
                     </div>
+                    {console.log(this.state.names)}
                     <div className="form-group">
                         <label>Responsible: </label>
-                        <Select value={this.state.value}
-                                options={ assignUserBoard }
+                        <Select
+                                value={this.state.value}
+                                options={ listAssignedNames }
                                 onMenuClose={this.state.board_responsible}
                                 onChange={this.onChangeBoardResponsible}
                                 isMulti
