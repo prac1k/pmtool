@@ -3,12 +3,17 @@
     margin: 10px
 }
 .card-header{
-    text-align: center;
+    text-align: left;
     top: 40px;
 
 }
-.card-subtitle{
-    margin : 10px
+.card-subtitle {
+    margin : 10px;
+    padding-right: 1%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 .card-title{
     margin : 10px
@@ -19,7 +24,6 @@
 .card-title-back{
     margin : 10px
 }
-
 
 .card-subtitle-responsible{
     margin : 10px;

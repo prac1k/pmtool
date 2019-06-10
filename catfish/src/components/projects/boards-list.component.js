@@ -27,8 +27,7 @@ const Board = props => (
             <div className="flip-card-inner">
                 <div className="flip-card-front">
         <ul className="card-header" >
-        <ul className="card-subtitle">Title:</ul>
-            <ul className="card-title">{props.board.board_title}</ul>
+            <ul className="card-subtitle">{props.board.board_title}</ul>
         </ul>
          <ul className="card-subtitle-back text-muted">Responsible:</ul>
           <ul></ul>
@@ -38,13 +37,10 @@ const Board = props => (
                 <div className="flip-card-back">
                     <ul className="card-subtitle-back" > Description: </ul>
         <ul className="card-title-back">{props.board.board_description}</ul>
-        <ul></ul>
-                <ul></ul>
-        <ul></ul>
-                    </div>
-                            </div>
-                </ul>
-            </div>
+         </div>
+         </div>
+         </ul>
+         </div>
         </CardBody>
         
 
