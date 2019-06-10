@@ -22,8 +22,16 @@
     margin-top:; : 10px;
 }
 .card-title-back{
-    margin : 10px
+    margin : 20px;
+    text-align: left;
+    line-height: 1.4em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    height: 8.8em;
+    overflow-x: hidden;
+    /* fix problem when last visible word doesn't adjoin right side  */
+
 }
+
 
 .card-subtitle-responsible{
     margin : 10px;
