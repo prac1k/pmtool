@@ -24,10 +24,10 @@ columnRoutes.route('/:column_board').get(function (req, res) {
     let columns = req.params.column_board;
 
     Column.find({column_board:columns})
-        .select("column_title")
+        .select("column_title, column_order")
         .exec()
         .then(columns=>{
-            res.status(200).json({column_title:columns});
+            res.status(200).json({column_board:columns});
         })
         .catch(err =>{
             res.status(500).json(err.message);

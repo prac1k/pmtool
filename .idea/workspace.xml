@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/catfish/api/models/column.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catfish/api/routes/columncrud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catfish/src/components/projects/ProjectBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/api/models/project.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/api/models/board.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/api/routes/crudprojects.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/api/routes/crudboards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/api/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/components/projects/boards-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/boards/boards-list.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/components/projects/create-board.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/boards/create-board.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/components/projects/delete-board.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/boards/delete-board.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/components/projects/edit-board.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/components/boards/edit-board.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/src/styles/listboards.css" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/src/styles/listboards.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catfish/api/routes/columncrud.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/api/routes/columncrud.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -205,9 +193,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="458" />
-    <option name="y" value="227" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="884" />
+    <option name="y" value="145" />
     <option name="width" value="1076" />
     <option name="height" value="915" />
   </component>
@@ -367,12 +355,12 @@
       <workItem from="1559718615250" duration="25998000" />
       <workItem from="1559800576583" duration="27718000" />
       <workItem from="1559889403117" duration="26459000" />
-      <workItem from="1560146462593" duration="21159000" />
+      <workItem from="1560146462593" duration="22551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209073000" />
+    <option name="totallyTimeSpent" value="210465000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -384,10 +372,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
+    <frame x="884" y="145" width="1076" height="915" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4968051" visible="true" weight="0.1444386" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968051" visible="true" weight="0.26020893" />
       <window_info id="Structure" order="1" sideWeight="0.504" side_tool="true" weight="0.44328922" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -402,7 +390,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899022" />
       <window_info anchor="bottom" id="RemoteSynchronizer" order="9" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002636" side_tool="true" weight="0.32899022" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49973643" visible="true" weight="0.38327906" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49973643" visible="true" weight="0.4491094" />
       <window_info anchor="bottom" id="TypeScript" order="12" weight="0.32899022" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
