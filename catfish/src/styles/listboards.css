@@ -23,6 +23,7 @@
 }
 .card-title-back{
     margin : 20px;
+    margin-top: 30px;
     text-align: left;
     line-height: 1.4em;
     /* max-height = line-height (1.2) * lines max number (3) */
@@ -113,4 +114,14 @@
     border: 0;
     text-transform: uppercase;
     padding-left: 15%;
+}
+.btn.btn-light-go{
+    position: absolute;
+    right: -3%;
+    z-index: 1;
+    bottom: -8%;
+    background: aquamarine;
+    width: 88px;
+    height: 41px;
+    border-radius: 32%;
 }

@@ -5,8 +5,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./DB');
 const users = require('./routes/users');
-const boards = require("./routes/crudprojects");
+const boards = require("./routes/crudboards");
 const addusers = require("./routes/crudusers");
+const columns = require("./routes/columncrud");
 const passport = require("passport");
 
 mongoose.Promise = global.Promise;
@@ -24,6 +25,7 @@ require("./passport")(passport);
 app.use('/users', users);
 app.use('/addusers', addusers);
 app.use('/boards', boards);
+app.use('/boards/project', columns);
 // Passport middleware
 app.use(passport.initialize());
 // Passport config

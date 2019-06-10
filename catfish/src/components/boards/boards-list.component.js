@@ -14,7 +14,8 @@ import DeleteBoardComponent from './delete-board.component';
 const Board = props => (
 
                    <CardBody className="cardbody">
-                       <Dropdown className="dropdown">
+
+                                              <Dropdown className="dropdown">
                            < FontAwesomeIcon className={"boardupdediticon"} icon="cog" />
                            <Dropdown.Toggle icon="plus"/>
                            <Dropdown.Menu>
@@ -22,7 +23,7 @@ const Board = props => (
                                <DeleteBoardComponent {...props}/>
                            </Dropdown.Menu>
                        </Dropdown>
-            <div  className="flip-card">
+                                   <div  className="flip-card">
             <ul>
             <div className="flip-card-inner">
                 <div className="flip-card-front">
@@ -32,6 +33,7 @@ const Board = props => (
          <ul className="card-subtitle-back text-muted">Responsible:</ul>
           <ul></ul>
           <ul className="card-subtitle-responsible">{props.board.board_responsible.join(" ")}</ul>
+
         <ul></ul>
             </div>
                 <div className="flip-card-back">
@@ -41,6 +43,7 @@ const Board = props => (
          </div>
          </ul>
          </div>
+                       <Link to={"boards/project/"+props.board._id} className="btn btn-light-go">GO!</Link>
         </CardBody>
         
 
