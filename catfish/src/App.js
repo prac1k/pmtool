@@ -25,7 +25,7 @@ import Createboard from "./components/boards/create-board.component";
 import EditBoard from "./components/boards/edit-board.component";
 import BoardsList from "./components/boards/boards-list.component";
 import Footer from "./components/Footer";
-import columnList from "./components/projects/ProjectBoard";
+import ProjectBoard from "./components/projects/ProjectBoard";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -58,7 +58,7 @@ class App extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/login" component={Login} />
-                        <Route exact path="/boards/project/:id" component={columnList} />
+                        <Route exact path="/boards/project/:id" component={ProjectBoard} />
                         <Route exact path="/boards/" component={BoardsList} />
                         <Route exact path="/boards/edit/:id" component={EditBoard} />
                         <Route exact path="/boards/create" component={Createboard} />

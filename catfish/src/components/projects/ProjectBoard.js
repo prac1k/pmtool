@@ -1,47 +1,49 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CardDeck from 'react-bootstrap/CardDeck';
 import '../../styles/listboards.css';
 
 
 
-export default class ProjectList extends Component {
+export default class ProjectBoard extends Component {
 
     //getting list of columns
 
     constructor(props) {
         super(props);
-        this.state = {columns: []};
+        this.state = {
+            column_title: '',
+            column_order: ''
+
+        }
+
     }
 
     componentDidMount() {
         axios.get('http://localhost:4000/boards/project/'+this.props.match.params.id)
             .then(response => {
-                this.setState({ columns: response.data });
+                this.setState({
+                        column_title: response.data.column_title
+                    });
+                            })
+
+
+                        .catch(function (error){
+
+
             })
-            .catch(function (error){
-                console.log(error);
-            })
+        console.log(this.props.column_title);
     }
 
-    render() {
+
+    render()
+    {
+
+
+
         return (
-            <div >
-                <h3>Projects List</h3>
-                <CardDeck>
-                    <div className="row">
-                        <div className="col-10">
 
+            <li></li>
 
-
-                        </div>
-                    </div>
-                </CardDeck>
-                <Link className={"adduserbutton"} to={"/boards/create/" }>< FontAwesomeIcon className={"adduserbuttonicon"} icon="plus" /></Link>
-            </div>
-
-        )
+                )
     }
 }
