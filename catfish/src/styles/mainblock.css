@@ -1,4 +1,7 @@
-.footerstyle{
+
+/*Footer*/
+
+   .footerstyle{
     background-color: #F8F8F8;
     border-top: 1px solid #E7E7E7;
     text-align: center;
@@ -8,6 +11,7 @@
     bottom: 0;
     height: 60px;
     width: 100%;
+    z-index: 1;
 }
 
 .footerphantom{

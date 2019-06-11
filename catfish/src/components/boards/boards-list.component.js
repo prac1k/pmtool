@@ -80,7 +80,7 @@ export default class BoardsList extends Component {
                 <h3>Projects List</h3>
                 <CardDeck>
                     <div className="row">
-                        <div className="col-10">
+                        <div className="col-lg-12">
                     <CardColumns>
                     { this.boardList() }
                     </CardColumns>

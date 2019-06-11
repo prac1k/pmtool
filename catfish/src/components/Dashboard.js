@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authentication";
@@ -12,7 +13,7 @@ class Dashboard extends Component {
         return (
             <div style={{ height: "75vh" }} className="container valign-wrapper">
                 <div className="row">
-                    <div className="col s12 center-align">
+                    <div className="d-flex align-items-center">
                         <h4>
                             <b>Hey there,</b> {user.name.split(" ")[0]}
                             <p className="flow-text grey-text text-darken-1">

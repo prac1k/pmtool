@@ -19,12 +19,13 @@ columnRoutes.route('/:column_board/column/add').post(function (req, res) {
         });
 });
 
-// Defined get data(index or listing) route provide list of data depending on ID
+//  route provide list of data depending on ID
 columnRoutes.route('/:column_board').get(function (req, res) {
     let columns = req.params.column_board;
 
     Column.find({column_board:columns})
-        .select("column_title, column_order")
+        .select("column_title")
+        .select("column_position")
         .exec()
         .then(columns=>{
             res.status(200).json({column_board:columns});

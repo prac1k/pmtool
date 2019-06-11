@@ -9,7 +9,7 @@ import '../../styles/listboards.css';
 
 export default class ProjectList extends Component {
 
-    //getting list of boards
+    //getting list of columns
 
     constructor(props) {
         super(props);
