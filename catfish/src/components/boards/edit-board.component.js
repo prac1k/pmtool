@@ -27,6 +27,7 @@ export default class EditBoard extends Component {
     componentDidMount() {
         axios.get('http://localhost:4000/boards/edit/'+this.props.match.params.id)
             .then(response => {
+                console.log(response);
                 this.setState({
                     board_title: response.data.board_title,
                     board_description: response.data.board_description,

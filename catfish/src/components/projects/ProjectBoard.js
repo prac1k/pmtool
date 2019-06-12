@@ -3,7 +3,6 @@ import axios from 'axios';
 import '../../styles/listboards.css';
 
 
-
 export default class ProjectBoard extends Component {
 
     //getting list of columns
@@ -11,8 +10,9 @@ export default class ProjectBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            column_board: [],
             column_title: '',
-            column_order: ''
+
 
         }
 
@@ -21,29 +21,37 @@ export default class ProjectBoard extends Component {
     componentDidMount() {
         axios.get('http://localhost:4000/boards/project/'+this.props.match.params.id)
             .then(response => {
+                console.log(response);
                 this.setState({
-                        column_title: response.data.column_title
+                    column_board: response.data.column_board,
+                    column_title: response.data.column_title,
                     });
-                            })
-
+                console.log(response.data.column_board);
+            })
 
                         .catch(function (error){
-
-
+                            console.log(error);
             })
-        console.log(this.props.column_title);
+        console.log(this.state.column_board);
+
     }
 
+    //structure and sorting the columns
 
     render()
     {
-
-
+       const {column_board} = this.state;
 
         return (
+        <div>
 
-            <li></li>
+            {column_board.sort((a, b) => a.column_position - b.column_position).map(column => {
+                return (
 
+                    <div key={column._id}>{column.column_title}</div>
+                )
+                })}
+       </div>
                 )
     }
 }
