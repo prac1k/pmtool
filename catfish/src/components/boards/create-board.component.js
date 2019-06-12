@@ -49,7 +49,6 @@ export default class CreateBoard extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
         console.log(`Form submitted:`);
         console.log(`board_title: ${this.state.board_title}`);
         console.log(`Tboard_description: ${this.state.board_description}`);

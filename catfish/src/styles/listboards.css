@@ -146,7 +146,11 @@
 
     }
 .columnmain .columns>div{
-    border: 10px;
-    width: 300px;
+    margin-top: 40px;
+    margin-left: 10px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid green;
 
 }
+

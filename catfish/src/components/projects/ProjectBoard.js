@@ -13,7 +13,6 @@ export default class ProjectBoard extends Component {
             column_board: [],
             column_title: '',
 
-
         }
 
     }
@@ -46,14 +45,13 @@ export default class ProjectBoard extends Component {
             <div className="columnmain">
             <div className="columns">
             {column_board.sort((a, b) => a.column_position - b.column_position).map((column, idx) => {
-                return (
-
-                    <div className={`test-${idx}`} key={column._id}>{column.column_title}</div>
-                )
-                })}
+             return (
+             <div className={`test-${idx}`} draggable="true" key={column._id}>{column.column_title}</div>
+             )
+             })}
             </div>
             </div>
-                )
+            )
 
     }
 }
