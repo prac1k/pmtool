@@ -1,94 +1,50 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import Modal from "../Modal";
+import "../../styles/modal.css"
 
+const CreateColumn = ({open, boardId, onClose, getColumns}) => {
+    const [column_title, set_column_title] = useState('')
+    const [column_position, set_column_position] = useState('')
 
-export default class CreateColumn extends Component {
-    constructor(props) {
-        super(props);
-        this.onChangeColumn_title = this.onChangeColumn_title.bind(this);
-        this.onChangeColumn_board = this.onChangeColumn_board.bind(this);
-        this.onChangeColumn_position = this.onChangeColumn_position.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
-        this.state = {
-            column_title: '',
-            column_board:  '',
-            column_position: '',
-            errors: {}
-        }
-    }
-    onChangeColumn_title(e) {
-        this.setState({
-            column_title: e.target.value
-        });
-    }
-    onChangeColumn_board(e) {
-        this.setState({
-            column_board: e.target.value
-        });
-    }
-    onChangeColumn_position(e) {
-        this.setState({
-            column_position: e.target.value
-         });
-    }
-
-    onSubmit(e) {
+    const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(`Form submitted:`);
-        console.log(`column_title: ${this.state.column_title}`);
-        console.log(`column_board: ${this.state.column_board}`);
-        console.log(`column_position: ${this.column_position}`);
-
         const obj = {
-            column_title: this.state.column_title,
-            column_board: this.state.column_board,
-            column_position: this.state.column_position
+            column_title,
+            column_position
         };
 
-        axios.post('http://localhost:4000/boards/project/:column_board/column/add', obj)
-            .then(res => window.location.href="/")
-
-        this.setState({
-            column_title: '',
-            column_board: '' ,
-            column_position: '' ,
-        })
+        console.log(obj);
+        axios.post('http://localhost:4000/boards/project/'+boardId+'/column/add', obj)
+            .then(res => console.log(res))
+            .catch(err =>  console.log(err));
+        set_column_title('');
+        set_column_position('');
     }
 
-
-    render() {
-        return (
+    return (
+        <Modal open={open}>
             <div style={{ marginTop: 10 }}>
                 <h3>New Column</h3>
-                <form onSubmit={this.onSubmit}>
+                <button onClick={() => onClose()} className="closeIcon">X</button>
+                <form onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
                         <label>Title:  </label>
                         <input
                             type="text"
                             className="form-control"
-                            value={this.state.column_title.value}
-                            onChange={this.onChangeColumn_title}
+                            value={column_title}
+                            onChange={e => set_column_title(e.target.value)}
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Board: </label>
-                        <input type="text"
-                               className="form-control"
-                               value={this.state.column_board.value}
-                               onChange={this.onChangeColumn_board}
-                        />
-
                     </div>
                     <div className="form-group">
                         <label>Position: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.column_position.value}
-                               onChange={this.onChangeColumn_position}
+                               value={column_position}
+                               onChange={e => set_column_position(e.target.value)}
                         />
                     </div>
                     <div className="form-group">
@@ -98,6 +54,8 @@ export default class CreateColumn extends Component {
                     </div>
                 </form>
             </div>
-        )
-    }
+        </Modal>
+    )
 }
+
+export default CreateColumn;

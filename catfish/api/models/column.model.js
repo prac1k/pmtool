@@ -6,7 +6,8 @@ const ColumnSchema = new Schema({
         type: String
     },
     column_board: {
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: 'boards'
     },
     column_position: {
         type: Number
