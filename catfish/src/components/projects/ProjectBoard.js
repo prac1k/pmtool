@@ -43,15 +43,17 @@ export default class ProjectBoard extends Component {
        const {column_board} = this.state;
 
         return (
-        <div>
-
-            {column_board.sort((a, b) => a.column_position - b.column_position).map(column => {
+            <div className="columnmain">
+            <div className="columns">
+            {column_board.sort((a, b) => a.column_position - b.column_position).map((column, idx) => {
                 return (
 
-                    <div key={column._id}>{column.column_title}</div>
+                    <div className={`test-${idx}`} key={column._id}>{column.column_title}</div>
                 )
                 })}
-       </div>
+            </div>
+            </div>
                 )
+
     }
 }

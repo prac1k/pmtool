@@ -132,4 +132,21 @@
     border-radius: 32%;
 }
 
+.columnmain {
+    width: 100%;
+    overflow-x: auto;
+    height: 58.9em;
 
+
+}
+
+.columns {
+    display: inline-flex;
+
+
+    }
+.columnmain .columns>div{
+    border: 10px;
+    width: 300px;
+
+}
