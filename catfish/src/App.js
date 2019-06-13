@@ -28,7 +28,6 @@ import Footer from "./components/Footer";
 import ProjectBoard from "./components/projects/ProjectBoard";
 import CreateColumn from "./components/projects/createcolumn.component";
 
-
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
     // Set auth token header auth

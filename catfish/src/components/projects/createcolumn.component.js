@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../Modal";
 import "../../styles/modal.css"
 
+
 const CreateColumn = ({open, boardId, onClose, getColumns}) => {
     const [column_title, set_column_title] = useState('')
     const [column_position, set_column_position] = useState('')

@@ -24,8 +24,7 @@ columnRoutes.route('/:column_board').get(function (req, res) {
     let columns = req.params.column_board;
 
     Column.find({column_board:columns})
-        .select("column_title")
-        .select("column_position")
+        .select("column_title column_position")
         .exec()
         .then(columns=>{
             res.status(200).json({column_board:columns});
@@ -72,11 +71,23 @@ columnRoutes.route('/update/:id').post(function (req, res) {
 });
 
 // Defined delete | remove | destroy route
-columnRoutes.route('/delete/:id').get(function (req, res) {
-    Column.findByIdAndRemove({_id: req.params.id}, function(err, column){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
+columnRoutes.route('/:column_board/column/delete/:id').get(function (req, res) {
+    Column.deleteOne({_id: req.params.id})
+        .exec()
+        .then(doc => {
+            res.status(200).json(doc);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                errors: err.message,
+            });
+        });
+    // Column.findByIdAndRemove({_id: req.params.id}, function(err, column){
+    //     console.log(_id);
+    //     if(err) res.json(err);
+    //     else res.json('Successfully removed');
+    // });
 });
 
 module.exports = columnRoutes;

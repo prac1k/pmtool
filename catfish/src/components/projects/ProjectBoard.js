@@ -4,7 +4,6 @@ import axios from 'axios';
 import '../../styles/listboards.css';
 import CreateColumn from "./createcolumn.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 class ProjectBoard extends Component {
 
     //getting list of columns
@@ -61,7 +60,7 @@ class ProjectBoard extends Component {
                     { column_board.sort((a , b) => a.column_position - b.column_position).map((column , idx) => {
                         return (
                             <div className={ `test-${ idx }` } draggable="true"
-                                 key={ column._id }>{ column.column_title }</div>
+                                 key={ column._id }>{ column.column_title }  </div>
                         )
                     })
                     }
