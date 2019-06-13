@@ -10,7 +10,6 @@ const CreateColumn = ({open, boardId, onClose, getColumns}) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const obj = {
             column_title,
             column_position
@@ -29,7 +28,7 @@ const CreateColumn = ({open, boardId, onClose, getColumns}) => {
             <div style={{ marginTop: 10 }}>
                 <h3>New Column</h3>
                 <button onClick={() => onClose()} className="closeIcon">X</button>
-                <form onSubmit={e => onSubmit(e)}>
+                <form onSubmit={e =>{onSubmit(e); onClose()}}>
                     <div className="form-group">
                         <label>Title:  </label>
                         <input
@@ -49,7 +48,6 @@ const CreateColumn = ({open, boardId, onClose, getColumns}) => {
                     </div>
                     <div className="form-group">
                         <button type="submit" className={"adduserbuttonform"}><FontAwesomeIcon className={"adduserbuttonformicon"} icon="plus"/>
-
                         </button>
                     </div>
                 </form>

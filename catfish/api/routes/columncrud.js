@@ -23,15 +23,12 @@ columnRoutes.route('/:column_board/column/add').post(function (req, res) {
 columnRoutes.route('/:column_board').get(function (req, res) {
     let columns = req.params.column_board;
 
-    console.log(columns);
-
     Column.find({column_board:columns})
         .select("column_title")
         .select("column_position")
         .exec()
         .then(columns=>{
             res.status(200).json({column_board:columns});
-            console.log(columns);
         })
         .catch(err =>{
             res.status(500).json(err.message);

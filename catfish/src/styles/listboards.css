@@ -135,9 +135,7 @@
 .columnmain {
     width: 100%;
     overflow-x: auto;
-    height: 58.9em;
-
-
+    height: 87.3vh;
 }
 
 .columns {
@@ -152,5 +150,31 @@
     padding: 10px;
     border: 1px solid green;
 
+}
+
+.addcolumnbutton{
+    position: relative;
+    top: 2.5em;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: #4caf51;
+    float: right;
+    left: 4%;
+    display: inline-block;
+    text-align: center;
+    line-height: 5.4em;
+}
+.addcolumnbuttonicon {
+    position: relative;
+    bottom: 0.61em;
+    font-size: 25px;
+    color: white;
+    opacity: 0.4;
+    transition: opacity 1.3s;
+}
+.addcolumnbutton:hover .addcolumnbuttonicon {
+    font-size: 25px;
+    opacity: 1;
 }
 
