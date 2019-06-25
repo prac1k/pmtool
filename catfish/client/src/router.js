@@ -13,14 +13,14 @@ const login = {
     path: '/login',
     name: 'login',
     component: Login,
-    meta: { title: 'Login - enamel' }
+    meta: { title: 'Login - The Catfish Project' }
 }
 
 const workspace = {
     path: '/w',
     name: 'workspace',
     component: Workspace,
-    meta: { title: 'Workspace - enamel', requiresAuth: true },
+    meta: { title: 'Workspace - The Catfish Project', requiresAuth: true },
     children: [
         {
             path: 'folder/:id',

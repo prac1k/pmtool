@@ -5,7 +5,7 @@
 
         <el-main>
             <div class="container-center">
-                <div>Welcome to enamel! Finish setting up your account</div>
+                <div>Welcome to The Catfish Project! Finish setting up your account</div>
 
                 <div v-if="error" class="error">
                     {{ error }}

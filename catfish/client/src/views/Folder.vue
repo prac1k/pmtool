@@ -44,7 +44,7 @@
                     this.folder = getFolder
                     this.folderName = this.folder.name
                     if (this.isTeam) {
-                        document.title = `${this.folder.name} - enamel`
+                        document.title = `${this.folder.name} - The Catfish Project`
                     }
                 },
             }

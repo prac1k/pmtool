@@ -49,6 +49,16 @@ const apolloProvider = new VueApollo({
     }
 })
 
+const cache = new InMemoryCache({
+    cacheRedirects: {
+        Query: {
+            getFolder: (_, args, { getCacheKey }) => {
+                return getCacheKey({ __typename: 'Folder', id: args.id })
+            },
+        },
+    }
+})
+
 Vue.use(VueApollo)
 
 new Vue({
