@@ -7,6 +7,7 @@ import { HttpLink } from 'apollo-link-http'
 import { enableExperimentalFragmentVariables } from 'graphql-tag'
 import VueApollo from 'vue-apollo'
 import ElementUI from 'element-ui'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -33,9 +34,20 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`)
 })
 
+const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = localStorage.getItem('user-token')
+  operation.setContext({
+    headers: {
+      authorization: token ? `Bearer ${token}` : null
+    }
+  })
+  return forward(operation)
+})
+
 const client = new ApolloClient({
   link: ApolloLink.from([
     errorLink,
+    authMiddleware,
     httpLink
   ]),
   cache,

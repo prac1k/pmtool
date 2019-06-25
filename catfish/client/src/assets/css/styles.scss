@@ -1,7 +1,7 @@
 body {
-  color: #eff2f4;
+  color: black;
   margin: 0;
-  background-color: #4A4090;
+  background-color: #eff2f4;
   -webkit-font-smoothing: antialiased;
   font-family: "Open sans","lucida grande","Segoe UI",arial,verdana,tahoma,"Hiragino Kaku Gothic ProN",
   "Osaka","Meiryo UI","Yu Gothic UI",sans-serif;
@@ -218,7 +218,7 @@ ul.tree {
 }
 
 .tree-plate.active:before {
-  background-color: #48f;
+  background-color: #a5a5a5;
 }
 
 .no-select-color::-moz-selection {
@@ -353,7 +353,7 @@ ul.tree {
 .tooltip .tooltip-content {
   box-sizing: border-box;
   text-align: center;
-  background-color: #fff;
+  background-color: black;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16), 0 0 1px 0 rgba(0, 0, 0, 0.16);
 
   /* Position the tooltip */
@@ -430,7 +430,7 @@ ul.tree {
 }
 
 .picker-item .email {
-  color: #a5a5a5;
+  color: black;
   font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
