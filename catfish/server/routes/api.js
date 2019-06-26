@@ -11,6 +11,7 @@ router.put(
     boardService.updateListsOrder.bind(boardService)
 )
 router.put("/boards/:boardId", boardService.update.bind(boardService))
+router.post("/boards", boardService.create.bind(boardService))
 
 
 

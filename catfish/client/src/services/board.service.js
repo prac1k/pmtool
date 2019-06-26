@@ -22,7 +22,13 @@ export default {
         listIds: listIds
       })
       .then(res => res.data)
-  }
+  },
 
+  create (boardTitle) {
+    return axios.post("/server/boards", {
+            title: boardTitle
+    }).then(res => res.data)
+  }
 }
+
 

@@ -1,21 +1,27 @@
 <template>
+  <div>
   <div class="boards">
     <router-link v-for="board in boards" class="board" :key="board._id" :to="{ name: 'BoardPage', params: {boardId: board._id }}">
       {{ board.title }}
-      </router-link>
-<!--    <div class="boards-list">-->
-<!--    <addable-->
-<!--    class="add-new-board"-->
-<!--    @addable-submit="addableSubmit">-->
-<!--    <div class="addboard">Add Board</div>-->
-<!--    </addable>-->
-<!--    </div>-->
+            </router-link>
+      </div>
+  <addable
+           class="add-new-board"
+           @addable-submit="addableSubmit">
+    <div class="addboard">Add Board</div>
+  </addable>
   </div>
-</template>
+</template>>
 
 <script>
   import boardService from "../services/board.service"
+  import Addable from "./Addable";
   export default {
+
+    components:{
+      Addable,
+    },
+
     name: "Boards",
     data () {
       return {
@@ -23,10 +29,22 @@
       }
     },
     mounted () {
-      boardService.getAll()
-        .then(((boards) => {
-          this.$set(this, "boards", boards)
-        }).bind(this))
+      this.getAllBoards()
+    },
+    methods: {
+      addableSubmit (boardTitle) {
+        console.log(boardTitle);
+        if (!boardTitle || boardTitle.length === 0) {
+          return;
+        }
+        boardService.create(boardTitle)
+          .then((res) => {
+            this.getAllBoards()
+          })
+      },
+      getAllBoards(){
+        boardService.getAll().then(((boards) => this.boards =boards))
+      }
     }
   }
 </script>

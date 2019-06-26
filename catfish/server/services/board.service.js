@@ -41,6 +41,26 @@ module.exports = {
         })
     },
 
+    create (req, res) {
+        //     Board.create({title: req.body.title}, (err, board) => {
+        //         board.save(() => {
+        //             this._handleResponse(err, board, res)
+        //             console.log(board);
+        //         })
+        //     })
+        // },
+        Board.create({title: req.body.title}, function (err, board)
+        {
+            if (err) return this._handleResponse(err, board, res);
+            res.status(200).json({message:'ok'})
+
+
+
+
+        });
+    },
+
+
     _handleResponse (err, data, res) {
         if (err) {
             res.status(400).end()
@@ -48,4 +68,5 @@ module.exports = {
             res.send(data)
         }
     },
+
 }
