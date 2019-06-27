@@ -1,5 +1,5 @@
 <template>
-  <div
+   <div
     class="board-list"
     :class="{'is-dragging-list': isDraggingList, 'drag-entered': dragEntered}"
     draggable="true"
@@ -9,7 +9,7 @@
     @dragover.prevent
     @dragover="onListDragOver"
     @dragleave="onListDragLeave"
-  >
+    >
     <div class="list-inner">
       <div
         v-if="list"
@@ -17,6 +17,13 @@
         <h3>
           {{ list.title }}
         </h3>
+        <div>
+          <addable
+            class="add-new-card"
+            @addable-submit="addableSubmit">
+            <div class="addcard">+ Add Card</div>
+          </addable>
+        </div>
       </div>
       <div class="list-cards">
         <card
@@ -26,16 +33,20 @@
           :key="card._id"
           :index="i"
         />
-      </div>
+       </div>
+     </div>
     </div>
-  </div>
 </template>
 
 <script>
   import Card from "./Card"
+  import cardService from "../services/card.service"
+  import Addable from "./Addable";
+  import boardService from "../services/board.service"
   export default {
     components: {
-      Card
+      Card,
+      Addable,
     },
     props: [
       "listProp",
@@ -54,11 +65,19 @@
       this.$set(this, "cards", this.listProp.cards)
     },
     methods: {
+      addableSubmit (cardTitle) {
+        if (!cardTitle || cardTitle.length === 0) {
+          return;
+        }
+        cardService.create(this.list._id, cardTitle).then((newCard) => {
+          this.cards.push(newCard);
+        })
+      },
+
       onListDragStart (fromIndex, event) {
         if (!fromIndex) {
           fromIndex = 0
         }
-
         this.$set(this, "isDraggingList", true)
         this.$eventBus.$emit("list-drag-started", fromIndex)
       },

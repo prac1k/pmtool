@@ -4,6 +4,9 @@ export default {
   getAll() {
     return axios.get("/server/boards").then(res => res.data)
   },
+  getById() {
+    return axios.get("/server/boards").then(res => res.data)
+  },
   findById(boardId) {
     return axios.get("/server/boards/" + boardId).then(res => res.data)
   },

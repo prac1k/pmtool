@@ -6,5 +6,9 @@ export default {
       boardId: boardId,
       title: listTitle
     }).then(res => res.data)
-  }
+  },
+  getById() {
+    return axios.get("/server/lists").then(res => res.data)
+  },
+
 }
