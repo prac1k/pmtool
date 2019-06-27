@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2
+    <h3
       v-show="isAdding"
       ref="addableField"
       :class="{'is-editing': isAdding}"
@@ -8,8 +8,8 @@
       @keydown.enter="submit"
       @blur="onBlur"
       @keydown.esc="escape"
-    >{{ inputText }}</h2>
-    <h2>{{ inputText }}</h2>
+    >{{ inputText }}</h3>
+    <h4>{{ inputText }}</h4>
     <template v-if="isAdding === false">
       <div @click="onTitleClick()">
         <slot/>
