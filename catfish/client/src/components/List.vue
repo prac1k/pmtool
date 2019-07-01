@@ -10,7 +10,9 @@
     @dragover="onListDragOver"
     @dragleave="onListDragLeave"
     >
-    <div class="list-inner">
+    <div class="list-inner"
+
+    >
       <div
         v-if="list"
         class="list-title">
@@ -26,13 +28,14 @@
         </div>
       </div>
       <div class="list-cards">
+        <draggable v-model='cards' @start="drag=true" @end="drag=false">
         <card
           v-for="(card, i) in cards"
           :card-prop="card"
-
           :key="card._id"
           :index="i"
         />
+        </draggable>
        </div>
      </div>
     </div>
@@ -42,93 +45,78 @@
   import Card from "./Card"
   import cardService from "../services/card.service"
   import Addable from "./Addable";
+  import Draggable from 'vuedraggable'
 
   export default {
     components: {
-      Card,
-      Addable,
-    },
+      Card ,
+      Addable ,
+      Draggable ,
+    } ,
     props: [
-      "listProp",
+      "cardProp" ,
+      "listProp" ,
       "index"
-    ],
+    ] ,
     data () {
       return {
-        list: null,
-        cards: [],
-        isDraggingList: false,
-        dragEntered: false,
-        fromCardIndex: null,
+        list: null ,
+        cards: [] ,
+        isDraggingList: false ,
+        dragEntered: false ,
+        fromCardIndex: null ,
       }
-    },
-    created () {
-      this.$eventBus.$on("card-drag-started", this.onCardDragStarted);
-      this.$eventBus.$on("card-dragend", this.onCardDragEnd);
-      this.$eventBus.$on("card-dropped", this.onCardDropped);
-
     } ,
+
+    created () {
+       this.$eventBus.$on("card-dragend", this.onCardDragEnd);
+  },
+
     mounted () {
       this.$set(this, "list", this.listProp)
-      this.$set(this, "cards", this.listProp.cards)
+       this.$set(this, "cards", JSON.parse(JSON.stringify(this.listProp.cards)))
     },
+
     methods: {
       addableSubmit (cardTitle) {
         if (!cardTitle || cardTitle.length === 0) {
           return;
         }
-        cardService.create(this.list._id, cardTitle).then((newCard) => {
+        cardService.create(this.list._id , cardTitle).then((newCard) => {
+          console.log("listID card create:" , this.list._id);
           this.cards.push(newCard);
         })
-      },
+      } ,
 
-      onListDragStart (fromIndex, event) {
+      onListDragStart (fromIndex , event) {
         if (!fromIndex) {
           fromIndex = 0
         }
-        this.$set(this, "isDraggingList", true)
-        this.$eventBus.$emit("list-drag-started", fromIndex)
-      },
+        this.$set(this , "isDraggingList" , true)
+        this.$eventBus.$emit("list-drag-started" , fromIndex)
+      } ,
       onListDragEnd () {
-        this.$set(this, "isDraggingList", false)
+        this.$set(this , "isDraggingList" , false)
         this.$eventBus.$emit("list-dragend")
-      },
+      } ,
       onListDragOver (event) {
-        this.$set(this, "dragEntered", true)
-      },
-      onListDragLeave (index, list) {
-        this.$set(this, "dragEntered", false)
-      },
+        this.$set(this , "dragEntered" , true)
+      } ,
+      onListDragLeave (index , list) {
+        this.$set(this , "dragEntered" , false)
+      } ,
       onListDrop (toIndex) {
-        this.$set(this, "dragEntered", false)
-        this.$eventBus.$emit("list-dropped", toIndex)
-      },
-
-
-      onCardDragStarted(fromCardIndex) {
-        this.$set(this, "fromCardIndex", fromCardIndex)
-      },
-      onCardDragEnd(event) {
-        this.$set(this, "fromCardIndex", null);
-      },
-      onCardDropped(toCardIndex) {
-        if (this.fromCardIndex === toCardIndex) {
-          return;
-        }
-        this.switchCardPositions(this.fromCardIndex, toCardIndex);
+        this.$set(this , "dragEntered" , false)
+        this.$eventBus.$emit("list-dropped" , toIndex)
+      } ,
+      onCardDragEnd (toCardIndex) {
         this.updateCardsOrder();
-      },
-      updateCardsOrder() {
+      } ,
+      updateCardsOrder () {
         let cardIds = this.cards.map(card => card._id);
-        cardService.updateCardsOrder(this.list._id, cardIds);
-      },
-      switchCardPositions(fromCardIndex, toCardIndex) {
-        if (this.fromCardIndex === null) {
-          return;
-        }
+        cardService.updateCardsOrder(this.list._id , cardIds);
 
-        this.cards.splice(toCardIndex, 0, this.cards.splice(fromCardIndex, 1)[0]);
-      },
-
+      } ,
     },
   }
 </script>

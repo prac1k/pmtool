@@ -16,15 +16,17 @@
           @addable-submit="addableSubmit">
           <div class="addlist">Add list</div>
         </addable>
-          <list
-            v-for="(list, i) in lists"
-            :key="list._id"
-            :index="i"
-            :list-prop="list"/>
+        <draggable @start="drag=true" @end="drag=false">
+        <list
+          v-for="(list, i) in lists"
+          :key="list._id"
+          :index="i"
+          :list-prop="list"/>
+        </draggable>
       </div>
     </template>
-        </div>
-    </template>
+  </div>
+</template>
 
 <script>
   import boardService from "../services/board.service";
@@ -32,11 +34,13 @@
   import List from "./List";
   import listService from "../services/list.service";
   import Addable from "./Addable";
+  import Draggable from 'vuedraggable'
   export default {
     components: {
       List ,
       Editable ,
       Addable ,
+      Draggable,
     },
 
 
@@ -47,12 +51,12 @@
         fromListIndex: null,
       };
     },
-    created () {
-      this.$eventBus.$on("list-drag-started", this.onListDragStarted);
-      this.$eventBus.$on("list-dragend", this.onListDragEnd);
-      this.$eventBus.$on("list-dropped", this.onListDropped);
-
-    } ,
+    // created () {
+    //   this.$eventBus.$on("list-drag-started", this.onListDragStarted);
+    //   this.$eventBus.$on("list-dragend", this.onListDragEnd);
+    //   this.$eventBus.$on("list-dropped", this.onListDropped);
+    //
+    // } ,
     mounted () {
       boardService.findById(this.$route.params.boardId).then(
         (board => {
@@ -78,30 +82,30 @@
           this.board.lists.push(newList)
         })
       },
-      onListDragStarted(fromListIndex) {
-        this.$set(this, "fromListIndex", fromListIndex)
-      },
-      onListDragEnd(event) {
-        this.$set(this, "fromListIndex", null);
-      },
-      onListDropped(toListIndex) {
-        if (this.fromListIndex === toListIndex) {
-          return;
-        }
-        this.switchListPositions(this.fromListIndex, toListIndex);
-        this.updateListsOrder();
-      },
-      updateListsOrder() {
-        let listIds = this.lists.map(list => list._id);
-        boardService.updateListsOrder(this.board._id, listIds);
-      },
-      switchListPositions(fromListIndex, toListIndex) {
-        if (this.fromListIndex === null) {
-          return;
-        }
-
-        this.lists.splice(toListIndex, 0, this.lists.splice(fromListIndex, 1)[0]);
-      },
+      // onListDragStarted(fromListIndex) {
+      //   this.$set(this, "fromListIndex", fromListIndex)
+      // },
+      // onListDragEnd(event) {
+      //   this.$set(this, "fromListIndex", null);
+      // },
+      // onListDropped(toListIndex) {
+      //   if (this.fromListIndex === toListIndex) {
+      //     return;
+      //   }
+      //   this.switchListPositions(this.fromListIndex, toListIndex);
+      //   this.updateListsOrder();
+      // },
+      // updateListsOrder() {
+      //   let listIds = this.lists.map(list => list._id);
+      //   boardService.updateListsOrder(this.board._id, listIds);
+      // },
+      // switchListPositions(fromListIndex, toListIndex) {
+      //   if (this.fromListIndex === null) {
+      //     return;
+      //   }
+      //
+      //   this.lists.splice(toListIndex, 0, this.lists.splice(fromListIndex, 1)[0]);
+      // },
 
     }
   }

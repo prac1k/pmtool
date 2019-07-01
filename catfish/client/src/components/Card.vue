@@ -17,21 +17,28 @@
 </template>
 
 <script>
+  import Card from "./Card"
+  import cardService from "../services/card.service"
+  import listService from "../services/list.service"
+
 
   export default {
     props: [
       "cardProp",
+      "listProp",
       "index"
     ],
     data() {
       return {
         card: null,
+        list: null,
         isDraggingCard: false,
         dragEntered: false
       };
     },
     mounted() {
       this.$set(this, "card", this.cardProp);
+      this.$set(this, "list", this.listProp);
     },
     methods: {
       onCardDragStart (fromIndex, event) {
@@ -48,7 +55,7 @@
       onCardDragOver (event) {
         this.$set(this, "dragEntered", true)
       },
-      onCardDragLeave (index, card) {
+      onCardDragLeave (index, list) {
         this.$set(this, "dragEntered", false)
       },
       onCardDrop (toIndex) {
@@ -62,7 +69,7 @@
 
 <style scoped lang="scss">
   .card-body{
-    z-index: 1;
+
   }
   .card-title {
     text-decoration: underline;
@@ -77,7 +84,6 @@
 
     &.is-dragging-card {
       transform: rotate(1deg);
-      z-index: 1;
     }
     &.drag-entered {
       border: 3px solid crimson;

@@ -17,7 +17,7 @@ router.post("/boards", boardService.create.bind(boardService))
 router.post("/cards/", cardService.create.bind(cardService))
 router.put(
     "/cards/updateCardsOrder",
-    cardService.updateCardsOrder.bind(cardService)
+    listService.updateCardsOrder.bind(listService)
 )
 router.get("/lists/:listId", listService.getById.bind(listService))
 router.get("/cards/:cardId", cardService.getById.bind(cardService))

@@ -32,6 +32,7 @@ export default {
             title: boardTitle
     }).then(res => res.data)
   },
+
 }
 
 

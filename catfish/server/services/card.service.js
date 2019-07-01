@@ -19,20 +19,7 @@ module.exports = {
                 this._handleResponse(err, card, res)
             })
     },
-    updateCardsOrder (req, res) {
-        List.findById(req.body.listId, (err, list) => {
-            if (err) {
-                res.status(400).end()
-                return
-            }
 
-            list.cards = req.body.cardIds
-            list.save((err, savedList) => {
-                this._handleResponse(err, savedList, res)
-                console.log(savedList);
-            })
-        })
-    },
 
 
     create (req, res) {
