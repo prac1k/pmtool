@@ -29,7 +29,7 @@
         <card
           v-for="(card, i) in cards"
           :card-prop="card"
-          :list-prop="list"
+
           :key="card._id"
           :index="i"
         />
@@ -42,7 +42,7 @@
   import Card from "./Card"
   import cardService from "../services/card.service"
   import Addable from "./Addable";
-  import boardService from "../services/board.service"
+
   export default {
     components: {
       Card,
@@ -57,9 +57,16 @@
         list: null,
         cards: [],
         isDraggingList: false,
-        dragEntered: false
+        dragEntered: false,
+        fromCardIndex: null,
       }
     },
+    created () {
+      this.$eventBus.$on("card-drag-started", this.onCardDragStarted);
+      this.$eventBus.$on("card-dragend", this.onCardDragEnd);
+      this.$eventBus.$on("card-dropped", this.onCardDropped);
+
+    } ,
     mounted () {
       this.$set(this, "list", this.listProp)
       this.$set(this, "cards", this.listProp.cards)
@@ -96,6 +103,32 @@
         this.$eventBus.$emit("list-dropped", toIndex)
       },
 
+
+      onCardDragStarted(fromCardIndex) {
+        this.$set(this, "fromCardIndex", fromCardIndex)
+      },
+      onCardDragEnd(event) {
+        this.$set(this, "fromCardIndex", null);
+      },
+      onCardDropped(toCardIndex) {
+        if (this.fromCardIndex === toCardIndex) {
+          return;
+        }
+        this.switchCardPositions(this.fromCardIndex, toCardIndex);
+        this.updateCardsOrder();
+      },
+      updateCardsOrder() {
+        let cardIds = this.cards.map(card => card._id);
+        cardService.updateCardsOrder(this.list._id, cardIds);
+      },
+      switchCardPositions(fromCardIndex, toCardIndex) {
+        if (this.fromCardIndex === null) {
+          return;
+        }
+
+        this.cards.splice(toCardIndex, 0, this.cards.splice(fromCardIndex, 1)[0]);
+      },
+
     },
   }
 </script>
@@ -113,6 +146,7 @@
     padding: 10px;
     white-space: normal;
     border-radius: 3px;
+    z-index: 0;
   }
   .board-list {
     display: inline-block;

@@ -31,7 +31,7 @@ export default {
     return axios.post("/server/boards", {
             title: boardTitle
     }).then(res => res.data)
-  }
+  },
 }
 
 

@@ -2,6 +2,39 @@ const List = require('../models/list.model')
 const Card  = require ('../models/card.model')
 
 module.exports = {
+
+    getById (req, res) {
+        Card.findOne({_id: req.params.cardId})
+            .populate({
+                path: "cards",
+                select: ["title"],
+                model: "Card",
+                populate: {
+                    path: "cards",
+                    select: ["title", "body"],
+                    model: "Card"
+                }
+            })
+            .exec((err, card) => {
+                this._handleResponse(err, card, res)
+            })
+    },
+    updateCardsOrder (req, res) {
+        List.findById(req.body.listId, (err, list) => {
+            if (err) {
+                res.status(400).end()
+                return
+            }
+
+            list.cards = req.body.cardIds
+            list.save((err, savedList) => {
+                this._handleResponse(err, savedList, res)
+                console.log(savedList);
+            })
+        })
+    },
+
+
     create (req, res) {
         List.findById(req.body.listId, (err, list) => {
             console.log(list);

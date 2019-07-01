@@ -8,7 +8,7 @@ export default {
     }).then(res => res.data)
   },
   getById() {
-    return axios.get("/server/lists").then(res => res.data)
+    return axios.get("/server/lists/:listId").then(res => res.data)
   },
 
 }

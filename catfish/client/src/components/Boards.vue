@@ -11,7 +11,7 @@
     <div class="addboard">Add Board</div>
   </addable>
   </div>
-</template>>
+</template>
 
 <script>
   import boardService from "../services/board.service"

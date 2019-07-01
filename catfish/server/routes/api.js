@@ -16,10 +16,11 @@ router.post("/boards", boardService.create.bind(boardService))
 
 router.post("/cards/", cardService.create.bind(cardService))
 router.put(
-    "/lists/updateCardsOrder",
-    listService.updateCardsOrder.bind(listService)
+    "/cards/updateCardsOrder",
+    cardService.updateCardsOrder.bind(cardService)
 )
 router.get("/lists/:listId", listService.getById.bind(listService))
+router.get("/cards/:cardId", cardService.getById.bind(cardService))
 
 
 module.exports = router
