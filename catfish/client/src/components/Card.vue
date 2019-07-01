@@ -2,14 +2,9 @@
   <div
     v-if="card"
     class="list-card"
-    :class="{'is-dragging-card': isDraggingCard, 'drag-entered': dragEntered}"
     draggable="true"
     @dragstart="onCardDragStart(index, $event)"
     @dragend="onCardDragEnd"
-    @drop="onCardDrop(index)"
-    @dragover.prevent
-    @dragover="onCardDragOver"
-    @dragleave="onCardDragLeave"
   >
     <div class="card-title">{{ card.title }}</div>
     <div class="card-body">{{ card.body }}</div>
@@ -17,10 +12,6 @@
 </template>
 
 <script>
-  import Card from "./Card"
-  import cardService from "../services/card.service"
-  import listService from "../services/list.service"
-
 
   export default {
     props: [
@@ -51,16 +42,6 @@
       onCardDragEnd () {
         this.$set(this, "isDraggingCard", false)
         this.$eventBus.$emit("card-dragend")
-      },
-      onCardDragOver (event) {
-        this.$set(this, "dragEntered", true)
-      },
-      onCardDragLeave (index, list) {
-        this.$set(this, "dragEntered", false)
-      },
-      onCardDrop (toIndex) {
-        this.$set(this, "dragEntered", false)
-        this.$eventBus.$emit("card-dropped", toIndex)
       },
 
     },

@@ -5,10 +5,7 @@
     draggable="true"
     @dragstart="onListDragStart(index, $event)"
     @dragend="onListDragEnd"
-    @drop="onListDrop(index)"
-    @dragover.prevent
-    @dragover="onListDragOver"
-    @dragleave="onListDragLeave"
+
     >
     <div class="list-inner"
 
@@ -99,17 +96,7 @@
         this.$set(this , "isDraggingList" , false)
         this.$eventBus.$emit("list-dragend")
       } ,
-      onListDragOver (event) {
-        this.$set(this , "dragEntered" , true)
-      } ,
-      onListDragLeave (index , list) {
-        this.$set(this , "dragEntered" , false)
-      } ,
-      onListDrop (toIndex) {
-        this.$set(this , "dragEntered" , false)
-        this.$eventBus.$emit("list-dropped" , toIndex)
-      } ,
-      onCardDragEnd (toCardIndex) {
+      onCardDragEnd () {
         this.updateCardsOrder();
       } ,
       updateCardsOrder () {

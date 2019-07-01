@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/components/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/Card.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/components/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/List.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/src/services/board.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/services/board.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/src/services/card.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/services/card.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/routes/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/services/card.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/services/card.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/services/list.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/services/list.service.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,8 +22,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/catfish/client/src/components/List.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="447">
-                  <caret line="116" column="57" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
+                <state relative-caret-position="240">
+                  <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
                   <folding>
                     <element signature="e#928#953#0" expanded="true" />
                   </folding>
@@ -42,8 +34,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="164">
-                  <caret line="20" column="14" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="14" />
+                <state relative-caret-position="675">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
                 </state>
               </provider>
             </entry>
@@ -55,10 +47,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="99" column="66" lean-forward="true" selection-start-line="90" selection-start-column="9" selection-end-line="99" selection-end-column="66" />
+                <state relative-caret-position="810">
+                  <caret line="54" selection-start-line="54" selection-end-line="54" />
                   <folding>
-                    <element signature="e#708#761#0" expanded="true" />
+                    <element signature="e#796#849#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -172,10 +164,10 @@
         <option value="$PROJECT_DIR$/catfish/server/services/list.service.js" />
         <option value="$PROJECT_DIR$/catfish/server/routes/api.js" />
         <option value="$PROJECT_DIR$/catfish/client/src/services/board.service.js" />
-        <option value="$PROJECT_DIR$/catfish/client/src/components/Card.vue" />
         <option value="$PROJECT_DIR$/catfish/client/src/services/list.service.js" />
         <option value="$PROJECT_DIR$/catfish/client/src/services/card.service.js" />
         <option value="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" />
+        <option value="$PROJECT_DIR$/catfish/client/src/components/Card.vue" />
         <option value="$PROJECT_DIR$/catfish/client/src/components/List.vue" />
       </list>
     </option>
@@ -375,12 +367,12 @@
       <workItem from="1561442416826" duration="16696000" />
       <workItem from="1561529932777" duration="23254000" />
       <workItem from="1561618939459" duration="17131000" />
-      <workItem from="1561964749814" duration="25165000" />
+      <workItem from="1561964749814" duration="25752000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357502000" />
+    <option name="totallyTimeSpent" value="358089000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -691,27 +683,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
+    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="14" />
+        <state relative-caret-position="810">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#796#849#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
+    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="99" column="66" lean-forward="true" selection-start-line="90" selection-start-column="9" selection-end-line="99" selection-end-column="66" />
-          <folding>
-            <element signature="e#708#761#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="675">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/catfish/client/src/components/List.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="116" column="57" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
+        <state relative-caret-position="240">
+          <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
           <folding>
             <element signature="e#928#953#0" expanded="true" />
           </folding>
