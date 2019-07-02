@@ -16,11 +16,11 @@
           @addable-submit="addableSubmit">
           <div class="addlist">Add list</div>
         </addable>
-        <draggable v-model='lists' @start="drag=true" @end="drag=false">
+        <draggable v-model='lists' @start="drag=true" @end="drag=false" @change="log">
         <list
           v-for="(list, i) in lists"
           :key="list._id"
-          :index="i"
+          :index="list._id"
           :list-prop="list"/>
         </draggable>
       </div>
@@ -35,6 +35,7 @@
   import listService from "../services/list.service";
   import Addable from "./Addable";
   import Draggable from 'vuedraggable'
+
   export default {
     components: {
       List ,
@@ -46,7 +47,7 @@
 
     data () {
       return {
-        board: null ,
+        board: null,
         lists: [] ,
         fromListIndex: null,
       };
@@ -86,7 +87,10 @@
         let listIds = this.lists.map(list => list._id);
         boardService.updateListsOrder(this.board._id, listIds);
       },
-    }
+      log: function(evt) {
+        window.console.log(evt);
+      }
+    },
   }
 </script>
 

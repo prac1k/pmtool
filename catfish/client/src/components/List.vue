@@ -5,11 +5,8 @@
     draggable="true"
     @dragstart="onListDragStart(index, $event)"
     @dragend="onListDragEnd"
-
     >
-    <div class="list-inner"
-
-    >
+    <div class="list-inner">
       <div
         v-if="list"
         class="list-title">
@@ -25,12 +22,12 @@
         </div>
       </div>
       <div class="list-cards">
-        <draggable v-model='cards' @start="drag=true" @end="drag=false">
+        <draggable v-model='cards' @start="drag=true" @end="drag=false" @change="log" :options="{ group: 'list'}">
         <card
           v-for="(card, i) in cards"
           :card-prop="card"
           :key="card._id"
-          :index="i"
+          :index="card._id"
         />
         </draggable>
        </div>
@@ -44,7 +41,9 @@
   import Addable from "./Addable";
   import Draggable from 'vuedraggable'
 
+
   export default {
+
     components: {
       Card ,
       Addable ,
@@ -57,8 +56,9 @@
     ] ,
     data () {
       return {
-        list: null ,
+        list: [] ,
         cards: [] ,
+        lists:[],
         isDraggingList: false ,
         dragEntered: false ,
         fromCardIndex: null ,
@@ -98,12 +98,14 @@
       } ,
       onCardDragEnd () {
         this.updateCardsOrder();
-      } ,
+              } ,
       updateCardsOrder () {
         let cardIds = this.cards.map(card => card._id);
         cardService.updateCardsOrder(this.list._id , cardIds);
-
       } ,
+      log: function(evt) {
+        window.console.log(evt);
+      }
     },
   }
 </script>
