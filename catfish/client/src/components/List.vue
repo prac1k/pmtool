@@ -133,9 +133,6 @@
     width: 270px;
     max-height: 100%;
     overflow-y: scroll;
-    &.is-dragging-list {
-      transform: rotate(1deg)
-    }
     &.drag-entered {
       border: 3px solid #237bda;
     }

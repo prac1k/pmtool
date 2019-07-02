@@ -5,9 +5,14 @@ const port = 3000
 const bodyParser = require('body-parser')
 const config = require('./config/index')
 const seederService = require('./services/seeder.service');
+require('rootpath')();
+const cors = require('cors');
+const errorHandler = require('_helpers/error-handler');
+
 
 mongoose.connect(config.dbConnection, { useNewUrlParser: true})
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 const corsConfig = function(req, res, next) {
@@ -21,10 +26,11 @@ const corsConfig = function(req, res, next) {
 app.use(corsConfig);
 
 const apiRoutes = require('./routes/api');
-app.use('/server', apiRoutes);
-
+app.use('/server', apiRoutes, );
+app.use('/users', require('./routes/users.controller'));
 if (config.seedData) {
     seederService.seedData()
 }
-
+app.use(errorHandler);
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
