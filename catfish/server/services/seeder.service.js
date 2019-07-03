@@ -1,4 +1,3 @@
-const faker = require('faker')
 const Board = require('../models/board.model')
 const List = require('../models/list.model')
 const Card = require('../models/card.model')
