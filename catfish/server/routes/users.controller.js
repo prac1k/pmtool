@@ -7,7 +7,7 @@ const Role = require('_helpers/role');
 
 // routes
 router.post('/authenticate', authenticate);     // public route
-router.get('/', authorize(Role.Admin), getAll); // admin only
+router.get('/', authorize(Role.Admin, Role.User), getAll); // admin only
 router.get('/:id', authorize(), getById);       // all authenticated users
 router.post('/authenticate', authenticate);
 router.post('/register', register);

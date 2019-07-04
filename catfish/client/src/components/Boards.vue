@@ -16,6 +16,7 @@
 <script>
   import boardService from "../services/board.service"
   import Addable from "./Addable";
+  import { authenticationService } from '../services/authentication.service';
   export default {
 
     components:{
@@ -25,10 +26,12 @@
     name: "Boards",
     data () {
       return {
-        boards: []
+        currentUser: authenticationService.currentUserValue,
+        boards: [],
+        userFromApi: null
       }
     },
-    mounted () {
+     mounted () {
       this.getAllBoards()
     },
     methods: {

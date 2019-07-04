@@ -2,10 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './router/index'
 import axios from 'axios'
 import eventBus from './event-bus/index'
-
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 Vue.prototype.$eventBus = eventBus
 Vue.config.productionTip = false
 axios.defaults.baseURL = 'http://localhost:3000'
@@ -17,3 +18,9 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
+
+
+
+
