@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.25",
     "config": "^3.1.0",
     "rxjs": "^6.5.2",
     "vue": "^2.5.2",

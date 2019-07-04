@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <nav v-if="currentUser" class="navbar navbar-expand navbar-dark bg-dark">
-      <div class="navbar-nav">
+    <nav class="navbar">
+    <div class="navlogo">
+      <router-link
+      <div class="logobrandheader">The Catfish project</div>
+        <div v-if="currentUser" class="nav-item nameCurrentUser"> Welcome, {{ currentUser.name }} {{ currentUser.lastname }}</div>
+          </div>
+      <div v-if="currentUser" class="navbar-nav">
+        <div class="navbarlinks">
         <router-link to="/" class="nav-item nav-link">Home</router-link>
         <router-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Admin</router-link>
-        <a @click="logout" class="nav-item nav-link">Logout</a>
+        <router-link v-if="currentUser" to="#" class="nav-item nav-link">My boards</router-link>
+          <div class="logoutborder">
+          <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>
+          </div>
         </div>
-      <div class="nav-item nameCurrentUser"> Welcome, {{ currentUser.name }} {{ currentUser.lastname }}</div>
+      </div>
     </nav>
     <div class="jumbotron">
       <div class="container">
@@ -17,7 +26,7 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -68,11 +77,36 @@
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  .nameCurrentUser {
-    text-align: right;
-    padding: 10px;
+
+  .nav-item.nav-link{
+    position: relative;
+    top: -3em;
+    padding-left: 20%;
+    justify-content: normal;
+}
+
+  .logobrandheader{
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+.navlogo{
+  top: 1%;
+  background: gainsboro;
+  height: 4em;
+  padding-left: 2%;
+  }
+.nameCurrentUser{
+  padding-bottom: 1%;
+}
+  .nav-item.nav-link.navbarlogout{
     display: flex;
+    padding: 0%;
+    right: 7%;
+    top: -3.8em;
     justify-content: flex-end;
+    color: crimson;
+    font-size: large;
+    font-weight: bolder;
   }
 
 </style>
