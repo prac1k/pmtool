@@ -6,12 +6,12 @@
       <div class="logobrandheader">The Catfish project</div>
         <div v-if="currentUser" class="nav-item nameCurrentUser"> Welcome, {{ currentUser.name }} {{ currentUser.lastname }}</div>
           </div>
-      <div v-if="currentUser" class="navbar-nav">
+      <div class="navbar-nav">
         <div class="navbarlinks">
-        <router-link to="/" class="nav-item nav-link">Home</router-link>
+        <router-link v-if="currentUser" to="/" class="nav-item nav-link">Home</router-link>
         <router-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Admin</router-link>
         <router-link v-if="currentUser" to="#" class="nav-item nav-link">My boards</router-link>
-          <div class="logoutborder">
+          <div v-if="currentUser" class="logoutborder">
           <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>
           </div>
         </div>
@@ -100,13 +100,16 @@
 }
   .nav-item.nav-link.navbarlogout{
     display: flex;
-    padding: 0%;
     right: 7%;
     top: -3.8em;
     justify-content: flex-end;
     color: crimson;
     font-size: large;
     font-weight: bolder;
+    float: right;
+    padding: 3px;
+    border: solid 3px;
+    border-radius: 24%;
   }
 
 </style>

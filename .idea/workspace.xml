@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/src/components/Header.vue" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/catfish/client/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="66" />
+            <state relative-caret-position="349">
+              <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
               <folding>
                 <element signature="e#762#836#0" expanded="true" />
               </folding>
@@ -208,8 +205,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="392" />
-    <option name="y" value="289" />
+    <option name="x" value="177" />
+    <option name="y" value="30" />
     <option name="width" value="1472" />
     <option name="height" value="1042" />
   </component>
@@ -393,12 +390,12 @@
       <workItem from="1561964749814" duration="27668000" />
       <workItem from="1562049182931" duration="5642000" />
       <workItem from="1562142372848" duration="15245000" />
-      <workItem from="1562224669350" duration="24787000" />
+      <workItem from="1562224669350" duration="25220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413881000" />
+    <option name="totallyTimeSpent" value="414314000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,7 +407,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="392" y="289" width="1472" height="1042" extended-state="0" />
+    <frame x="177" y="30" width="1472" height="1042" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4968051" visible="true" weight="0.24913734" />
@@ -830,8 +827,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/catfish/client/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="66" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="66" />
+        <state relative-caret-position="349">
+          <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
           <folding>
             <element signature="e#762#836#0" expanded="true" />
           </folding>
