@@ -49,12 +49,15 @@
     </div>
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
     <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
+    <div class="card-assignfront" @click="isOpen = !isOpen;">Assigned by: {{user.name + ' ' + user.lastname }}</div>
+    <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee: </div>
   </div>
 
 </template>
 
 <script>
-
+  import authenticationService from '../services/authentication.service';
+  import userService from '../services/user.service';
   import Card from "./Card"
   import cardService from "../services/card.service"
   import EditableCardTitle from "./EditableCardTitle";
@@ -78,6 +81,8 @@
     ] ,
     data () {
       return {
+        user: authenticationService.currentUserValue,
+        users: [],
         scrolled: false ,
         isOpen: false ,
         card: null ,
@@ -90,7 +95,8 @@
     mounted () {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
-      this.$set(this , "list" , this.cardBodyProp);
+      // this.$set(this , "list" , this.cardBodyProp);
+      this.$set(this , "user" , this.user);
       // this.editor = new Editor({
       //   onFocus: ({event , state , view}) => {
       //     console.log(event , state , view)
@@ -144,8 +150,8 @@
 
   }
   .card-title {
-    text-decoration: underline;
     z-index: 1;
+    font-weight: bolder;
   }
   .list-card {
     background-color: #ffffff;
@@ -185,7 +191,7 @@
   .fadeIn-leave-active.modal {
     transform: scale(1.1);
   }
-  button {
+  .button {
     padding: 7px;
     margin-top: 10px;
     background-color: green;
@@ -206,5 +212,7 @@
     z-index: 999;
     transition: opacity 0.2s ease;
   }
-
+.card-assignfront{
+  padding-top:15px;
+}
 </style>
