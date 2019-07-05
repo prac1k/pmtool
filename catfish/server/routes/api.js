@@ -13,6 +13,7 @@ router.put(
 )
 router.put("/boards/:boardId", boardService.update.bind(boardService))
 router.put("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
+router.post("/cards/:cardId", cardService.updateCardBody.bind(cardService))
 router.post("/boards", boardService.create.bind(boardService))
 router.post("/cards/", cardService.create.bind(cardService))
 

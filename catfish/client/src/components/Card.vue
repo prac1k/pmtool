@@ -22,7 +22,16 @@
               </div>
               <div class="card-body"></div>
             <h5>Description:</h5>
-              <editor-content :editor="editor" /><!--  <h2>{{ slotProps.inputText }}</h2>-->
+              <EditableCardBody
+<!--                v-slot:default="slotProps"-->
+<!--                :field-value="card.body"-->
+<!--                @editable-submit="editableSubmitted"-->
+<!--                <editor>-->
+<!--                  <div slot="card.body" slot-scope="props">-->
+<!--              <editor-content :editor="editor" />&lt;!&ndash;  <h2>{{ slotProps.inputText }}</h2>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </editor>-->
+              </EditableCardBody>
               </div>
           </div>
         </div>
@@ -39,11 +48,13 @@
   import Card from "./Card"
   import cardService from "../services/card.service"
   import EditableCardTitle from "./EditableCardTitle";
+  import EditableCardBody from "./EditableCardBody";
   import { Editor, EditorContent } from 'tiptap';
   export default {
 
     components: {
       Card ,
+      Editor,
       EditableCardTitle,
       EditorContent,
     } ,
@@ -64,15 +75,20 @@
       };
     },
     mounted() {
-      this.$set(this, "card", this.cardProp);
-      this.$set(this, "list", this.listProp);
+      this.$set(this , "card" , this.cardProp);
+      this.$set(this , "list" , this.listProp);
       this.editor = new Editor({
-            content: '<p>Click to input task description</p>',
-          })
+        onFocus: ({event , state , view}) => {
+          console.log(event , state , view)
         },
-        beforeDestroy() {
+        content: '<p>Click to input task description</p>',
+      }),
+        beforeDestroy()
+      {
         this.editor.destroy()
-      },
+      }
+    },
+
     methods: {
       editableSubmitted (inputText) {
         if (inputText === this.card.title) {
