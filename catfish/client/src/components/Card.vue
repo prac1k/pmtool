@@ -20,8 +20,9 @@
                 <h5>Title:</h5><h2>{{ slotProps.inputText }}</h2>
               </EditableCardTitle>
               </div>
-              <div class="card-body">{{ card.body }}</div>
-            <h5>Description:</h5><!--  <h2>{{ slotProps.inputText }}</h2>-->
+              <div class="card-body"></div>
+            <h5>Description:</h5>
+              <editor-content :editor="editor" /><!--  <h2>{{ slotProps.inputText }}</h2>-->
               </div>
           </div>
         </div>
@@ -38,12 +39,13 @@
   import Card from "./Card"
   import cardService from "../services/card.service"
   import EditableCardTitle from "./EditableCardTitle";
-
+  import { Editor, EditorContent } from 'tiptap';
   export default {
 
     components: {
       Card ,
       EditableCardTitle,
+      EditorContent,
     } ,
 
     props: [
@@ -57,13 +59,20 @@
         card: null,
         list: null,
         isDraggingCard: false,
-        dragEntered: false
+        dragEntered: false,
+        editor: null,
       };
     },
     mounted() {
       this.$set(this, "card", this.cardProp);
       this.$set(this, "list", this.listProp);
-    },
+      this.editor = new Editor({
+            content: '<p>Click to input task description</p>',
+          })
+        },
+        beforeDestroy() {
+        this.editor.destroy()
+      },
     methods: {
       editableSubmitted (inputText) {
         if (inputText === this.card.title) {
