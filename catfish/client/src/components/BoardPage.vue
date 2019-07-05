@@ -30,7 +30,7 @@
 
 <script>
   import boardService from "../services/board.service";
-  import Editable from "./EditableBoardTitile";
+  import Editable from "./EditableBoardTitle";
   import List from "./List";
   import listService from "../services/list.service";
   import Addable from "./Addable";

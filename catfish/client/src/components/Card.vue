@@ -33,11 +33,11 @@
 <!--                v-slot:default="slotProps"-->
 <!--                :field-value="card.body"-->
 <!--                @editable-submit="editableSubmitted"-->
-                <editor>
-                  <div slot="card.body" slot-scope="props">
-              <editor-content :editor="editor" /><!--  <h2>{{ slotProps.inputText }}</h2>-->
-                  </div>
-                </editor>
+<!--                <editor>-->
+<!--                  <div slot="card.body" slot-scope="props">-->
+<!--              <editor-content :editor="editor" />&lt;!&ndash;  <h2>{{ slotProps.inputText }}</h2>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </editor>-->
 
               </EditableCardBody>
               </div>

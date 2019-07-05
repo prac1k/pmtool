@@ -8,12 +8,12 @@
       @keydown.enter="submit"
       @blur="onBlur"
       @keydown.esc="escape"
-    >{{ inputText }}</h2>
+    >{{ cardBody }}</h2>
     <template v-if="isEditing === false">
       <div @click="onCardBodyClick()">
         <slot
           :isEditing="isEditing"
-          :inputText="inputText"/>
+          :cardBody="cardBody"/>
       </div>
     </template>
   </div>
@@ -24,12 +24,12 @@
     props: ["fieldValue"],
     data() {
       return {
-        inputText: "",
+        cardBody: "",
         isEditing: false
       };
     },
     mounted() {
-      this.$set(this, "inputText", this.fieldValue);
+      this.$set(this, "cardBody", this.fieldValue);
     },
     methods: {
       onCardBodyClick() {
@@ -39,18 +39,18 @@
         }).bind(this), 200)
       },
       submit(event) {
-        this.$set(this, "inputText", event.currentTarget.innerText)
-        this.$emit("editable-submit", event.currentTarget.innerText)
+        this.$set(this, "cardBody", event.currentTarget.innerText)
+        this.$emit("editable-submit-body", event.currentTarget.innerText)
         this.$set(this, "isEditing", false);
       },
       escape(event) {
-        this.$set(this, "inputText", event.currentTarget.innerText)
-        this.$emit("editable-submit", event.currentTarget.innerText);
+        this.$set(this, "cardBody", event.currentTarget.innerText)
+        this.$emit("editable-submit-body", event.currentTarget.innerText);
         this.$set(this, "isEditing", false);
       },
       onBlur (event) {
-        this.$set(this, "inputText", event.currentTarget.innerText)
-        this.$emit("editable-submit", event.currentTarget.innerText);
+        this.$set(this, "cardBody", event.currentTarget.innerText)
+        this.$emit("editable-submit-body", event.currentTarget.innerText);
         this.$set(this, "isEditing", false);
       }
     }

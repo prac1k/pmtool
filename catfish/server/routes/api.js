@@ -7,20 +7,13 @@ const cardService = require("../services/card.service")
 router.get("/boards", boardService.getAll.bind(boardService))
 router.get("/boards/:boardId", boardService.getById.bind(boardService))
 router.post("/lists", listService.create.bind(listService))
-router.put(
-    "/boards/updateListsOrder",
-    boardService.updateListsOrder.bind(boardService)
-)
+router.put("/boards/updateListsOrder", boardService.updateListsOrder.bind(boardService))
 router.put("/boards/:boardId", boardService.update.bind(boardService))
-router.put("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
+router.post("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
 router.post("/cards/:cardId", cardService.updateCardBody.bind(cardService))
 router.post("/boards", boardService.create.bind(boardService))
 router.post("/cards/", cardService.create.bind(cardService))
-
-router.put(
-    "/cards/updateCardsOrder",
-    listService.updateCardsOrder.bind(listService)
-)
+router.put("/cards/updateCardsOrder", listService.updateCardsOrder.bind(listService))
 router.get("/lists/:listId", listService.getById.bind(listService))
 router.get("/cards/:cardId", cardService.getById.bind(cardService))
 
