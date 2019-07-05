@@ -11,9 +11,18 @@
         <div v-if="isOpen">
           <div class="overlay" @click.self="isOpen = false;">
             <div class="modal">
-              <div class="card-title">{{ card.title }}</div>
+              <div class="card-title">
+              <EditableCardTitle
+                v-slot:default="slotProps"
+                :field-value="card.title"
+                @editable-submit="editableSubmitted"
+              >
+                <h5>Title:</h5><h2>{{ slotProps.inputText }}</h2>
+              </EditableCardTitle>
+              </div>
               <div class="card-body">{{ card.body }}</div>
-            </div>
+            <h5>Description:</h5><!--  <h2>{{ slotProps.inputText }}</h2>-->
+              </div>
           </div>
         </div>
       </transition>
@@ -26,7 +35,17 @@
 
 <script>
 
+  import Card from "./Card"
+  import cardService from "../services/card.service"
+  import EditableCardTitle from "./EditableCardTitle";
+
   export default {
+
+    components: {
+      Card ,
+      EditableCardTitle,
+    } ,
+
     props: [
       "cardProp",
       "listProp",
@@ -46,6 +65,15 @@
       this.$set(this, "list", this.listProp);
     },
     methods: {
+      editableSubmitted (inputText) {
+        if (inputText === this.card.title) {
+          return;
+        }
+        cardService.updateCardTitle(this.card._id , inputText).then(() => {
+          this.card.title = inputText;
+        })
+      },
+
       onCardDragStart (fromIndex, event) {
         if (!fromIndex) {
           fromIndex = 0

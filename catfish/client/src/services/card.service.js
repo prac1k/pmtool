@@ -18,4 +18,14 @@ export default {
       })
       .then(res => res.data)
   },
+  updateCardTitle(cardId, title) {
+    return axios.put(
+      "/server/cards/" + cardId,
+      {
+        title: title
+      }
+    ).then(res => res.data)
+  },
 }
+
+

@@ -12,9 +12,10 @@ router.put(
     boardService.updateListsOrder.bind(boardService)
 )
 router.put("/boards/:boardId", boardService.update.bind(boardService))
+router.put("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
 router.post("/boards", boardService.create.bind(boardService))
-
 router.post("/cards/", cardService.create.bind(cardService))
+
 router.put(
     "/cards/updateCardsOrder",
     listService.updateCardsOrder.bind(listService)

@@ -19,8 +19,11 @@ module.exports = {
                 this._handleResponse(err, card, res)
             })
     },
-
-
+    updateCardTitle (req, res) {
+        Card.findByIdAndUpdate(req.params.cardId, {title: req.body.title}, (err, card) => {
+            this._handleResponse(err, card, res)
+        })
+    },
 
     create (req, res) {
         List.findById(req.body.listId, (err, list) => {
