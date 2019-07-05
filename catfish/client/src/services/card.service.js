@@ -19,7 +19,7 @@ export default {
       .then(res => res.data)
   },
   updateCardTitle(cardId, title) {
-    return axios.put(
+    return axios.post(
       "/server/cards/" + cardId,
       {
         title: title

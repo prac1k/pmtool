@@ -13,43 +13,43 @@
             <div class="modal">
               <!-- Card Title Start  -->
               <div class="card-title">
-              <EditableCardTitle
-                v-slot:default="slotProps"
-                :field-value="card.title"
-                @editable-submit="editableSubmitted"
-              >
-                <h5>Title:</h5><h2>{{ slotProps.inputText }}</h2>
-              </EditableCardTitle>
+                <EditableCardTitle
+                  v-slot:default="slotProps"
+                  :field-value="card.title"
+                  @editable-submit="editableSubmitted"
+                >
+                  <h5>Title:</h5><h2>{{ slotProps.inputText }}</h2>
+                </EditableCardTitle>
               </div>
               <!-- Card Title Ends  -->
-            <!-- Card Description Start  -->
+              <!-- Card Description Start  -->
               <div class="card-body">
-              <EditableCardBody
-                v-slot:default="slotProps"
-                :field-value="card.body"
-                @editable-submit="editableSubmitted"
-              >
-                <h5>Description:</h5><h2>{{ slotProps.inputText }}</h2>
-<!--                v-slot:default="slotProps"-->
-<!--                :field-value="card.body"-->
-<!--                @editable-submit="editableSubmitted"-->
-<!--                <editor>-->
-<!--                  <div slot="card.body" slot-scope="props">-->
-<!--              <editor-content :editor="editor" />&lt;!&ndash;  <h2>{{ slotProps.inputText }}</h2>&ndash;&gt;-->
-<!--                  </div>-->
-<!--                </editor>-->
+                <EditableCardBody
+                  v-slot:default="cardBodyProp"
+                  :field-value="card.body"
+                  @editable-submit-body="editableBodySubmitted"
+                >
+                  <h5>Description:</h5><h2>{{ cardBodyProp.cardBody }}</h2>
+                  <!--                v-slot:default="slotProps"-->
+                  <!--                :field-value="card.body"-->
+                  <!--                @editable-submit="editableSubmitted"-->
+                  <!--                <editor>-->
+                  <!--                  <div slot="card.body" slot-scope="props">-->
+                  <!--              <editor-content :editor="editor" />&lt;!&ndash;  <h2>{{ slotProps.inputText }}</h2>&ndash;&gt;-->
+                  <!--                  </div>-->
+                  <!--                </editor>-->
 
-              </EditableCardBody>
+                </EditableCardBody>
               </div>
               <!-- Card Description Ends  -->
-              </div>
+            </div>
           </div>
         </div>
       </transition>
     </div>
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
     <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
-    </div>
+  </div>
 
 </template>
 
@@ -64,30 +64,33 @@
 
     components: {
       Card ,
-      Editor,
-      EditableCardTitle,
-      EditableCardBody,
-      EditorContent,
+      Editor ,
+      EditableCardTitle ,
+      EditableCardBody ,
+      EditorContent ,
     } ,
 
     props: [
-      "cardProp",
-      "listProp",
-      "index"
-    ],
-    data() {
+      "cardProp" ,
+      "cardBodyProp" ,
+      "listProp" ,
+      "index" ,
+    ] ,
+    data () {
       return {
-        isOpen: false,
-        card: null,
-        list: null,
-        isDraggingCard: false,
-        dragEntered: false,
-        editor: null,
+        scrolled: false ,
+        isOpen: false ,
+        card: null ,
+        list: null ,
+        isDraggingCard: false ,
+        dragEntered: false ,
+        editor: null ,
       };
-    },
-    mounted() {
+    } ,
+    mounted () {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
+      this.$set(this , "list" , this.cardBodyProp);
       // this.editor = new Editor({
       //   onFocus: ({event , state , view}) => {
       //     console.log(event , state , view)
@@ -98,8 +101,7 @@
       // {
       //   this.editor.destroy()
       // }
-    },
-
+    } ,
     methods: {
       //title update
       editableSubmitted (inputText) {
@@ -112,12 +114,12 @@
       },
 
       //body update
-      editableSubmitted (inputText) {
-        if (inputText === this.card.body) {
+      editableBodySubmitted (cardBody) {
+        if (cardBody === this.card.body) {
           return;
         }
-        cardService.updateCardBody(this.card._id , inputText).then(() => {
-          this.card.body = inputText;
+        cardService.updateCardBody(this.card._id , cardBody).then(() => {
+          this.card.body = cardBody;
         })
       },
 
@@ -204,7 +206,5 @@
     z-index: 999;
     transition: opacity 0.2s ease;
   }
-
-
 
 </style>
