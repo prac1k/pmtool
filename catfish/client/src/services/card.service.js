@@ -26,6 +26,14 @@ export default {
       }
     ).then(res => res.data)
   },
+  updateCardBody(cardId, body) {
+    return axios.post(
+      "/server/cards/" + cardId,
+      {
+        body: body
+      }
+    ).then(res => res.data)
+  },
 }
 
 

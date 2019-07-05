@@ -10,7 +10,7 @@
       @keydown.esc="escape"
     >{{ inputText }}</h2>
     <template v-if="isEditing === false">
-      <div @click="onCardDescriptionClick()">
+      <div @click="onCardBodyClick()">
         <slot
           :isEditing="isEditing"
           :inputText="inputText"/>
@@ -32,7 +32,7 @@
       this.$set(this, "inputText", this.fieldValue);
     },
     methods: {
-      onCardDescriptionClick() {
+      onCardBodyClick() {
         this.$set(this, "isEditing", true);
         setTimeout((() => {
           this.$refs.editableField.focus()

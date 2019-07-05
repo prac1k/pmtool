@@ -11,6 +11,7 @@
         <div v-if="isOpen">
           <div class="overlay" @click.self="isOpen = false;">
             <div class="modal">
+              <!-- Card Title Start  -->
               <div class="card-title">
               <EditableCardTitle
                 v-slot:default="slotProps"
@@ -20,25 +21,34 @@
                 <h5>Title:</h5><h2>{{ slotProps.inputText }}</h2>
               </EditableCardTitle>
               </div>
-              <div class="card-body"></div>
-            <h5>Description:</h5>
+              <!-- Card Title Ends  -->
+            <!-- Card Description Start  -->
+              <div class="card-body">
               <EditableCardBody
+                v-slot:default="slotProps"
+                :field-value="card.body"
+                @editable-submit="editableSubmitted"
+              >
+                <h5>Description:</h5><h2>{{ slotProps.inputText }}</h2>
 <!--                v-slot:default="slotProps"-->
 <!--                :field-value="card.body"-->
 <!--                @editable-submit="editableSubmitted"-->
-<!--                <editor>-->
-<!--                  <div slot="card.body" slot-scope="props">-->
-<!--              <editor-content :editor="editor" />&lt;!&ndash;  <h2>{{ slotProps.inputText }}</h2>&ndash;&gt;-->
-<!--                  </div>-->
-<!--                </editor>-->
+                <editor>
+                  <div slot="card.body" slot-scope="props">
+              <editor-content :editor="editor" /><!--  <h2>{{ slotProps.inputText }}</h2>-->
+                  </div>
+                </editor>
+
               </EditableCardBody>
+              </div>
+              <!-- Card Description Ends  -->
               </div>
           </div>
         </div>
       </transition>
     </div>
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
-    <div class="card-body" @click="isOpen = !isOpen;">{{ card.body }} {{ isOpen ? "" : "" }}</div>
+    <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
     </div>
 
 </template>
@@ -56,6 +66,7 @@
       Card ,
       Editor,
       EditableCardTitle,
+      EditableCardBody,
       EditorContent,
     } ,
 
@@ -77,25 +88,36 @@
     mounted() {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
-      this.editor = new Editor({
-        onFocus: ({event , state , view}) => {
-          console.log(event , state , view)
-        },
-        content: '<p>Click to input task description</p>',
-      }),
-        beforeDestroy()
-      {
-        this.editor.destroy()
-      }
+      // this.editor = new Editor({
+      //   onFocus: ({event , state , view}) => {
+      //     console.log(event , state , view)
+      //   },
+      //   content: '<p>Click to input task description</p>',
+      // }),
+      //   beforeDestroy()
+      // {
+      //   this.editor.destroy()
+      // }
     },
 
     methods: {
+      //title update
       editableSubmitted (inputText) {
         if (inputText === this.card.title) {
           return;
         }
         cardService.updateCardTitle(this.card._id , inputText).then(() => {
           this.card.title = inputText;
+        })
+      },
+
+      //body update
+      editableSubmitted (inputText) {
+        if (inputText === this.card.body) {
+          return;
+        }
+        cardService.updateCardBody(this.card._id , inputText).then(() => {
+          this.card.body = inputText;
         })
       },
 
