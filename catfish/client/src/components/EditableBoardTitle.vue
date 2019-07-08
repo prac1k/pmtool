@@ -5,7 +5,6 @@
       ref="editableField"
       :class="{'is-editing': isEditing}"
       contenteditable="true"
-      @keydown.enter="submit"
       @blur="onBlur"
       @keydown.esc="escape"
     >{{ inputText }}</h2>
