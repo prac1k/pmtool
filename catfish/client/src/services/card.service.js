@@ -4,7 +4,8 @@ export default {
   create (listId, cardTitle) {
     return axios.post("/server/cards", {
       listId: listId,
-      title: cardTitle
+      title: cardTitle,
+      body: ' '
     }).then(res => res.data)
   },
   findById(listId) {
@@ -19,7 +20,7 @@ export default {
       .then(res => res.data)
   },
   updateCardTitle(cardId, title) {
-    return axios.post(
+    return axios.put(
       "/server/cards/" + cardId,
       {
         title: title

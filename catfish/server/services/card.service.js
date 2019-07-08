@@ -41,7 +41,7 @@ module.exports = {
                 return this._handleResponse("Error", null, res)
             }
 
-            Card.create({title: req.body.title}, (err, card) => {
+            Card.create({title: req.body.title, body: req.body.body}, (err, card) => {
                 list.cards.push(card._id)
                 list.save(() => {
                     this._handleResponse(err, card, res)
