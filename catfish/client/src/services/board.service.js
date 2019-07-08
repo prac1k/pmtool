@@ -18,18 +18,27 @@ export default {
       }
     ).then(res => res.data)
   },
+  boardAssignUsers(boardId, userIds) {
+    return axios
+      .put("/server/boards/" + boardId,{
+        boardId: boardId,
+        userIds: userIds,
+      }
+    ).then(res => res.data)
+  },
   updateListsOrder(boardId, listIds) {
     return axios
       .put("/server/boards/updateListsOrder", {
         boardId: boardId,
         listIds: listIds
-      })
-      .then(res => res.data)
+      }
+      ).then(res => res.data)
   },
 
   create (boardTitle) {
     return axios.post("/server/boards", {
-            title: boardTitle
+            title: boardTitle,
+            users: []
     }).then(res => res.data)
   },
 

@@ -57,8 +57,8 @@
     ] ,
     data () {
       return {
-        list: [] ,
-        cards: [] ,
+        list: [],
+        cards: [],
         lists:[],
         isDraggingList: false ,
         dragEntered: false ,

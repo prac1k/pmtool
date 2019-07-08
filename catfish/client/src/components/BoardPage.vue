@@ -10,6 +10,10 @@
           <h2>{{ slotProps.inputText }}</h2>
         </editable>
       </div>
+      <div class="assign-people">
+
+      </div>
+
       <div class="board-lists">
         <addable
           class="add-new-list"
@@ -49,6 +53,7 @@
       return {
         board: null,
         lists: [] ,
+        users: null,
         fromListIndex: null,
       };
     },
@@ -60,6 +65,8 @@
         (board => {
           this.$set(this , "board" , board);
           this.$set(this , "lists" , board.lists);
+          this.$set(this , "users" , board.users);
+
         }).bind(this)
       );
     } ,
@@ -116,6 +123,7 @@
     width: 270px;
   }
   .board-title {
+    width: 300px;
     color: #ffffff;
     padding: 10px;
     height: 90px;
@@ -142,5 +150,10 @@
 
   .addlist{
     background: white;
+  }
+
+  .assign-people{
+    display: flex;
+    flex-direction: row-reverse;
   }
 </style>
