@@ -7,11 +7,11 @@ module.exports = {
         Card.findOne({_id: req.params.cardId})
             .populate({
                 path: "cards",
-                select: ["title"],
+                select: ["title", "body", "assignedBy"],
                 model: "Card",
                 populate: {
                     path: "cards",
-                    select: ["title", "body"],
+                    select: ["title", "body", "assignedBy"],
                     model: "Card"
                 }
             })
@@ -41,10 +41,11 @@ module.exports = {
                 return this._handleResponse("Error", null, res)
             }
 
-            Card.create({title: req.body.title, body: req.body.body}, (err, card) => {
+            Card.create({title: req.body.title, body: req.body.body, assignedBy: req.body.assignedBy}, (err, card) => {
                 list.cards.push(card._id)
                 list.save(() => {
                     this._handleResponse(err, card, res)
+                    console.log(card);
                 })
             })
         })

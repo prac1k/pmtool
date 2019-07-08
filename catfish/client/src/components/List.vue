@@ -40,6 +40,7 @@
   import cardService from "../services/card.service"
   import Addable from "./Addable";
   import Draggable from 'vuedraggable'
+  import authenticationService from '../services/authentication.service';
 
 
   export default {
@@ -62,6 +63,7 @@
         isDraggingList: false ,
         dragEntered: false ,
         fromCardIndex: null ,
+        assignedBy: authenticationService.currentUserValue.name + " " +  authenticationService.currentUserValue.lastname,
       }
     } ,
 
@@ -79,8 +81,8 @@
         if (!cardTitle || cardTitle.length === 0) {
           return;
         }
-        cardService.create(this.list._id , cardTitle).then((newCard) => {
-          console.log("listID card create:" , this.list._id);
+        cardService.create(this.list._id , cardTitle, this.assignedBy).then((newCard) => {
+          console.log("listID card create:" , this.list._id,"title:", cardTitle, "Created by:", this.assignedBy);
           this.cards.push(newCard);
         })
       } ,

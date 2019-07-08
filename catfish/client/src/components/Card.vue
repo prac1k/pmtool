@@ -49,7 +49,7 @@
     </div>
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
     <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
-    <div class="card-assignfront" @click="isOpen = !isOpen;">Assigned by: {{user.name + ' ' + user.lastname }}</div>
+    <div class="card-assignfront" @click="isOpen = !isOpen;">Assigned by: {{card.assignedBy}}</div>
     <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee: </div>
   </div>
 
@@ -95,7 +95,6 @@
     mounted () {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
-      // this.$set(this , "list" , this.cardBodyProp);
       this.$set(this , "user" , this.user);
       // this.editor = new Editor({
       //   onFocus: ({event , state , view}) => {

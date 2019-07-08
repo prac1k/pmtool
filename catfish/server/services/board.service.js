@@ -14,7 +14,7 @@ module.exports = {
                 model: "List",
                 populate: {
                     path: "cards",
-                    select: ["title", "body"],
+                    select: ["title", "body", "assignedBy"],
                     model: "Card"
                 }
             })

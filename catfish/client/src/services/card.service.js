@@ -1,11 +1,12 @@
 import axios from "axios"
 
 export default {
-  create (listId, cardTitle) {
+  create (listId, cardTitle, assignedBy) {
     return axios.post("/server/cards", {
       listId: listId,
       title: cardTitle,
-      body: ' '
+      body: ' ',
+      assignedBy: assignedBy,
     }).then(res => res.data)
   },
   findById(listId) {
