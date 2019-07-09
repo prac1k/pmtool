@@ -11,7 +11,7 @@
         </editable>
       </div>
       <div class="assign-people">
-
+{{board.users}}
       </div>
 
       <div class="board-lists">

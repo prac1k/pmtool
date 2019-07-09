@@ -1,5 +1,6 @@
 const Board = require('../models/board.model')
-
+const User = require('../models/user.model')
+var mongoose = require('mongoose');
 var populateQuery = [{path:"lists", select: ["title"], model: "List", populate: {path: "cards", select: ["title", "body", "assignedBy"], model: "Card"}}, {path:'users', select:'name', model:"User"}];
 
 module.exports = {
@@ -39,19 +40,46 @@ module.exports = {
         })
     },
 
-
+//assign user to the board + board to the user
     boardAssignUsers (req, res) {
-        Board.findById(req.body.boardId, (err, board) => {
-            if (err) {
-                res.status(400).end()
-                return
-            }
-            board.users = req.body.userIds
-            board.save((err, savedBoard) => {
-                this._handleResponse(err, savedBoard, res)
-                console.log(savedBoard);
-                })
-        })
+        const boardId = mongoose.Types.ObjectId(req.body.boardId);
+        const userIds = mongoose.Types.ObjectId(req.body.userIds);
+        Promise
+            .all([
+                Board.findByIdAndUpdate({_id: boardId},
+                    {$push: {users: {_id: userIds}}},
+                    {new: true})
+                    .exec(),
+                User.findByIdAndUpdate({_id: userIds},
+                    {$push: {boards: {_id: boardId}}},
+                    {new: true})
+                    .exec()
+            ])
+            .then(results => {
+                res.status(200).json({message: "User assigned to board", data: results})
+            })
+            .catch(err => {
+                res
+                    .status(500).json({
+                    error: err.message
+                });
+            });
+
+            // board.users = req.body.userIds
+            // board.users.push(user._id)
+            //     board.save(() => {
+            //     this._handleResponse(err, user, res)
+            //     console.log(savedBoard);
+            //     })
+            // Board.create({users: req.body.userIds} , (err, users) => {
+            //     board.users.push(board.users)
+            //     board.save(() => {
+            //         this._handleResponse(err , board, res)
+            //         console.log(board.users);
+            // board.users = req.body.userIds
+            // board.users.push() => {
+            //     this._handleResponse(err, savedBoard, res)
+            //     })
     },
 
     updateListsOrder (req, res) {
