@@ -20,7 +20,7 @@ export default {
   },
   boardAssignUsers(boardId, userIds) {
     return axios
-      .put("/server/boards/" + boardId,{
+      .post("/server/boards/" + boardId,{
         boardId: boardId,
         userIds: userIds,
       }

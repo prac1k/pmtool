@@ -11,9 +11,11 @@
         </editable>
       </div>
       <div class="assign-people">
-{{board.users}}
+{{assignedUsers}}
+        <div>
+          <BFormSelect v-model="selected" :options="optionsUserAdd"></BFormSelect>
       </div>
-
+      </div>
       <div class="board-lists">
         <addable
           class="add-new-list"
@@ -37,8 +39,11 @@
   import Editable from "./EditableBoardTitle";
   import List from "./List";
   import listService from "../services/list.service";
+  import userService from "../services/user.service";
   import Addable from "./Addable";
   import Draggable from 'vuedraggable'
+  import { BFormSelect } from 'bootstrap-vue'
+  import authenticationService from '../services/authentication.service'
 
   export default {
     components: {
@@ -46,15 +51,20 @@
       Editable ,
       Addable ,
       Draggable,
+      BFormSelect
     },
 
 
     data () {
       return {
+        user: authenticationService.currentUserValue,
+        assignedUsers: [],
+        selected: null,
+        optionsUserAdd: [],
         board: null,
-        lists: [] ,
-        users: null,
+        lists: [],
         fromListIndex: null,
+        users: []
       };
     },
      created () {
@@ -65,8 +75,8 @@
         (board => {
           this.$set(this , "board" , board);
           this.$set(this , "lists" , board.lists);
-          this.$set(this , "users" , board.users);
-
+          this.$set(this , "assignedUsers" , board.users);
+          this.$set(this , "userAddToBoard", userService.getAll);
         }).bind(this)
       );
     } ,
