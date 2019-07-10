@@ -13,7 +13,11 @@
       <div class="assign-people">
 {{assignedUsers}}
         <div>
-          <BFormSelect v-model="selected" :options="optionsUserAdd"></BFormSelect>
+          <BFormSelect v-model="selected">
+            <option v-for="(users, name) in users" :key="name" :value="name">
+            {{users}}
+          </option>
+          </BFormSelect>
       </div>
       </div>
       <div class="board-lists">
@@ -57,7 +61,7 @@
 
     data () {
       return {
-        user: authenticationService.currentUserValue,
+        user: authenticationService.currentUserValue.name,
         assignedUsers: [],
         selected: null,
         optionsUserAdd: [],
@@ -69,6 +73,7 @@
     },
      created () {
        this.$eventBus.$on("list-dragend", this.onListDragEnd);
+       userService.getAll().then(users => this.users = users);
      } ,
     mounted () {
       boardService.findById(this.$route.params.boardId).then(
@@ -76,7 +81,7 @@
           this.$set(this , "board" , board);
           this.$set(this , "lists" , board.lists);
           this.$set(this , "assignedUsers" , board.users);
-          this.$set(this , "userAddToBoard", userService.getAll);
+          this.$set(this , "users" , users);
         }).bind(this)
       );
     } ,

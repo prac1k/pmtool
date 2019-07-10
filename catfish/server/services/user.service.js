@@ -28,10 +28,6 @@ async function authenticate({ email, password }) {
     }
 }
 
-
-
-
-
 async function getAll() {
     return await User.find().select('-hash');
 }
