@@ -64,22 +64,6 @@ module.exports = {
                     error: err.message
                 });
             });
-
-            // board.users = req.body.userIds
-            // board.users.push(user._id)
-            //     board.save(() => {
-            //     this._handleResponse(err, user, res)
-            //     console.log(savedBoard);
-            //     })
-            // Board.create({users: req.body.userIds} , (err, users) => {
-            //     board.users.push(board.users)
-            //     board.save(() => {
-            //         this._handleResponse(err , board, res)
-            //         console.log(board.users);
-            // board.users = req.body.userIds
-            // board.users.push() => {
-            //     this._handleResponse(err, savedBoard, res)
-            //     })
     },
 
     updateListsOrder (req, res) {

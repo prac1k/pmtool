@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@lossendae/vue-avatar": "^0.1.5",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.25",
@@ -18,6 +19,7 @@
     "tiptap": "^1.23.0",
     "tiptap-extensions": "^1.24.0",
     "vue": "^2.5.2",
+    "vue-avatar": "^2.1.7",
     "vue-multiselect": "^2.1.6",
     "vue-router": "^3.0.1",
     "vue-select": "^3.1.0",

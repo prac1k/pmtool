@@ -11,7 +11,10 @@
         </editable>
       </div>
       <div class="assign-people">
-        Assigned users: {{assignedUsers}}
+
+        <VueAvatar v-for="user in assignedUsers" :key="user._id" :username='user.name+user.lastName' alt='user.name+user.lastname'>
+          Assigned users:
+        </VueAvatar>
         <div>
             <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log">
               "You've just added:" {{selectedOption}}
@@ -47,6 +50,7 @@
   import { BFormSelect } from 'bootstrap-vue'
   import authenticationService from '../services/authentication.service'
   import vSelect from "vue-select"
+  import VueAvatar from '@lossendae/vue-avatar'
 
   export default {
     components: {
@@ -56,6 +60,7 @@
       Draggable,
       BFormSelect,
       vSelect,
+      VueAvatar,
     },
 
     computed:{
@@ -64,7 +69,7 @@
   },
       selectedOption(){
         if (this.selected)
-          return this.selected.value + "assign-select"
+          return this.selected.value
         else
           return null
       },
@@ -79,7 +84,7 @@
         board: null,
         lists: [],
         fromListIndex: null,
-        users: []
+        users: [],
       };
     },
      created () {
