@@ -11,14 +11,12 @@
         </editable>
       </div>
       <div class="assign-people">
-{{assignedUsers}}
+        Assigned users: {{assignedUsers}}
         <div>
-          <BFormSelect v-model="selected">
-            <option v-for="users in users" v-bind:key="name" :value="name">
-            {{users.name + " " + users.lastname}}
-          </option>
-          </BFormSelect>
-      </div>
+            <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log">
+              "You've just added:" {{selectedOption}}
+            </vSelect>
+        </div>
       </div>
       <div class="board-lists">
         <addable
@@ -48,6 +46,7 @@
   import Draggable from 'vuedraggable'
   import { BFormSelect } from 'bootstrap-vue'
   import authenticationService from '../services/authentication.service'
+  import vSelect from "vue-select"
 
   export default {
     components: {
@@ -55,9 +54,21 @@
       Editable ,
       Addable ,
       Draggable,
-      BFormSelect
+      BFormSelect,
+      vSelect,
     },
 
+    computed:{
+      selectOptions(){
+      return this.users.map(d => ({label: d.name + " "+ d.lastname, value: d.id}))
+  },
+      selectedOption(){
+        if (this.selected)
+          return this.selected.value + "assign-select"
+        else
+          return null
+      },
+},
 
     data () {
       return {
@@ -74,15 +85,15 @@
      created () {
        this.$eventBus.$on("list-dragend", this.onListDragEnd);
        userService.getAll().then(users => this.users = users);
+       boardService.findById(this.$route.params.boardId).then(
+         (board => {
+           this.$set(this , "board" , board);
+           this.$set(this , "lists" , board.lists);
+           this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname})));
+         }).bind(this)
+       );
      } ,
     mounted () {
-      boardService.findById(this.$route.params.boardId).then(
-        (board => {
-          this.$set(this , "board" , board);
-          this.$set(this , "lists" , board.lists);
-          this.$set(this , "assignedUsers" , board.users);
-        }).bind(this)
-      );
     } ,
     methods: {
       editableSubmitted (inputText) {
@@ -107,6 +118,23 @@
       updateListsOrder() {
         let listIds = this.lists.map(list => list._id);
         boardService.updateListsOrder(this.board._id, listIds);
+      },
+      onUsersClickAdd(){
+        this.boardAssignUsers();
+      },
+      updateAssignedusers(){
+        boardService.findById(this.$route.params.boardId).then(
+          (board => {
+            this.$set(this , "board" , board);
+            this.$set(this , "lists" , board.lists);
+            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name})));
+          }).bind(this)
+        );
+      },
+      boardAssignUsers(){
+        let userIds = this.selected.value;
+        boardService.boardAssignUsers(this.board._id, userIds).then(res => this.updateAssignedusers()) ;
+        console.log(this.board._id, userIds);
       },
       log: function(evt) {
         window.console.log(evt);
@@ -170,4 +198,9 @@
     display: flex;
     flex-direction: row-reverse;
   }
+
+   .vs__dropdown-toggle{
+     margin: 0 auto;
+     max-width: 600px;}
+</style>
 </style>
