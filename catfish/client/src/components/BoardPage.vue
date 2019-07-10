@@ -15,7 +15,7 @@
         <div>
           <BFormSelect v-model="selected">
             <option v-for="users in users" v-bind:key="name" :value="name">
-            {{users.name}}
+            {{users.name + " " + users.lastname}}
           </option>
           </BFormSelect>
       </div>
