@@ -14,8 +14,8 @@
 {{assignedUsers}}
         <div>
           <BFormSelect v-model="selected">
-            <option v-for="(users, name) in users" :key="name" :value="name">
-            {{users}}
+            <option v-for="users in users" v-bind:key="name" :value="name">
+            {{users.name}}
           </option>
           </BFormSelect>
       </div>
@@ -81,7 +81,6 @@
           this.$set(this , "board" , board);
           this.$set(this , "lists" , board.lists);
           this.$set(this , "assignedUsers" , board.users);
-          this.$set(this , "users" , users);
         }).bind(this)
       );
     } ,
