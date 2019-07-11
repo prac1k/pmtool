@@ -10,14 +10,15 @@
           <h2>{{ slotProps.inputText }}</h2>
         </editable>
       </div>
-      <div class="assign-people">
+      <div class="assign-people" >
 
-        <VueAvatar v-for="user in assignedUsers" :key="user._id" :username='user.name+user.lastName' alt='user.name+user.lastname'>
+        <VueAvatar v-for="user in assignedUsers" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
           Assigned users:
         </VueAvatar>
         <div>
             <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log">
               "You've just added:" {{selectedOption}}
+
             </vSelect>
         </div>
       </div>
@@ -65,7 +66,7 @@
 
     computed:{
       selectOptions(){
-      return this.users.map(d => ({label: d.name + " "+ d.lastname, value: d.id}))
+      return this.users.map(d => ({label: d.name + " " + d.lastname, value: d.id}))
   },
       selectedOption(){
         if (this.selected)
@@ -85,7 +86,7 @@
         lists: [],
         fromListIndex: null,
         users: [],
-      };
+              };
     },
      created () {
        this.$eventBus.$on("list-dragend", this.onListDragEnd);
@@ -95,6 +96,7 @@
            this.$set(this , "board" , board);
            this.$set(this , "lists" , board.lists);
            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname})));
+           console.log(board.users);
          }).bind(this)
        );
      } ,
@@ -132,7 +134,7 @@
           (board => {
             this.$set(this , "board" , board);
             this.$set(this , "lists" , board.lists);
-            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name})));
+            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname})));
           }).bind(this)
         );
       },
@@ -162,9 +164,6 @@
     padding: 8px;
     margin: 0;
   }
-</style>
-
-<style scoped lang="scss">
   .add-new-list {
     display: inline-block;
     width: 270px;
@@ -200,12 +199,31 @@
   }
 
   .assign-people{
-    display: flex;
+    display: fixed;
     flex-direction: row-reverse;
+    padding-left: 5px;
   }
 
-   .vs__dropdown-toggle{
-     margin: 0 auto;
-     max-width: 600px;}
+  [tooltip]:before {
+    position : absolute;
+    content : attr(tooltip);
+    opacity : 0;
+    text-decoration-color: black;
+  }
+  [tooltip]:after{
+    color:#fff;
+  }
+
+  [tooltip]:hover:before {
+    opacity : 1;
+  }
+
+  [tooltip]:not([tooltip-persistent]):before {
+    pointer-events: none;
+    color: black;
+    postion: fixed;
+    top: 15%;
+    padding-left: 5px;
+  }
 </style>
-</style>
+

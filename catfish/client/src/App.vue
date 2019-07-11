@@ -11,6 +11,7 @@
         <router-link v-if="currentUser" to="/" class="nav-item nav-link">Home</router-link>
         <router-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Admin</router-link>
         <router-link v-if="currentUser" to="#" class="nav-item nav-link">My boards</router-link>
+          <router-link v-if="currentUser" to="#" class="nav-item nav-link">My Tasks</router-link>
           <div v-if="currentUser" class="logoutborder">
           <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>
           </div>
@@ -81,7 +82,7 @@
   .nav-item.nav-link{
     position: relative;
     top: -3em;
-    padding-left: 20%;
+    padding-left: 15%;
     justify-content: normal;
 }
 

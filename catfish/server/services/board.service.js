@@ -1,7 +1,7 @@
 const Board = require('../models/board.model')
 const User = require('../models/user.model')
 var mongoose = require('mongoose');
-var populateQuery = [{path:"lists", select: ["title"], model: "List", populate: {path: "cards", select: ["title", "body", "assignedBy"], model: "Card"}}, {path:'users', select:'name', model:"User"}];
+var populateQuery = [{path:"lists", select: ["title"], model: "List", populate: {path: "cards", select: ["title", "body", "assignedBy"], model: "Card"}}, {path:'users', select:'name , lastname', model:"User"}];
 
 module.exports = {
 

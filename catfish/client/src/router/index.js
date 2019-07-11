@@ -6,6 +6,8 @@ import { authenticationService } from '../services/authentication.service';
 import { Role } from '../_helpers/role';
 import AdminPage from '../components/AdminPage';
 import LoginPage from '../components/LoginPage';
+import myTasksPage from '../components/myTasksPage';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -20,6 +22,12 @@ const router = new Router({
       path: "/boards/:boardId",
       name: "BoardPage",
       component: BoardPage,
+      meta: { authorize: [Role.Admin, Role.User] }
+    },
+    {
+      path: "/",
+      name: "My Tasks",
+      component: myTasksPage,
       meta: { authorize: [Role.Admin, Role.User] }
     },
 
