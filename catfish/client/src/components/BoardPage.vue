@@ -11,11 +11,14 @@
         </editable>
       </div>
       <div class="assign-people" >
-
-        <VueAvatar v-for="user in assignedUsers" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
-          Assigned users:
+        <div class="assignedUserAva">
+        <VueAvatar  :size="30" :customStyles={assignedUserAva} v-for="user in assignedUsers" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
         </VueAvatar>
-        <div>
+        </div>
+      </div>
+      <div>
+      <div>
+
             <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log">
               "You've just added:" {{selectedOption}}
 
@@ -198,12 +201,24 @@
     background: white;
   }
 
-  .assign-people{
+  .assign-people {
     display: fixed;
     flex-direction: row-reverse;
     padding-left: 5px;
+    width: 18.3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-
+    .assign-people:hover{
+      display: fixed;
+      flex-direction: row-reverse;
+      padding-left: 5px;
+      width: 100%;
+      white-space: normal ;
+      overflow: visible;
+      text-overflow: unset;
+    }
   [tooltip]:before {
     position : absolute;
     content : attr(tooltip);
@@ -225,5 +240,13 @@
     top: 15%;
     padding-left: 5px;
   }
+  .assignedUserAva{
+    padding:7px;
+    margin: 1;
+  }
+  .vue-avatar{
+    margin: 3px;
+  }
+
 </style>
 
