@@ -35,6 +35,9 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    avatar:{
+        type: String,
+    },
 });
 
 schema.set('toJSON', { virtuals: true });

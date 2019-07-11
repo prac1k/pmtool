@@ -11,16 +11,15 @@
         </editable>
       </div>
       <div class="assign-people" >
-        <div class="assignedUserAva">
-        <VueAvatar  :size="30" :customStyles={assignedUserAva} v-for="user in assignedUsers" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
+        <div class="assignedUserAva"> Assigned users:
+        <VueAvatar  :size="30" v-for="user in assignedUsers" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
         </VueAvatar>
         </div>
       </div>
       <div>
       <div>
-
-            <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log">
-              "You've just added:" {{selectedOption}}
+        <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log" placeholder="Start typing to add user...g">
+              {{selectedOption}}
 
             </vSelect>
         </div>
@@ -98,7 +97,7 @@
          (board => {
            this.$set(this , "board" , board);
            this.$set(this , "lists" , board.lists);
-           this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname})));
+           this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
            console.log(board.users);
          }).bind(this)
        );
@@ -137,7 +136,7 @@
           (board => {
             this.$set(this , "board" , board);
             this.$set(this , "lists" , board.lists);
-            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname})));
+            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
           }).bind(this)
         );
       },
@@ -202,23 +201,37 @@
   }
 
   .assign-people {
-    display: fixed;
+    display: inline-flex;
     flex-direction: row-reverse;
     padding-left: 5px;
     width: 18.3%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    position: fixed;
+    height: 45px;
+    top: 60px;
   }
     .assign-people:hover{
-      display: fixed;
+      display: inline-flex;
       flex-direction: row-reverse;
       padding-left: 5px;
-      width: 100%;
+      width: 75%;
       white-space: normal ;
       overflow: visible;
       text-overflow: unset;
     }
+    .assign-select{
+      position: fixed;
+      top: 82px;
+      right: 15px;
+    }
+    .vs__actions{
+      display: none;
+    }
+  .vs__selected{
+    position: fixed;
+  }
   [tooltip]:before {
     position : absolute;
     content : attr(tooltip);
@@ -242,10 +255,15 @@
   }
   .assignedUserAva{
     padding:7px;
-    margin: 1;
+    margin: 1px;
+    display: flex;
+    flex-flow: row wrap;
   }
   .vue-avatar{
     margin: 3px;
+  }
+  .vue-avatar-span{
+    display: none;
   }
 
 </style>
