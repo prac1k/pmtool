@@ -12,6 +12,15 @@ export default {
   findById(listId) {
     return axios.get("/server/lists/" + listId).then(res => res.data)
   },
+  cardAssignToUsers(cardId, assignUserIds) {
+    return axios
+      .post("/server/cards/assignuser/" + cardId,{
+        cardId: cardId,
+        assignUserIds: assignUserIds,
+        }
+      ).then(res => res.data)
+    console.log(assignUserIds);
+  },
   updateCardsOrder(listId, cardIds) {
     return axios
       .put("/server/cards/updateCardsOrder", {

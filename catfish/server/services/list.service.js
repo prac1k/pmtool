@@ -1,20 +1,11 @@
 const List = require('../models/list.model')
 const Board = require('../models/board.model')
-
+var populateListQuery = [{path:"lists", select: ["title"], model: "List", populate: {path: "cards", select: ["title", "body", "assignedBy", "assignedTo"], model: "Card", populate: {path:'users', select: ["name", "lastname", "avatar", "cards"], model:"User"}}}];
 module.exports = {
 
     getById (req, res) {
         List.findOne({_id: req.params.listId})
-            .populate({
-                path: "lists",
-                select: ["title"],
-                model: "List",
-                populate: {
-                    path: "cards",
-                    select: ["title", "body", "assignedBy"],
-                    model: "Card"
-                }
-            })
+            .populate(populateListQuery)
             .exec((err, list) => {
                 this._handleResponse(err, list, res)
             })

@@ -2,10 +2,26 @@ const Board = require('../models/board.model')
 const User = require('../models/user.model')
 
 var mongoose = require('mongoose');
-var populateQuery = [{path:"lists", select: ["title"], model: "List", populate: {path: "cards", select: ["title", "body", "assignedBy"], model: "Card"}}, {path:'users', select: ["name", "lastname", "avatar"], model:"User"}];
+var populateQuery =
+    [{path:"lists", select: ["title"],
+    model: "List",
+    populate: {path: "cards", select: ["title", "body", "assignedBy", "assignedTo"],
+    model: "Card",
+    populate: {path:'users', select: ["name", "lastname", "avatar", "cards"],
+    model:"User"}}},
+
+    {path:"lists", select: ["title"],
+     model: "List",
+     populate: {path: "cards", select: ["title", "body", "assignedBy", "assignedTo"],
+      model: "Card",
+      populate: {path:'assignedTo', select: ["name", "lastname", "avatar", "cards"],
+       model:"User"}}},
+
+
+    {path:'users', select: ["name", "lastname", "avatar", "cards"],
+    model:"User"}];
 
 module.exports = {
-
 
 
     getAll (req, res) {
@@ -16,20 +32,6 @@ module.exports = {
     getById (req, res) {
         Board.findOne({_id: req.params.boardId})
             .populate(populateQuery)
-
-                // path:"lists",
-                // select: ["title"],
-                // model: "List",
-                // populate: {
-                //     path: "cards",
-                //     select: ["title", "body", "assignedBy"],
-                //     model: "Card"
-                //     },
-                //  path:"users",
-                //  select:"name",
-                //  model: "User",
-
-            // })
             .exec((err, board) => {
                 this._handleResponse(err, board, res)
                 console.log(board);

@@ -17,5 +17,6 @@ router.put("/boards/:boardId", boardService.update.bind(boardService))
 router.put("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
 router.post("/cards/:cardId", cardService.updateCardBody.bind(cardService))
 router.post("/boards/:boardId", boardService.boardAssignUsers.bind(boardService))
+router.post("/cards/assignuser/:cardId", cardService.cardAssignToUsers.bind(cardService))
 
 module.exports = router

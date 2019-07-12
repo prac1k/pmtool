@@ -40,29 +40,50 @@
                   <!--                </editor>-->
 
                 </EditableCardBody>
+                           </div>
+               <!-- Card Description Ends  -->
+              <!--  Assign user -->
+              <div class="card-assignfront">
+                <h5>Assigned users:</h5>
+                <div >
+                  <VueAvatar  :size="20" v-for="user in cardProp" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
+                  </VueAvatar>
+                </div>
               </div>
-              <!-- Card Description Ends  -->
+            <div>
+              <div>
+                <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersCardClickAdd" placeholder="Start typing to add user...">
+                  {{selectedOption}}
+                </vSelect>
+              </div>
+            </div>
+              <!--  Assign user ENDS-->
+            </div>
             </div>
           </div>
-        </div>
       </transition>
     </div>
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
     <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
     <div class="card-assignfront" @click="isOpen = !isOpen;">Assigned by: {{card.assignedBy}}</div>
-    <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee: </div>
+    <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee: <VueAvatar  :size="20" v-for="user in assignedTo" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
+    </VueAvatar></div>
   </div>
 
 </template>
 
 <script>
   import authenticationService from '../services/authentication.service';
+  import boardService from '../services/board.service';
   import userService from '../services/user.service';
   import Card from "./Card"
   import cardService from "../services/card.service"
   import EditableCardTitle from "./EditableCardTitle";
   import EditableCardBody from "./EditableCardBody";
   import { Editor, EditorContent } from 'tiptap';
+  import { BFormSelect } from 'bootstrap-vue'
+  import vSelect from "vue-select"
+  import VueAvatar from '@lossendae/vue-avatar'
   export default {
 
     components: {
@@ -71,6 +92,9 @@
       EditableCardTitle ,
       EditableCardBody ,
       EditorContent ,
+      BFormSelect,
+      vSelect,
+      VueAvatar,
     } ,
 
     props: [
@@ -90,13 +114,46 @@
         isDraggingCard: false ,
         dragEntered: false ,
         editor: null ,
+        selected: null,
+        assignedUsers: [],
+        board: null,
+        lists: [],
+        assignedTo: [],
       };
     } ,
+
+    computed:{
+      selectOptions(){
+        return this.board.users.map(d => ({label: d.name + " " + d.lastname, value: d.id}))
+      },
+      selectedOption(){
+        if (this.selected)
+          return this.selected.value
+        else
+          return null
+      },
+    },
+    created(){
+      this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+
+      //this.$set(this , "assignedTo" , this.card.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+      boardService.findById(this.$route.params.boardId).then(
+        (board => {
+          this.$set(this , "board" , board);
+          this.$set(this , "lists" , board.lists.cards);
+          this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+        }).bind(this)
+      );
+      this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+      console.log(this.cardProp.assignedTo);
+      },
     mounted () {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
       this.$set(this , "user" , this.user);
-      // this.editor = new Editor({
+      this.$set(this , "assignedTo" , this.cardProp.assignedTo.map( d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+      console.log(this.cardProp);
+            // this.editor = new Editor({
       //   onFocus: ({event , state , view}) => {
       //     console.log(event , state , view)
       //   },
@@ -139,7 +196,24 @@
         this.$set(this, "isDraggingCard", false)
         this.$eventBus.$emit("card-dragend")
       },
-
+      onUsersCardClickAdd(){
+        this.cardAssignToUsers();
+      },
+          cardAssignToUsers(){
+        let assignUserIds = this.selected.value;
+        cardService.cardAssignToUsers(this.card._id, assignUserIds).then(res => this.updateAssignedToUsers()) ;
+        console.log("user assigned", this.card._id, assignUserIds );
+        },
+      updateAssignedToUsers(){
+        // boardService.findById(this.$route.params.boardId).then(
+        //   (board => {
+        //     this.$set(this , "board" , board);
+        //     this.$set(this , "lists" , board.lists);
+        //     this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+        //   }).bind(this)
+        // );
+        this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+      },
     },
   };
 </script>
@@ -214,4 +288,93 @@
 .card-assignfront{
   padding-top:15px;
 }
+  .assign-people {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    padding-left: 5px;
+    width: 18.3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: fixed;
+    height: 45px;
+    top: 60px;
+  }
+  .assign-people:hover{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    padding-left: 5px;
+    width: 75%;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+  .assign-select{
+    position: fixed;
+    top: 82px;
+    right: 15px;
+  }
+  .vs__actions{
+    display: none;
+  }
+  .vs__selected{
+    position: fixed;
+    right: 10px;
+  }
+  [tooltip]:before {
+    position : absolute;
+    content : attr(tooltip);
+    opacity : 0;
+    text-decoration-color: black;
+  }
+  [tooltip]:after{
+    color:#fff;
+  }
+
+  [tooltip]:hover:before {
+    opacity : 1;
+  }
+
+  [tooltip]:not([tooltip-persistent]):before {
+    pointer-events: none;
+    color: black;
+    postion: fixed;
+    top: 15%;
+    padding-left: 5px;
+  }
+  .assignedUserAva{
+    padding:7px;
+    margin: 1px;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .vue-avatar{
+    margin: 3px;
+  }
+  .vue-avatar-span{
+    display: none;
+  }
+  .vs__search{
+    position: fixed;
+    top: 56%;
+    right: 35%;
+  }
+  .v-select.assign-select.vs--single.vs--searchable{
+    position: fixed;
+    top: 58%;
+    right: 35%;
+  }
+
+  .v-select.assign-select.vs--single.vs--open.vs--searchable{
+    position: fixed;
+    margin-top:10px;
+    top: 58%;
+    right: 35%;
+    background: white;
+    border: 1px solid;
+    height: 10%;
+    white-space: normal;
+    overflow: auto;
+    text-overflow: fade;
+  }
 </style>

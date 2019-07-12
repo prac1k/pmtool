@@ -98,9 +98,11 @@
            this.$set(this , "board" , board);
            this.$set(this , "lists" , board.lists);
            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-           console.log(board.users);
+           console.log(this.board);
          }).bind(this)
+
        );
+
      } ,
     mounted () {
     } ,
@@ -139,11 +141,11 @@
             this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
           }).bind(this)
         );
+
       },
       boardAssignUsers(){
         let userIds = this.selected.value;
         boardService.boardAssignUsers(this.board._id, userIds).then(res => this.updateAssignedusers()) ;
-        console.log(this.board._id, userIds);
       },
       log: function(evt) {
         window.console.log(evt);
@@ -217,7 +219,7 @@
       flex-direction: row-reverse;
       padding-left: 5px;
       width: 75%;
-      white-space: normal ;
+      white-space: normal;
       overflow: visible;
       text-overflow: unset;
     }
