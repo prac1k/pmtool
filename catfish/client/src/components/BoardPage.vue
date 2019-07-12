@@ -18,7 +18,7 @@
       </div>
       <div>
       <div>
-        <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log" placeholder="Start typing to add user...g">
+        <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log" placeholder="Start typing to add user...">
               {{selectedOption}}
 
             </vSelect>
