@@ -45,14 +45,14 @@
               <!--  Assign user -->
               <div class="card-assignfront">
                 <h5>Assigned users:</h5>
-                <div >
+                <div class="assignedUserAva">
                   <VueAvatar  :size="20" v-for="user in assignedTo" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
                   </VueAvatar>
                 </div>
               </div>
             <div>
               <div>
-                <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersCardClickAdd" placeholder="Start typing to add user...">
+                <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersCardClickAdd" @change="onUsersCardClickAdd" placeholder="Start typing to add user...">
                   {{selectedOption}}
                 </vSelect>
               </div>
@@ -66,10 +66,13 @@
     <div class="card-title"@click="isOpen = !isOpen;">{{ card.title }} {{ isOpen ? "" : "" }}</div>
     <div class="card-body" @click="isOpen = !isOpen;">{{ isOpen ? "" : "" }}</div>
     <div class="card-assignfront" @click="isOpen = !isOpen;">Assigned by: {{card.assignedBy}}</div>
-    <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee: <VueAvatar  :size="20" v-for="user in assignedTo" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
-    </VueAvatar></div>
+    <div class="card-assignfront" @click="isOpen = !isOpen;">Assignee:
+      <div class="assignedUserAva">
+        <VueAvatar  :size="20" v-for="user in assignedTo" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
+          </VueAvatar>
+      </div>
   </div>
-
+  </div>
 </template>
 
 <script>
@@ -134,25 +137,22 @@
       },
     },
     created(){
-      this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-
-      //this.$set(this , "assignedTo" , this.card.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+      //this.$set(this , "card" , this.cardProp);
+      // this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
       boardService.findById(this.$route.params.boardId).then(
         (board => {
           this.$set(this , "board" , board);
           this.$set(this , "lists" , board.lists.cards);
-          this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
         }).bind(this)
       );
-      this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-      console.log(this.cardProp.assignedTo);
       },
     mounted () {
       this.$set(this , "card" , this.cardProp);
       this.$set(this , "list" , this.listProp);
       this.$set(this , "user" , this.user);
       this.$set(this , "assignedTo" , this.cardProp.assignedTo.map( d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-      console.log(this.cardProp);
+      //this.$set(this , "assignedTo" , cardService.findById(this.card._id).then(this.card.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar}))));
+
             // this.editor = new Editor({
       //   onFocus: ({event , state , view}) => {
       //     console.log(event , state , view)
@@ -191,6 +191,7 @@
         }
         this.$set(this, "isDraggingCard", true)
         this.$eventBus.$emit("card-drag-started", fromIndex)
+        this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
       },
       onCardDragEnd () {
         this.$set(this, "isDraggingCard", false)
@@ -199,20 +200,15 @@
       onUsersCardClickAdd(){
         this.cardAssignToUsers();
       },
-          cardAssignToUsers(){
+      cardAssignToUsers(){
         let assignUserIds = this.selected.value;
         cardService.cardAssignToUsers(this.card._id, assignUserIds).then(res => this.updateAssignedToUsers()) ;
-        console.log("user assigned", this.card._id, assignUserIds );
         },
       updateAssignedToUsers(){
-        // boardService.findById(this.$route.params.boardId).then(
-        //   (board => {
-        //     this.$set(this , "board" , board);
-        //     this.$set(this , "lists" , board.lists);
-        //     this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-        //   }).bind(this)
-        // );
-        this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+        this.$set(this , "card" , this.cardProp);
+        this.$set(this , "assignedTo" , this.cardProp.assignedTo.map( d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+
+        console.log(this.card.assignedTo);
       },
     },
   };

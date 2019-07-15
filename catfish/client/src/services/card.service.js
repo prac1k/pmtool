@@ -12,6 +12,9 @@ export default {
   findById(listId) {
     return axios.get("/server/lists/" + listId).then(res => res.data)
   },
+  findById(cardId) {
+    return axios.get("/server/cards/" + cardId).then(res => res.data)
+  },
   cardAssignToUsers(cardId, assignUserIds) {
     return axios
       .post("/server/cards/assignuser/" + cardId,{
