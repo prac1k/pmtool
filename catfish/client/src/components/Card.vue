@@ -46,7 +46,7 @@
               <div class="card-assignfront">
                 <h5>Assigned users:</h5>
                 <div >
-                  <VueAvatar  :size="20" v-for="user in cardProp" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
+                  <VueAvatar  :size="20" v-for="user in assignedTo" :src="user.avatar" :key="user._id" :username='user.name + " " + user.lastname' :tooltip='user.name + " " + user.lastname'>
                   </VueAvatar>
                 </div>
               </div>
