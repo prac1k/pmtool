@@ -51,12 +51,15 @@
       Draggable ,
     } ,
     props: [
-      "cardProp" ,
+      //"cardProp",
       "listProp" ,
       "index"
     ] ,
+
     data () {
       return {
+        assignedTo: [],
+        card: [],
         list: [],
         cards: [],
         lists:[],
@@ -65,15 +68,19 @@
         fromCardIndex: null ,
         assignedBy: authenticationService.currentUserValue.name + " " +  authenticationService.currentUserValue.lastname,
       }
-    } ,
+    },
 
     created () {
+      this.$set(this, "list", this.listProp)
        this.$eventBus.$on("card-dragend", this.onCardDragEnd);
+      this.cards = JSON.parse(JSON.stringify(this.listProp.cards));
+      this.$set(this, "card", this.cards.map(card => card.assignedTo)) //displayin gassigned to card in a list
+      console.log(this.card);
   },
 
     mounted () {
-      this.$set(this, "list", this.listProp)
-       this.$set(this, "cards", JSON.parse(JSON.stringify(this.listProp.cards)))
+
+      this.cards.map(card => card._id);
     },
 
     methods: {
@@ -82,7 +89,6 @@
           return;
         }
         cardService.create(this.list._id , cardTitle, this.assignedBy).then((newCard) => {
-          console.log("listID card create:" , this.list._id,"title:", cardTitle, "Created by:", this.assignedBy);
           this.cards.push(newCard);
         })
       } ,

@@ -12,9 +12,11 @@ export default {
   findById(listId) {
     return axios.get("/server/lists/" + listId).then(res => res.data)
   },
-  findById(cardId) {
+
+  findByIdCard(cardId) {
     return axios.get("/server/cards/" + cardId).then(res => res.data)
   },
+
   cardAssignToUsers(cardId, assignUserIds) {
     return axios
       .post("/server/cards/assignuser/" + cardId,{
@@ -22,7 +24,6 @@ export default {
         assignUserIds: assignUserIds,
         }
       ).then(res => res.data)
-    console.log(assignUserIds);
   },
   updateCardsOrder(listId, cardIds) {
     return axios

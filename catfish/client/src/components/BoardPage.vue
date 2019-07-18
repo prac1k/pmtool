@@ -83,7 +83,6 @@
         user: authenticationService.currentUserValue.name,
         assignedUsers: [],
         selected: null,
-        optionsUserAdd: [],
         board: null,
         lists: [],
         fromListIndex: null,
@@ -139,7 +138,6 @@
             this.$set(this , "board" , board);
             this.$set(this , "lists" , board.lists);
             this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
-            this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
           }).bind(this)
         );
 
