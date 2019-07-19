@@ -120,7 +120,7 @@
         editor: null,
         selected: null,
         assignedUsers: [],
-        assignedTo: null,
+        assignedTo: [],
         board: null,
         lists: [],
       };
@@ -215,10 +215,12 @@
       cardService.findByIdCard(this.card._id).then(
         (card => {
           this.card = card;
-          this.assignedTo = this.card.assignedTo.map(d => ({name: d.name , lastname: d.lastname , avatar: d.avatar}));
+          this.assignedTo = card.assignedTo.map(d => ({name: d.name , lastname: d.lastname , avatar: d.avatar}));
+          console.log("updateAssignedToUsers", card.assignedTo);
         })
         );
-       console.log("updateAssignedToUsers", this.card);
+
+
 
       },
     },

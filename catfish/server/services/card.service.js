@@ -3,15 +3,24 @@ const Card  = require ('../models/card.model')
 const User = require('../models/user.model')
 
 var mongoose = require('mongoose');
-var populateQueryCards = [{path:"cards", select: ["title", "body", "assignedBy", "assignedTo"], model: "Card", populate: {path:'users', select: ["name", "lastname", "avatar", "cards"], model: "User"}}];
+// var populateQueryCards = [
+//     {path:"cards", select: ["title", "body", "assignedBy", "assignedTo"], model: "Card",
+//     populate: {path:'users', select: ["name", "lastname", "avatar", "cards"], model: "User"}
+//     },
+//     {path:"cards", select: ["assignedTo"], model: "Card",
+//     populate: {path:'users', select: ["name", "lastname", "avatar", "cards"], model:"User"}
+//     },
+//     {path:'users', select: ["name", "lastname", "avatar", "cards"], model:"User"
+//     }];
+
 
 module.exports = {
     getById (req, res) {
         Card.findOne({_id: req.params.cardId})
-            .populate(populateQueryCards)
+            .populate('assignedTo')
             .exec((err, card) => {
                 this._handleResponse(err, card, res)
-                console.log(card);
+                console.log( card);
             })
     },
     updateCardTitle (req, res) {

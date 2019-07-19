@@ -7,7 +7,9 @@ const CardSchema = new Schema({
     title: Types.String,
     body: Types.String,
     assignedBy: Types.String,
-    assignedTo: [{type: Types.ObjectId, ref: "User", default: []}],
+    assignedTo:  [
+        {type: Types.ObjectId, ref: "User", default: []},
+    ],
 })
 
 module.exports = mongoose.model("Card", CardSchema, "cards")
