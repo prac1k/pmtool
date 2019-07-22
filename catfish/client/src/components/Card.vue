@@ -129,8 +129,15 @@
     computed:{
 
       selectOptions(){
-        return this.board.users.map(d => ({label: d.name + " " + d.lastname, value: d.id}));
-              },
+        boardService.findById(this.$route.params.boardId).then(
+          (board => {
+            this.$set(this , "board" , board);
+            this.$set(this , "lists" , board.lists);
+            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+          }).bind(this)
+        );
+         return this.assignedUsers.map(d => ({label: d.name + " " + d.lastname, value: d.id}));
+        },
       selectedOption(){
         if (this.selected)
           return this.selected.value
@@ -148,14 +155,17 @@
         (board => {
           this.board = board;
           this.lists= board.lists.cards;
+          this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
         }).bind(this)
       );
+      console.log(this.assignedUsers);
       //this.$set(this , "card" , this.cardProp);
       // this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
 
       },
 
     mounted () {
+
       //this.$set(this , "assignedTo" , cardService.findById(this.card._id).then(this.card.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar}))));
 
             // this.editor = new Editor({
@@ -204,7 +214,7 @@
         this.$eventBus.$emit("card-dragend")
       },
       onUsersCardClickAdd(){
-        this.cardAssignToUsers();
+         this.cardAssignToUsers();
       },
 
       cardAssignToUsers(){

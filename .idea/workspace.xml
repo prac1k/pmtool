@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/components/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/Card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/models/card.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/models/card.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/services/card.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/services/card.service.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,14 +17,17 @@
     <favorites_list name="pmtool" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5557576">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2595">
-                  <caret line="218" column="47" selection-start-line="218" selection-start-column="47" selection-end-line="218" selection-end-column="47" />
+                <state relative-caret-position="428">
+                  <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#3403#3474#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -35,56 +35,11 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="233">
-                  <caret line="148" column="22" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="22" />
+                <state relative-caret-position="308">
+                  <caret line="141" selection-start-line="141" selection-end-line="141" />
                   <folding>
                     <element signature="e#1419#1472#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/catfish/server/services/card.service.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/catfish/server/models/user.model.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/catfish/server/models/card.model.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="53" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="53" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/catfish/server/services/list.service.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/catfish/server/services/board.service.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="80" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
                 </state>
               </provider>
             </entry>
@@ -94,10 +49,13 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/catfish/server/services/board.service.js">
+            <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+                <state relative-caret-position="555">
+                  <caret line="94" selection-start-line="94" selection-end-line="101" selection-end-column="9" />
+                  <folding>
+                    <element signature="e#1419#1472#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -217,9 +175,9 @@
         <option value="$PROJECT_DIR$/catfish/client/src/components/List.vue" />
         <option value="$PROJECT_DIR$/catfish/client/src/services/card.service.js" />
         <option value="$PROJECT_DIR$/catfish/server/models/card.model.js" />
+        <option value="$PROJECT_DIR$/catfish/server/services/card.service.js" />
         <option value="$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue" />
         <option value="$PROJECT_DIR$/catfish/client/src/components/Card.vue" />
-        <option value="$PROJECT_DIR$/catfish/server/services/card.service.js" />
       </list>
     </option>
   </component>
@@ -441,11 +399,12 @@
       <workItem from="1563348053939" duration="10097000" />
       <workItem from="1563444097852" duration="7483000" />
       <workItem from="1563529826776" duration="6768000" />
+      <workItem from="1563785460643" duration="3286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="586548000" />
+    <option name="totallyTimeSpent" value="589834000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,24 +786,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/server/services/list.service.js">
+    <entry file="file://$PROJECT_DIR$/catfish/server/models/user.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/server/services/board.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="80" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2595">
-          <caret line="218" column="47" selection-start-line="218" selection-start-column="47" selection-end-line="218" selection-end-column="47" />
+        <state relative-caret-position="465">
+          <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -855,20 +800,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
+    <entry file="file://$PROJECT_DIR$/catfish/server/services/list.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="148" column="22" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="22" />
-          <folding>
-            <element signature="e#1419#1472#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/catfish/server/models/user.model.js">
+    <entry file="file://$PROJECT_DIR$/catfish/server/services/board.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+        <state relative-caret-position="15">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -876,6 +818,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/BoardPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="141" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="e#1419#1472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catfish/client/src/components/Card.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="137" column="10" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
+          <folding>
+            <element signature="e#3403#3474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
