@@ -7,6 +7,7 @@ const cardService = require("../services/card.service")
 router.post("/lists", listService.create.bind(listService))
 router.post("/boards", boardService.create.bind(boardService))
 router.post("/cards/", cardService.create.bind(cardService))
+router.get("/boards/getmyboards", boardService.getMyBoards.bind(boardService))
 router.get("/boards", boardService.getAll.bind(boardService))
 router.get("/lists/:listId", listService.getById.bind(listService))
 router.get("/cards/:cardId", cardService.getById.bind(cardService))
@@ -18,5 +19,6 @@ router.put("/cards/:cardId", cardService.updateCardTitle.bind(cardService))
 router.post("/cards/:cardId", cardService.updateCardBody.bind(cardService))
 router.post("/boards/:boardId", boardService.boardAssignUsers.bind(boardService))
 router.post("/cards/assignuser/:cardId", cardService.cardAssignToUsers.bind(cardService))
+
 
 module.exports = router

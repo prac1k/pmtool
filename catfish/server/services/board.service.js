@@ -20,8 +20,14 @@ var populateQuery =
 
     {path:'users', select: ["name", "lastname", "avatar", "cards"],
     model:"User"}];
+var populateMyBoardsQuery =
+    [{path:'boards', match: [users = "userId"], select: ["title"],
+    model:"Board"}];
+
+
 
 module.exports = {
+
 
 
     getAll (req, res) {
@@ -37,6 +43,25 @@ module.exports = {
                 console.log(board);
             })
     },
+
+// get list of my boards
+    getMyBoards (req, res) {
+        User.findOne({_id: req.body.userId})
+            .populate([{
+
+                    path: "boards" ,
+                    select: ["title"],
+                    model: "Board",
+
+            }])
+            .exec((err, boards) => {
+            this._handleResponse(err, boards, res)
+                console.log('getmyboards', boards);
+        })
+    },
+
+
+
     update (req, res) {
         Board.findByIdAndUpdate(req.params.boardId, {title: req.body.title}, (err, board) => {
             this._handleResponse(err, board, res)
