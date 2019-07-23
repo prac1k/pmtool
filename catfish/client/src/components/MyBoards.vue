@@ -1,59 +1,38 @@
 <template>
   <div>
     <div class="boards">
-      <router-link v-for="board in boards" class="board" :key="board._id" :to="{ name: 'BoardPage', params: {boardId: board._id }}">
+      <router-link v-for="board in boards" class="board" :key="$data._id" :to="{ name: 'BoardPage', params: {boardId: board._id }}">
         {{ board.title }}
       </router-link>
     </div>
-    <addable
-      class="add-new-board"
-      @addable-submit="addableSubmit">
-      <div class="addboard">Add Board</div>
-    </addable>
   </div>
 </template>
 
 <script>
   import boardService from "../services/board.service"
-  import Addable from "./Addable";
-  import { authenticationService } from '../services/authentication.service';
+  //import Addable from "./Addable";
+  import authenticationService from '../services/authentication.service';
   export default {
 
     components:{
-      Addable,
+     // Addable,
     },
 
-    name: "Boards",
+
     data () {
       return {
-        currentUser: authenticationService.currentUserValue,
-        boards: [],
+        user: authenticationService.currentUserValue.name,
+        boards:  [],
         userFromApi: null,
-        userId: authenticationService.currentUserValue._id,
-      }
-    },
-    mounted () {
-      this.getMyBoards(userId)
-    },
-    methods: {
-      addableSubmit (boardTitle) {
-        console.log(boardTitle);
-        if (!boardTitle || boardTitle.length === 0) {
-          return;
         }
-        boardService.create(boardTitle)
-          .then((res) => {
-            this.getAllBoards()
-          })
-      },
-      getAllBoards(){
-        boardService.getAll().then(((boards) => this.boards =boards))
-      }
+    },
+      //deconstructing promise
+    created () {
+         const userId = authenticationService.currentUserValue._id;
+         boardService.getMyBoards(userId).then(res => this.boards = res.data.boards);
+       },
     }
-  }
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+  </script>
 <style scoped>
   .boards {
     width: 80%;

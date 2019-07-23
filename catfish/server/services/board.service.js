@@ -46,14 +46,12 @@ module.exports = {
 
 // get list of my boards
     getMyBoards (req, res) {
-        User.findOne({_id: req.body.userId})
-            .populate([{
-
-                    path: "boards" ,
-                    select: ["title"],
-                    model: "Board",
-
-            }])
+        User.findOne({_id: req.params.userId})
+            .populate({
+                path: "boards" ,
+                select: ["title"] ,
+                model: "Board" ,
+            })
             .exec((err, boards) => {
             this._handleResponse(err, boards, res)
                 console.log('getmyboards', boards);

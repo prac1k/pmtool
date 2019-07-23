@@ -10,8 +10,8 @@ export default {
   findById(boardId) {
     return axios.get("/server/boards/" + boardId).then(res => res.data)
   },
-  getMyBoards(){
-  return axios.get("/server/boards/getmyboards" + userId).then(res => res.data)
+  getMyBoards(userId){
+  return axios.get('/server/boards/getmyboards/' + userId)
   },
 
   update(boardId, title) {
