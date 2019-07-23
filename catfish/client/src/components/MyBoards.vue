@@ -10,13 +10,8 @@
 
 <script>
   import boardService from "../services/board.service"
-  //import Addable from "./Addable";
   import authenticationService from '../services/authentication.service';
   export default {
-
-    components:{
-     // Addable,
-    },
 
 
     data () {

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a02b067-7059-47ec-95b9-d1864697004d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catfish/client/src/components/MyBoards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/components/MyBoards.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/client/src/services/board.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/client/src/services/board.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/routes/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catfish/server/services/board.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/catfish/server/services/board.service.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +160,7 @@
       <workItem from="1563444097852" duration="7483000" />
       <workItem from="1563529826776" duration="6768000" />
       <workItem from="1563785460643" duration="14237000" />
-      <workItem from="1563864985771" duration="13379000" />
+      <workItem from="1563864985771" duration="13512000" />
     </task>
     <servers />
   </component>
