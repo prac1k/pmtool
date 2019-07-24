@@ -12,16 +12,16 @@
           <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
           <router-link to="/admin" class="nav-item nav-link">Admin</router-link>
           <router-link to="/" class="nav-item nav-link">My boards</router-link>
-          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <router-link to="/my-tasks" class="nav-item nav-link">My Tasks</router-link>
           </div>
           <div v-else-if="isManager">
           <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
           <router-link to="/" class="nav-item nav-link">My boards</router-link>
-          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <router-link to="/my-tasks" class="nav-item nav-link">My Tasks</router-link>
           </div>
           <div v-else-if="isDeveloper">
           <router-link to="/" class="nav-item nav-link">My boards</router-link>
-          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <router-link to="/my-tasks" class="nav-item nav-link">My Tasks</router-link>
           </div>
           <div v-if="currentUser" class="logoutborder">
           <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>

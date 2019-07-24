@@ -213,13 +213,15 @@
     top: 60px;
   }
     .assign-people:hover{
-      display: inline-flex;
+      display: table;
       flex-direction: row-reverse;
       padding-left: 5px;
-      width: 75%;
-      white-space: normal;
+      width: 100%;
+      white-space: nowrap;
       overflow: visible;
-      text-overflow: unset;
+      position: fixed;
+      height: 45px;
+      top: 60px;
     }
     .assign-select{
       position: fixed;
