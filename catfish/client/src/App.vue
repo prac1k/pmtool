@@ -8,10 +8,21 @@
           </div>
       <div class="navbar-nav">
         <div class="navbarlinks">
-        <router-link v-if="currentUser" to="/" class="nav-item nav-link">Home</router-link>
-        <router-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Admin</router-link>
-        <router-link v-if="currentUser" to="/my-boards" class="nav-item nav-link">My boards</router-link>
-          <router-link v-if="currentUser" to="#" class="nav-item nav-link">My Tasks</router-link>
+          <div v-if="isAdmin">
+          <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
+        <router-link to="/admin" class="nav-item nav-link">Admin</router-link>
+        <router-link to="/" class="nav-item nav-link">My boards</router-link>
+            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          </div>
+          <div v-else-if="isManager">
+            <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
+            <router-link to="/" class="nav-item nav-link">My boards</router-link>
+            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          </div>
+          <div v-else="isDeveloper">
+            <router-link to="/" class="nav-item nav-link">My boards</router-link>
+            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          </div>
           <div v-if="currentUser" class="logoutborder">
           <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>
           </div>
@@ -44,7 +55,14 @@
     computed: {
       isAdmin () {
         return this.currentUser && this.currentUser.role === Role.Admin;
-      }
+
+      },
+      isManager () {
+        return this.currentUser && this.currentUser.role === Role.Manager;
+        },
+      isDeveloper () {
+        return this.currentUser && this.currentUser.role === Role.Developer;
+        }
     },
     created () {
       authenticationService.currentUser.subscribe(x => this.currentUser = x);

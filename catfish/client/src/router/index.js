@@ -14,29 +14,29 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     {
-      path: "/",
+      path: "/boards",
       name: "Boards",
       component: Boards,
-      meta: { authorize: [Role.Admin, Role.User] }
+      meta: { authorize: [Role.Admin, Role.Manager] }
     },
     {
       path: "/boards/:boardId",
       name: "BoardPage",
       component: BoardPage,
-      meta: { authorize: [Role.Admin, Role.User] }
+      meta: { authorize: [Role.Admin, Role.Developer, Role.Manager] }
     },
     {
-      path: "/",
+      path: "/my-tasks",
       name: "My Tasks",
       component: myTasksPage,
-      meta: { authorize: [Role.Admin, Role.User] }
+      meta: { authorize: [Role.Admin, Role.Developer, Role.Manager] }
     },
 
     {
-      path: "/my-boards",
+      path: "/",
       name: "My Boards",
       component: MyBoards,
-      meta: { authorize: [Role.Admin, Role.User] }
+      meta: { authorize: [Role.Admin, Role.Developer, Role.Manager] }
     },
 
     {
