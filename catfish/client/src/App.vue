@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar">
     <div class="navlogo">
-      <router-link
+
       <div class="logobrandheader">The Catfish project</div>
         <div v-if="currentUser" class="nav-item nameCurrentUser"> Welcome, {{ currentUser.name }} {{ currentUser.lastname }}</div>
           </div>
@@ -10,23 +10,24 @@
         <div class="navbarlinks">
           <div v-if="isAdmin">
           <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
-        <router-link to="/admin" class="nav-item nav-link">Admin</router-link>
-        <router-link to="/" class="nav-item nav-link">My boards</router-link>
-            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <router-link to="/admin" class="nav-item nav-link">Admin</router-link>
+          <router-link to="/" class="nav-item nav-link">My boards</router-link>
+          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
           </div>
           <div v-else-if="isManager">
-            <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
-            <router-link to="/" class="nav-item nav-link">My boards</router-link>
-            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <router-link to="/boards" class="nav-item nav-link">All Boards</router-link>
+          <router-link to="/" class="nav-item nav-link">My boards</router-link>
+          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
           </div>
-          <div v-else="isDeveloper">
-            <router-link to="/" class="nav-item nav-link">My boards</router-link>
-            <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
+          <div v-else-if="isDeveloper">
+          <router-link to="/" class="nav-item nav-link">My boards</router-link>
+          <router-link to="#" class="nav-item nav-link">My Tasks</router-link>
           </div>
           <div v-if="currentUser" class="logoutborder">
           <a @click="logout" class="nav-item nav-link navbarlogout">Logout</a>
           </div>
         </div>
+
       </div>
     </nav>
     <div class="jumbotron">
