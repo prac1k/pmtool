@@ -36,7 +36,6 @@
     },
     methods: {
       addableSubmit (boardTitle) {
-        console.log(boardTitle);
         if (!boardTitle || boardTitle.length === 0) {
           return;
         }

@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="list-cards">
-        <draggable v-model='cards' @start="drag=true" @end="drag=false" @change="log" :options="{ group: 'list'}">
+        <draggable v-model='cards' @start="drag=true" @end="drag=false" :options="{ group: 'list'}">
         <card
           v-for="(card, i) in cards"
           :card-prop="card"
@@ -72,14 +72,12 @@
 
     created () {
       this.$set(this, "list", this.listProp)
-       this.$eventBus.$on("card-dragend", this.onCardDragEnd);
+      this.$eventBus.$on("card-dragend", this.onCardDragEnd);
       this.cards = JSON.parse(JSON.stringify(this.listProp.cards));
       this.$set(this, "card", this.cards.map(card => card.assignedTo)) //displayin gassigned to card in a list
-      console.log(this.card);
   },
 
     mounted () {
-
       this.cards.map(card => card._id);
     },
 
@@ -111,9 +109,6 @@
         let cardIds = this.cards.map(card => card._id);
         cardService.updateCardsOrder(this.list._id , cardIds);
       } ,
-      log: function(evt) {
-        window.console.log(evt);
-      }
     },
   }
 </script>

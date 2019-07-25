@@ -18,7 +18,7 @@
       </div>
       <div>
       <div>
-        <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" @change="log" placeholder="Start typing to add user...">
+        <vSelect class="assign-select" :options="selectOptions" v-model="selected" @input="onUsersClickAdd" placeholder="Start typing to add user...">
               {{selectedOption}}
 
             </vSelect>
@@ -30,7 +30,7 @@
           @addable-submit="addableSubmit">
           <div class="addlist">Add list</div>
         </addable>
-        <draggable v-model='lists' @start="drag=true" @end="drag=false" @change="log">
+        <draggable v-model='lists' @start="drag=true" @end="drag=false" >
         <list
           v-for="(list, i) in lists"
           :key="list._id"
@@ -145,9 +145,6 @@
         let userIds = this.selected.value;
         boardService.boardAssignUsers(this.board._id, userIds).then(res => this.updateAssignedusers()) ;
       },
-      log: function(evt) {
-        window.console.log(evt);
-      }
     },
   }
 </script>
@@ -201,10 +198,9 @@
   }
 
   .assign-people {
-    display: inline-flex;
     flex-direction: row-reverse;
     padding-left: 5px;
-    width: 18.3%;
+    width: 38.3%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
