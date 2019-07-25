@@ -133,15 +133,16 @@
           (board => {
             this.$set(this , "board" , board);
             this.$set(this , "lists" , board.lists);
-            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
+            this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar, id: d.id})));
           }).bind(this)
         );
          return this.assignedUsers.map(d => ({label: d.name + " " + d.lastname, value: d.id}));
-        },
+         },
+
       selectedOption(){
         if (this.selected)
-          return this.selected.value
-        else
+        return this.selected.value
+                else
           return null
       },
     },
@@ -149,7 +150,6 @@
       this.card = this.cardProp;
       this.list = this.listProp;
       this.assignedTo = this.card.assignedTo.map(d => ({name: d.name , lastname: d.lastname , avatar: d.avatar}));
-      console.log("created", this.assignedTo );
 
       boardService.findById(this.$route.params.boardId).then(
         (board => {
@@ -158,9 +158,6 @@
           this.$set(this , "assignedUsers" , board.users.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
         }).bind(this)
       );
-      console.log(this.assignedUsers);
-      //this.$set(this , "card" , this.cardProp);
-      // this.$set(this , "assignedTo" , this.cardProp.assignedTo.map(d => ({name: d.name, lastname: d.lastname, avatar: d.avatar})));
 
       },
 
@@ -226,12 +223,8 @@
         (card => {
           this.card = card;
           this.assignedTo = card.assignedTo.map(d => ({name: d.name , lastname: d.lastname , avatar: d.avatar}));
-          console.log("updateAssignedToUsers", card.assignedTo);
         })
         );
-
-
-
       },
     },
   };
