@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@lossendae/vue-avatar": "^0.1.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.25",
     "config": "^3.1.0",
